@@ -5,7 +5,7 @@ function SearchNav() {
   return (
     <>
       <section className="searchNav">
-        <h1 className="searchNav_title">INVENTORY</h1>
+        <h1 className="searchNav__title">Inventory</h1>
         <div className="searchNav__card">
           <input
             type="text"
@@ -13,7 +13,7 @@ function SearchNav() {
             className="searchNav__search"
             placeholder="Search"
           />
-          <Buttons  showEdit />
+          <Buttons  showPrimaryItem />
         </div>
       </section>
     </>
