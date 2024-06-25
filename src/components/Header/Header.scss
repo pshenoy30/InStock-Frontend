@@ -13,7 +13,14 @@
   @include tablet {
     padding: 2rem 2rem;
     flex-direction: row;
-    align-items: flex-end;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  @include desktop {
+    padding: 2rem 5.625rem;
+    flex-direction: row;
+    align-items: center;
     justify-content: space-between;
   }
 
