@@ -1,0 +1,16 @@
+@use "../../styles/partials/globals" as *;
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/variables" as *;
+
+.footer {
+    padding: 2.5rem;
+
+    @include desktop {
+        padding: 3rem;
+    }
+
+    &__description {
+        display: flex;
+        justify-content: center;
+    }
+}
