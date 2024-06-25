@@ -1,11 +1,16 @@
 import "./Buttons.scss";
 
-function Buttons({ showPrimary, showSecondary, showDelete, showEdit }) {
+function Buttons({ showPrimaryWarehouse, showPrimaryItem, showSecondary, showDelete, showEdit }) {
   return (
     <div>
-      {showPrimary && (
+      {showPrimaryWarehouse && (
         <button type="submit" className="button__primary">
           + Add New Warehouse
+        </button>
+      )}
+      {showPrimaryItem && (
+        <button type="submit" className="button__primary">
+          + Add New Item
         </button>
       )}
       {showSecondary && (
