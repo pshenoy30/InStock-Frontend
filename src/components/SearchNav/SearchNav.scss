@@ -25,6 +25,9 @@
         box-sizing: border-box;
         width: 100%;
         height: 2.25rem;
+        background-image: url("../../assets/icons/search-24px.svg");
+        background-repeat: no-repeat;
+        background-position: 14.5rem center;
         color: $secondary-slate;
         background-color: $background-lightgrey;
         padding: 0.5rem 1rem;
