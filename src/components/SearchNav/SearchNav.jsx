@@ -1,3 +1,4 @@
+import Buttons from "../Buttons/Buttons";
 import "./SearchNav.scss";
 
 function SearchNav() {
@@ -12,7 +13,7 @@ function SearchNav() {
             className="searchNav__search"
             placeholder="Search"
           />
-          <Buttons />
+          <Buttons  showEdit />
         </div>
       </section>
     </>
