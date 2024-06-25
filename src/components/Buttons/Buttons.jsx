@@ -12,6 +12,9 @@ function Buttons() {
             <button type="submit" className="button__delete">
                 Delete
             </button>
+            <button type="submit" className="button__edit">
+                Edit
+            </button>
         </div>
     );
 }
