@@ -10,7 +10,7 @@ function Buttons() {
                 Cancel
             </button>
             <button type="submit" className="button__delete">
-                Cancel
+                Delete
             </button>
         </div>
     );
