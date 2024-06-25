@@ -1,0 +1,33 @@
+@use "../../styles/partials/globals" as *;
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/typography" as *;
+
+.header {
+    background-color: $background-graphite;
+    padding: 1.5rem 1rem;
+    gap: 1rem;
+    display: flex;
+    flex-direction: column;
+
+    &__logo {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    &__img {
+        width: 8.0369rem;
+        height: 100%;
+    }
+
+    &__nav{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+    }
+
+    &__navItem{
+        color: $secondary-cloud;
+    }
+}
