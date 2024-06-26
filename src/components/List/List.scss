@@ -1,0 +1,15 @@
+@use "../../styles/partials/globals" as *;
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/typography" as *;
+
+
+@include tablet {
+  .list{
+        &__header{
+            &:not(:first-child){
+                display:none;
+            }
+        }
+    }  
+}
