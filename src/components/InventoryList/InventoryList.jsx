@@ -2,7 +2,7 @@ import "./InventoryList.scss";
 import deleteImg from "../../assets/icons/delete_outline-24px.svg";
 import editImg from "../../assets/icons/edit-24px.svg";
 
-function InventoryList({ inventoryData, warehouseSelected }) {
+function InventoryList({ inventoryData }) {
   
   return (
     <section className="inventoryList">

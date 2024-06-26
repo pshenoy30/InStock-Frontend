@@ -15,9 +15,7 @@ function Inventory() {
 
   const getInventoriesData = async () => {
     try {
-      const response = await axios.get(
-        `${API_URL}/inventories`
-      );
+      const response = await axios.get(`${API_URL}/inventories`);
       setInventoriesData(response.data);
       console.log(response.data);
       setIsLoading(false);
@@ -44,10 +42,7 @@ function Inventory() {
       <Header />
       <main>
         <SearchNav />
-        <InventoryList
-          inventoryData={inventoriesData}
-          inventorySelected={inventoryToSelect}
-        />
+        <InventoryList inventoryData={inventoriesData} />
       </main>
       <Footer />
     </>
