@@ -10,6 +10,8 @@
   &__table {
     box-sizing: border-box;
     width: 100%;
+    padding-top: 1rem;
+    padding: 1.5rem;
   }
 
   &__columnheader {
@@ -31,6 +33,5 @@
   &__data {
     box-sizing: border-box;
     width: 100%;
-
   }
 }
