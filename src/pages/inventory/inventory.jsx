@@ -1,7 +1,7 @@
 import SearchNav from "../../components/SearchNav/SearchNav";
 import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
-import "./Inventory.scss";
+import "./inventory.scss";
 
 export default function Inventory() {
   return (
