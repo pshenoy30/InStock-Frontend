@@ -1,7 +1,20 @@
-import React from 'react'
+import SearchNav from "../../components/SearchNav/SearchNav";
+import getAllWarehouseDetails from "../../utils/api";
+import { useState, useEffect } from "react";
 
-export default function Warehouse() {
+
+const warehouseDetails = await getAllWarehouseDetails();
+function Warehouse() {
   return (
-    <div>Warehouse</div>
+    <section className="warehouse">
+      <SearchNav title = "Warehouse" buttonText = "+ Add New Warehouse"/>
+      {warehouseDetails.map((warehouseData) => {
+        <article className="warehouse__details" key={warehouseData.id}>
+          
+        </article>
+      })}
+    </section>
   )
 }
+
+export default Warehouse;
