@@ -4,7 +4,6 @@ import "./InventoryList.scss";
 import deleteImg from "../../assets/icons/delete_outline-24px.svg";
 import editImg from "../../assets/icons/edit-24px.svg";
 
-//TODO: pass in selectedWarehouse as prop
 function InventoryList() {
   const API_URL = import.meta.env.VITE_API_URL;
 
@@ -17,7 +16,6 @@ function InventoryList() {
     try {
       const inventoriesData = await axios.get(`${API_URL}/inventories`);
       console.log(`${API_URL}/warehouse/${id}/inventories`);
-      console.log(inventoriesData.data);
       setInventories(inventoriesData.data);
       setIsLoading(false);
     } catch (err) {
@@ -31,7 +29,7 @@ function InventoryList() {
   }, []);
 
   if (isLoading) {
-    return <p> Loading video data... </p>;
+    return <p> Loading inventory data... </p>;
   }
 
   if (error) {
@@ -62,10 +60,10 @@ function InventoryList() {
                   <td className="inventoryList__data">{inventory.status}</td>
                   <td className="inventoryList__data">{inventory.quantity}</td>
                   <td className="inventoryList__data">{inventory.warehouse_name}</td>
-                  <div>
+                  <td className="inventoryList__actions">
                     <img src={deleteImg} alt="delete button"></img>
                     <img src={editImg} alt="edit button"></img>
-                  </div>
+                  </td>
                 </tr>
               );
             })}
