@@ -1,0 +1,62 @@
+@use "../../styles/partials/globals" as *;
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/typography" as *;
+
+.header {
+  background-color: $background-graphite;
+  padding: 1.5rem 1rem;
+  gap: 1.5rem;
+  display: flex;
+  flex-direction: column;
+
+  @include tablet {
+    padding: 2rem 2rem;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  @include desktop {
+    padding: 2rem 5.625rem;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__img {
+    width: 8.0369rem;
+    height: 100%;
+  }
+
+  &__nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+
+    @include tablet{
+        gap: 1.5rem;
+    }
+  }
+
+  &__navItem {
+    color: $secondary-cloud;
+    text-align: center;
+    padding: 0.5rem 0;
+    // @include selected-state;
+
+    &:hover {
+        @include hover-state;
+    }
+
+    @include tablet {
+        padding: 0.5rem 1rem;
+    }
+  }
+}

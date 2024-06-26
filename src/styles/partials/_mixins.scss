@@ -1,0 +1,29 @@
+@use "../partials/variables" as *;
+
+@mixin tablet {
+  @media (min-width: $tablet-min-width) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media (min-width: $desktop-min-width) {
+    @content;
+  }
+}
+
+@mixin selected-state {
+  width: 100%;
+  max-width: 6.6875rem;
+  color: $primary-white;
+  padding: 0.5rem 0;
+  background-color: $primary-inStockBlack;
+  border: 1px solid $primary-inStockBlack;
+  border-radius: 1.25rem;
+}
+
+@mixin hover-state {
+  color: $primary-white;
+  text-decoration: underline;
+  cursor: pointer;
+}

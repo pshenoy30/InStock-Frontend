@@ -1,0 +1,119 @@
+@use "../../styles/partials/globals" as *;
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/variables" as *;
+
+.button {
+  &__primary {
+    width: 100%;
+    min-width: 4.4375rem;
+    height: 2.25rem;
+    color: $primary-white;
+    background-color: $primary-inStockIndigo;
+    padding: 0.5rem 1rem;
+    border: 1px solid $primary-inStockIndigo;
+    border-radius: 20px;
+
+    &:hover {
+      color: $primary-white;
+      background-color: $background-graphite;
+      border: 1px solid $background-graphite;
+      cursor: pointer;
+    }
+
+    @include tablet {
+      max-width: 10.5rem;
+      height: 2.375rem;
+    }
+
+    @include desktop {
+      max-width: 10.5rem;
+      height: 2.375rem;
+    }
+  }
+
+  &__secondary {
+    min-width: 4.4375rem;
+    height: 2.25rem;
+    color: $secondary-slate;
+    background-color: $background-lightgrey;
+    padding: 0.5rem 1rem;
+    border: 1px solid $secondary-slate;
+    border-radius: 20px;
+
+    &:hover {
+      color: $primary-inStockIndigo;
+      background-color: $background-lightgrey;
+      border: 1px solid $primary-inStockIndigo;
+      cursor: pointer;
+    }
+
+    @include tablet {
+      max-width: 10.5rem;
+      height: 2.375rem;
+    }
+
+    @include desktop {
+      max-width: 10.5rem;
+      height: 2.375rem;
+    }
+  }
+
+  &__delete {
+    min-width: 4.4375rem;
+    height: 2.25rem;
+    color: $primary-white;
+    background-color: $supporting-red;
+    padding: 0.5rem 1rem;
+    border: 1px solid $supporting-red;
+    border-radius: 20px;
+
+    &:hover {
+      color: $primary-white;
+      background-color: $background-graphite;
+      border: 1px solid $background-graphite;
+      cursor: pointer;
+    }
+
+    @include tablet {
+      max-width: 10.5rem;
+      height: 2.375rem;
+    }
+
+    @include desktop {
+      max-width: 10.5rem;
+      height: 2.375rem;
+    }
+  }
+
+  &__edit {
+    width: 5.0625rem;
+    min-width: 4.4375rem;
+    height: 2.25rem;
+    color: $primary-white;
+    background-image: url("../../assets/icons/edit-white-24px.svg");
+    background-size: 1.25rem 1.25rem;
+    background-repeat: no-repeat;
+    background-position: 0.75rem center;
+    background-color: $primary-inStockIndigo;
+    padding: 0.5rem 2rem 0.5rem 2.5rem;
+    border: 1px solid $primary-inStockIndigo;
+    border-radius: 20px;
+
+    &:hover {
+      color: $primary-white;
+      background-color: $background-graphite;
+      border: 1px solid $background-graphite;
+      cursor: pointer;
+    }
+
+    @include tablet {
+      max-width: 10.5rem;
+      height: 2.375rem;
+    }
+
+    @include desktop {
+      max-width: 10.5rem;
+      height: 2.375rem;
+    }
+  }
+}
