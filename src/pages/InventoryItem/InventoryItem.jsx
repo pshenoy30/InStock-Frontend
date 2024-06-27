@@ -45,7 +45,7 @@ function InventoryItem() {
     category,
     quantity,
     status,
-    warehouse_name,
+    warehouse_name
   } = inventoriesItemData;
 
   return (
@@ -53,28 +53,35 @@ function InventoryItem() {
       <Header />
       <main>
         <SearchNav title={item_name} hideSearch="true" buttonText="Edit" />
-        <section>
-          <section>
-            {/* <SearchNav /> */}
-            <article>
-              <div>
-                <h3>ITEM DESCRIPTION:</h3>
-                {description}
-                <h3>CATEGORY:</h3>
-                {category}
+        <section className="inventoryItem">
+          <article className="inventoryItem__container">
+            <article className="inventoryItem__card">
+              <div className="inventoryItem__subcontainer">
+                <h3 className="inventoryItem__title">ITEM DESCRIPTION:</h3>
+                <h3 className="inventoryItem__detail">{description}</h3>
               </div>
-              <div>
-                <div>
-                  <h3>STATUS:</h3>
-                  {status}
-                  <h3>QUANTITY:</h3>
-                  {quantity}
-                </div>
-                <h3>WAREHOUSE:</h3>
-                {warehouse_name}
+              <div className="inventoryItem__subcontainer">
+                <h3 className="inventoryItem__title">CATEGORY:</h3>
+                <h3 className="inventoryItem__detail">{category}</h3>
               </div>
             </article>
-          </section>
+            <article className="inventoryItem__card">
+              <article className="inventoryItem__subcard">
+                <div className="inventoryItem__subcontainer">
+                  <h3 className="inventoryItem__title">STATUS:</h3>
+                  <h3 className="inventoryItem__detail">{status}</h3>
+                </div>
+                <div className="inventoryItem__subcontainer">
+                  <h3 className="inventoryItem__title">QUANTITY:</h3>
+                  <h3 className="inventoryItem__detail">{quantity}</h3>
+                </div>
+              </article>
+              <div className="inventoryItem__subcontainer">
+                <h3 className="inventoryItem__title">WAREHOUSE:</h3>
+                <h3 className="inventoryItem__detail">{warehouse_name}</h3>
+              </div>
+            </article>
+          </article>
         </section>
       </main>
       <Footer />
