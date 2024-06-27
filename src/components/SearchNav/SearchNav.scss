@@ -43,6 +43,10 @@
         border: 1px solid $secondary-cloud;
         border-radius: 20px;
 
+        &--hidden {
+            display: none;
+        }
+
         @include tablet {
             background-position: 7.25rem center;
         }

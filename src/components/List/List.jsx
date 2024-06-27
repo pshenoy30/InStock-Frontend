@@ -1,4 +1,5 @@
 import MediaQuery from "react-responsive";
+import { Link } from 'react-router-dom';
 import deleteImg from "../../assets/icons/delete_outline-24px.svg";
 import editImg from "../../assets/icons/edit-24px.svg";
 import arrowImg from "../../assets/icons/chevron_right-24px.svg";
@@ -27,8 +28,10 @@ function List({
                 <div className="list__card">
                     <h3 className="list__title">{title1}</h3>
                     <div className="list__subcard">
-                        <h3 className="list__entry list__entry--interactive">{val1}</h3>
-                        <img className="list__img" src={arrowImg} alt="expand details button"></img>
+                        <Link to={`./${id}`}>
+                            <h3 className="list__entry list__entry--interactive">{val1}</h3>
+                            <img className="list__img" src={arrowImg} alt="expand details button"></img>
+                        </Link>  
                     </div>
                 </div>
                 <div className="list__card">

@@ -1,7 +1,12 @@
 import Buttons from "../Buttons/Buttons";
 import "./SearchNav.scss";
 
-function SearchNav({title, buttonText}) {
+function SearchNav({title, buttonText, hideSearch}) {
+  let searchClass = "searchNav__search";
+  if (hideSearch) {
+    searchClass += " searchNav__search--hidden";
+  }
+
   return (
     <>
       <section className="searchNav">
@@ -10,10 +15,10 @@ function SearchNav({title, buttonText}) {
           <input
             type="text"
             id="searchNavBar"
-            className="searchNav__search"
+            className={searchClass} 
             placeholder="Search..."
           />
-          <Buttons  buttonName={buttonText} />
+          <Buttons buttonName={buttonText} />
         </div>
       </section>
     </>
