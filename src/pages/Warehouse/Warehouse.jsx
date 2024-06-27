@@ -5,9 +5,9 @@ import getWarehouseById from "../../utils/getSingleWarehouse.jsx";
 import getInventoryBasedOnWarehouseById from "../../utils/getInventoryItemsBasedOnWarehouseId.jsx";
 import List from "../../components/List/List.jsx";
 import MediaQuery from "react-responsive";
-import "./Warehouse.scss";
 import { useParams } from "react-router-dom";
 import { useEffect,useState } from "react";
+import "./Warehouse.scss";
 
 function Warehouse() {
   const [warehouseDetails, setWarehouseDetails] = useState(null);
@@ -39,7 +39,7 @@ function Warehouse() {
     
     getWarehouseData(warehouseId);
     getInventoryData(warehouseId);
-  },[])
+  },[warehouseId])
 
   if (loadingWarehouseDetails) {
     return <p> Loading warehouse data... </p>;

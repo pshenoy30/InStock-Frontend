@@ -1,6 +1,6 @@
 import "./Buttons.scss";
 
-function Buttons({buttonName}) {
+function Buttons({buttonName, clickHandler}) {
   const classToBeAssigned = ((buttonName ===  "+ Add New Warehouse" || buttonName ===  "+ Add New Item")? "button__primary" : 
                              (buttonName ===  "Cancel" ? "button__secondary" : 
                              (buttonName ===  "Delete" ? "button__delete" : 
@@ -10,7 +10,7 @@ function Buttons({buttonName}) {
     buttonText = buttonName
   }
   return (
-    <button type="submit" className={classToBeAssigned}>
+    <button type="submit" className={classToBeAssigned} onClick={clickHandler}>
       {buttonText}
     </button>
   );

@@ -1,8 +1,13 @@
-import MediaQuery from "react-responsive";
+import MediaQuery from 'react-responsive';
 import { Link } from 'react-router-dom';
-import deleteImg from "../../assets/icons/delete_outline-24px.svg";
-import editImg from "../../assets/icons/edit-24px.svg";
-import arrowImg from "../../assets/icons/chevron_right-24px.svg";
+import deleteImg from '../../assets/icons/delete_outline-24px.svg';
+import editImg from '../../assets/icons/edit-24px.svg';
+import arrowImg from '../../assets/icons/chevron_right-24px.svg';
+import closeImg from '../../assets/icons/close-24px.svg'
+import Buttons from '../Buttons/Buttons';
+import Modal from 'react-modal';
+import { useState } from 'react';
+
 import "./List.scss";
 
 function List({
@@ -19,7 +24,18 @@ function List({
   title5,
   val5,
 }) {
+  const [isOpen, setIsOpen] = useState(false);
+  function openModal(){
+    setIsOpen(true);
+  }
 
+  function closeModal() {
+    setIsOpen(false);
+  }
+
+  function deleteModal() {
+
+  }
   return (
     <>
       <MediaQuery maxWidth={767}>
@@ -40,7 +56,9 @@ function List({
                     <h3 className="list__detail">{val2}</h3>
                 </div>
             </article>
-            <img className="list__img" src={deleteImg} alt="delete button"></img>
+            <button type='button' onClick={openModal}> 
+              <img className="list__img" src={deleteImg} alt="delete button"></img>
+            </button>
           </article>
           <article className="list__right">
             <div className="list__card">
@@ -58,6 +76,23 @@ function List({
             <img className="list__img list__img--right" src={editImg} alt="edit button"></img>
           </article>
         </article>
+        <Modal isOpen={isOpen} onRequestClose={closeModal} contentLabel="Delete a warehouse" className='list__modal'>
+          <>
+            <button className='list__modal__close' onClick={closeModal}>
+              <img className="list__img" src={closeImg} alt="edit button"></img>
+            </button>
+            <section className='list__modal__container'>
+              <article className='list__modal__text-container'>
+                <h1 className='list__modal__title'>Delete {val1} warehouse?</h1>
+                <p1 className='list__modal__text'>Please confirm that you'd like to delete the {val1} from the list of warehouses. You wont be able to undo this action</p1>
+              </article>
+              <article className='list__modal__button-container'>
+                <Buttons buttonName="Cancel" clickHandler={closeModal} />
+                <Buttons buttonName="Delete" clickHandler={deleteModal} />
+              </article>
+            </section>
+          </>
+        </Modal>
       </MediaQuery>
       <MediaQuery minWidth={768}>
         <table className="list__table">

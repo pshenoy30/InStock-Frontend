@@ -110,4 +110,48 @@
     gap: 0.5rem;
     padding-right: 2rem;
   }
+
+  &__modal{
+    height: 41.6875rem;
+    padding: 3.75rem 1rem 1.5rem 1rem;
+    position: relative;
+    background-color: $primary-white;
+
+    &__close{
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      border: none;
+    }
+    
+    &__title{
+      font-weight: 400;
+      background-color: $primary-white;
+    }
+    &__text{
+      width: 21.4375rem;
+      background-color: $primary-white;
+    }
+
+    &__container{
+      display: flex;
+      flex-direction: column;
+      gap: 29rem;
+      background-color: $primary-white;
+    }
+
+    &__text-container{
+      background-color: $primary-white;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    &__button-container{
+      background-color: $primary-white;
+      display: flex;
+      justify-content: space-between;
+    }
+
+  }
 }
