@@ -1,34 +1,18 @@
 import "./Buttons.scss";
 
-function Buttons({ showPrimaryWarehouse, showPrimaryItem, showSecondary, showDelete, showEdit }) {
+function Buttons({buttonName}) {
+  const classToBeAssigned = ((buttonName ===  "+ Add New Warehouse" || buttonName ===  "+ Add New Item")? "button__primary" : 
+                             (buttonName ===  "Cancel" ? "button__secondary" : 
+                             (buttonName ===  "Delete" ? "button__delete" : 
+                             (buttonName ===  "Edit"? "button__edit" : "" ))))
+  let buttonText = "";                           
+  if (buttonName !== "Edit"){
+    buttonText = buttonName
+  }
   return (
-    <div>
-      {showPrimaryWarehouse && (
-        <button type="submit" className="button__primary">
-          + Add New Warehouse
-        </button>
-      )}
-      {showPrimaryItem && (
-        <button type="submit" className="button__primary">
-          + Add New Item
-        </button>
-      )}
-      {showSecondary && (
-        <button type="submit" className="button__secondary">
-          Cancel
-        </button>
-      )}
-      {showDelete && (
-        <button type="submit" className="button__delete">
-          Delete
-        </button>
-      )}
-      {showEdit && (
-        <button type="submit" className="button__edit">
-          Edit
-        </button>
-      )}
-    </div>
+    <button type="submit" className={classToBeAssigned}>
+      {buttonText}
+    </button>
   );
 }
 

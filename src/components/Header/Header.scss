@@ -4,11 +4,13 @@
 @use "../../styles/partials/typography" as *;
 
 .header {
+  height: 12.5rem;
   background-color: $background-graphite;
   padding: 1.5rem 1rem;
   gap: 1.5rem;
   display: flex;
   flex-direction: column;
+  position: relative;
 
   @include tablet {
     padding: 2rem 2rem;
@@ -25,6 +27,7 @@
   }
 
   &__logo {
+    background-color: $background-graphite;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -33,9 +36,11 @@
   &__img {
     width: 8.0369rem;
     height: 100%;
+    background-color: $background-graphite;
   }
 
   &__nav {
+    background-color: $background-graphite;
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
@@ -46,11 +51,14 @@
   }
 
   &__navItem {
+    background-color: $background-graphite;
     color: $secondary-cloud;
     text-align: center;
     padding: 0.5rem 0;
-    // @include selected-state;
 
+    &__selected{
+      @include selected-state;
+    }
     &:hover {
         @include hover-state;
     }

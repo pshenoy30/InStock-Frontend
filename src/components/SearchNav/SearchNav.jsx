@@ -1,19 +1,24 @@
 import Buttons from "../Buttons/Buttons";
 import "./SearchNav.scss";
 
-function SearchNav() {
+function SearchNav({title, buttonText, hideSearch}) {
+  let searchClass = "searchNav__search";
+  if (hideSearch) {
+    searchClass += " searchNav__search--hidden";
+  }
+
   return (
     <>
       <section className="searchNav">
-        <h1 className="searchNav__title">Inventory</h1>
+        <h1 className="searchNav__title">{title}</h1>
         <div className="searchNav__card">
           <input
             type="text"
             id="searchNavBar"
-            className="searchNav__search"
-            placeholder="Search"
+            className={searchClass} 
+            placeholder="Search..."
           />
-          <Buttons  showPrimaryItem />
+          <Buttons buttonName={buttonText} />
         </div>
       </section>
     </>

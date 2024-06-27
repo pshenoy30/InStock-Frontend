@@ -118,19 +118,37 @@ p2 {
   }
 }
 
-//body small
-p3 {
-  font-size: 0.6875rem;
-  font-weight: 400;
-  line-height: 1rem;
-
-  @include tablet {
-    font-size: 0.75rem;
-    line-height: 1.125rem;
-  }
-
-  @include desktop {
-    font-size: 0.75rem;
-    line-height: 1.125rem;
-  }
+.wrapper{
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  position: relative;
 }
+
+.box {
+  background-color: $primary-white;
+  width: 21.4375rem;
+  height: max-content;
+  border-radius: 0.1875rem;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.20);
+  display: flex;
+  flex-direction: column;
+  margin-top: -8rem;
+  margin-left: 1rem;
+}
+//body small
+// p3 { :p3 is not recognised ny the browser. This is moved to Footer.scss
+//   font-size: 0.6875rem;
+//   font-weight: 400;
+//   line-height: 1rem;
+
+//   @include tablet {
+//     font-size: 0.75rem;
+//     line-height: 1.125rem;
+//   }
+
+//   @include desktop {
+//     font-size: 0.75rem;
+//     line-height: 1.125rem;
+//   }
+// }

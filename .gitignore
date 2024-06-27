@@ -24,3 +24,5 @@ dist-ssr
 *.sw?
 *.min.css
 *.css
+
+.env
