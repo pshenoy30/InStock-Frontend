@@ -4,13 +4,16 @@
 @use "../../styles/partials/typography" as *;
 
 .header {
+  height: 12.5rem;
   background-color: $background-graphite;
   padding: 1.5rem 1rem;
   gap: 1.5rem;
   display: flex;
   flex-direction: column;
+  
 
   @include tablet {
+    height: 11.625rem;
     padding: 2rem 2rem;
     flex-direction: row;
     align-items: center;
@@ -18,6 +21,7 @@
   }
 
   @include desktop {
+    height: 11.625rem;
     padding: 2rem 5.625rem;
     flex-direction: row;
     align-items: center;
