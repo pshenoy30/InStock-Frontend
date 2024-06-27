@@ -1,52 +1,47 @@
-import axios from "axios";
-import { useState, useEffect } from "react";
-import SearchNav from "../../components/SearchNav/SearchNav";
-import Header from "../../components/Header/Header";
-import Footer from "../../components/Footer/Footer";
-import InventoryList from "../../components/InventoryList/InventoryList";
-import "./Inventory.scss";
+// import SearchNav from "../../components/SearchNav/SearchNav";
+// import Header from "../../components/Header/Header";
+// import Footer from "../../components/Footer/Footer";
+// import List from "../../components/List/List";
+// import { getInventoriesData } from "../../utils/api";
+// import "./Inventory.scss";
 
-function Inventory() {
-  const API_URL = import.meta.env.VITE_API_URL;
+// // const inventoryDetails = await getInventoriesData();
+// console.log(inventoryDetails);
+// function Inventory() {
+//   return (
+//     <>
+//       <Header />
+//       <main>
+//         <SearchNav title = "Inventory" buttonText = "+ Add New Item"/>
+//         {/* {inventoryDetails.map((inventory) => {
+//         const {
+//           id,
+//           warehouse_name,
+//           item_name,
+//           category,
+//           status,
+//           quantity
+//         } = inventory;
+//         return (
+//           <List
+//               id={id}
+//               title1="Inventory Item"
+//               val1={item_name}
+//               title2="Category"
+//               val2={category}
+//               title3="Status"
+//               val3={status}
+//               title4="Qty"
+//               val4={quantity}
+//               title5="Warehouse"
+//               val5={warehouse_name}
+//             />
+//         )
+//         })} */}
+//       </main>
+//       <Footer />
+//     </>
+//   );
+// }
 
-  const [isLoading, setIsLoading] = useState(true);
-  const [error, setError] = useState(false);
-  const [inventoriesData, setInventoriesData] = useState(null);
-
-  const getInventoriesData = async () => {
-    try {
-      const response = await axios.get(`${API_URL}/inventory`);
-      setInventoriesData(response.data);
-      console.log(response.data);
-      setIsLoading(false);
-    } catch (err) {
-      console.log(err);
-      setError(true);
-    }
-  };
-
-  useEffect(() => {
-    getInventoriesData();
-  }, []);
-
-  if (isLoading) {
-    return <p> Loading inventory data... </p>;
-  }
-
-  if (error) {
-    return <p> Something went wrong. Please try refreshing the page</p>;
-  }
-
-  return (
-    <>
-      <Header />
-      <main>
-        <SearchNav />
-        <InventoryList inventoryData={inventoriesData} />
-      </main>
-      <Footer />
-    </>
-  );
-}
-
-export default Inventory;
+// export default Inventory;

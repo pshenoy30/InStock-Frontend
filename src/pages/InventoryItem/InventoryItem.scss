@@ -1,0 +1,41 @@
+@use "../../styles/partials/globals" as *;
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/variables" as *;
+
+.inventoryItem {
+    padding: 1rem 1.5rem 1.5rem 1.5rem;
+    border-top: 1px solid $secondary-cloud;
+
+    &__container {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    &__subcontainer {
+        display: flex;
+        flex-direction: column;
+        gap: 0.25rem;
+    }
+
+    &__card {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    &__subcard {
+        display: flex;
+        gap: 7rem;
+    }
+
+    &__title {
+        color: $secondary-slate;
+        font-weight: 400;
+    }
+
+    &__detail {
+        color: $primary-inStockBlack;
+        font-weight: 400;
+    }
+}

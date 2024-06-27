@@ -4,6 +4,7 @@
 
 .footer {
   padding: 2.5rem;
+  background-color: $background-lightgrey;
 
   @include desktop {
     padding: 3rem;
@@ -15,6 +16,7 @@
     line-height: 1rem;
     display: flex;
     justify-content: center;
+
 
     @include tablet {
       font-size: 0.75rem;
