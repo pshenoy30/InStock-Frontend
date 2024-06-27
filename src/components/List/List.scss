@@ -1,0 +1,110 @@
+@use "../../styles/partials/globals" as *;
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/typography" as *;
+
+.list {
+  padding-top: 1rem;
+  padding: 1.5rem;
+  display: flex;
+  border-top: 1px solid $secondary-cloud;
+
+  &__left {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    gap: 1rem;
+  }
+
+  &__card {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__title {
+    color: $secondary-slate;
+    font-weight: 400;
+    text-transform: uppercase;
+  }
+
+  &__subcard {
+    display: flex;
+    align-items: center;
+  }
+
+  &__entry {
+    &--interactive {
+      color: $primary-inStockIndigo;
+    }
+  }
+
+  &__img {
+    width: 1.5rem;
+    height: 1.5rem;
+
+    &--right {
+      text-align: right;
+      align-self: flex-end;
+    }
+  }
+
+  &__detail {
+    color: $primary-inStockBlack;
+    font-weight: 400;
+    width: 70%;
+
+    @include tablet {
+      width: 9rem;
+    }
+
+    &--left {
+      color: $primary-inStockIndigo;
+      padding-left: 2rem;
+      display: flex;
+    }
+
+    // &--smaller {
+    //   width: 7.75rem;
+    // }
+
+    // &--larger {
+    //   width: 11rem;
+    // }
+  }
+
+  &__right {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    gap: 1rem;
+  }
+
+  // &__header {
+  //   @include tablet {
+  //     &:not(:first-child) {
+  //       display: none;
+  //     }
+  //   }
+  // }
+
+  &__table {
+    width: 100%;
+    padding-bottom: 1rem;
+  }
+
+  &__records {
+    box-sizing: border-box;
+    border-top: 1px solid $secondary-cloud;
+    display: flex;
+    gap: 1rem;
+    padding-top: 1rem;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__actions {
+    display: flex;
+    gap: 0.5rem;
+    padding-right: 2rem;
+  }
+}
