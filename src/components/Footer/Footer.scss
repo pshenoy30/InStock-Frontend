@@ -3,7 +3,10 @@
 @use "../../styles/partials/variables" as *;
 
 .footer {
+  width: 100%;
+  background-color: $primary-white;
   padding: 2.5rem;
+  position: static;
 
   @include desktop {
     padding: 3rem;
@@ -25,6 +28,5 @@
       font-size: 0.75rem;
       line-height: 1.125rem;
     }
-    
   }
 }

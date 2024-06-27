@@ -51,7 +51,8 @@ function InventoryItem() {
   return (
     <div>
       <Header />
-      <main className="mainCard">
+      <main>
+      <section className="mainCard">
         <SearchNav title={item_name} hideSearch="true" buttonText="Edit" />
         <section className="inventoryItem">
           <article className="inventoryItem__container">
@@ -83,6 +84,7 @@ function InventoryItem() {
             </article>
           </article>
         </section>
+      </section>
       </main>
       <Footer />
     </div>
