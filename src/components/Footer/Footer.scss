@@ -9,7 +9,8 @@
     width: 100%;
     height: 3.125rem;
     margin-top: auto;
-  
+    background-color: $background-lightgrey;
+
   @include desktop {
     padding: 3rem;
   }
@@ -20,6 +21,7 @@
     line-height: 1rem;
     display: flex;
     justify-content: center;
+
 
     @include tablet {
       font-size: 0.75rem;

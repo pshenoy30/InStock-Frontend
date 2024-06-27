@@ -7,6 +7,7 @@ import "./List.scss";
 
 function List({
   id,
+  listType,
   title1,
   val1,
   title2,
@@ -27,12 +28,12 @@ function List({
             <article className="list__container">
                 <div className="list__card">
                     <h3 className="list__title">{title1}</h3>
-                    <div className="list__subcard">
-                        <Link to={`./${id}`}>
+                    <Link to={`./${listType}/${id}`}>  
+                      <div className="list__subcard">
                             <h3 className="list__entry list__entry--interactive">{val1}</h3>
-                            <img className="list__img" src={arrowImg} alt="expand details button"></img>
-                        </Link>  
-                    </div>
+                            <img className="list__img" src={arrowImg} alt="expand details button"></img> 
+                      </div>
+                    </Link> 
                 </div>
                 <div className="list__card">
                     <h3 className="list__title">{title2}</h3>
