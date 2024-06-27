@@ -104,7 +104,26 @@ function List({
               <td className="list__detail list__detail--larger">{val4}</td>
               {val5 && <td className="list__detail">{val5}</td>}
               <td className="list__actions">
-                <img src={deleteImg} alt="delete button"></img>
+                <button type='button' onClick={openModal}> 
+                  <img src={deleteImg} alt="delete button"></img>
+                </button>
+                <Modal isOpen={isOpen} onRequestClose={closeModal} contentLabel="Delete a warehouse" className='list__modal'>
+                  <>
+                    <button className='list__modal__close' onClick={closeModal}>
+                      <img className="list__img" src={closeImg} alt="edit button"></img>
+                    </button>
+                    <section className='list__modal__container'>
+                      <article className='list__modal__text-container'>
+                        <h1 className='list__modal__title'>Delete {val1} warehouse?</h1>
+                        <p1 className='list__modal__text'>Please confirm that you'd like to delete the {val1} from the list of warehouses. You wont be able to undo this action</p1>
+                      </article>
+                      <article className='list__modal__button-container'>
+                        <Buttons buttonName="Cancel" clickHandler={closeModal} />
+                        <Buttons buttonName="Delete" clickHandler={deleteModal} />
+                      </article>
+                    </section>
+                  </>
+                </Modal>
                 <img src={editImg} alt="edit button"></img>
               </td>
             </tr>
