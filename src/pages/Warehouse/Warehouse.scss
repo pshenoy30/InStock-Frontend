@@ -1,0 +1,15 @@
+@use "../../styles/partials/globals" as *;
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/typography" as *;
+
+.warehouse{
+    background-color: $background-lightgrey;
+    &__box{
+        width:91.5vw;
+        margin-left: 1rem;
+        border-radius: 5px;
+        background-color: $primary-white;
+    }
+    
+}

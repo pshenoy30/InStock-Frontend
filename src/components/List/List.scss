@@ -3,36 +3,43 @@
 @use "../../styles/partials/variables" as *;
 @use "../../styles/partials/typography" as *;
 
+
 .list {
   padding-top: 1rem;
   padding: 1.5rem;
   display: flex;
   border-top: 1px solid $secondary-cloud;
-
+  background-color: $primary-white;
+  
   &__left {
     display: flex;
     flex-direction: column;
     flex: 1;
     gap: 1rem;
+    background-color: $primary-white;
   }
 
   &__card {
     display: flex;
     flex-direction: column;
+    background-color: $primary-white;
   }
 
   &__title {
     color: $secondary-slate;
     font-weight: 400;
     text-transform: uppercase;
+    background-color: $primary-white;
   }
 
   &__subcard {
     display: flex;
     align-items: center;
+    background-color: $primary-white;
   }
 
   &__entry {
+    background-color: $primary-white;
     &--interactive {
       color: $primary-inStockIndigo;
     }
@@ -41,6 +48,7 @@
   &__img {
     width: 1.5rem;
     height: 1.5rem;
+    background-color: $primary-white;
 
     &--right {
       text-align: right;
@@ -52,6 +60,7 @@
     color: $primary-inStockBlack;
     font-weight: 400;
     width: 70%;
+    background-color: $primary-white;
 
     @include tablet {
       width: 9rem;
@@ -65,12 +74,14 @@
   }
 
   &__container{
+    background-color: $primary-white;
     display: flex;
     flex-direction: column;
     gap: 1rem
   }
 
   &__right {
+    background-color: $primary-white;
     display: flex;
     flex-direction: column;
     flex: 1;
@@ -78,11 +89,13 @@
   }
 
   &__table {
+    background-color: $primary-white;
     width: 100%;
     padding-bottom: 1rem;
   }
 
   &__records {
+    background-color: $primary-white;
     box-sizing: border-box;
     border-top: 1px solid $secondary-cloud;
     display: flex;

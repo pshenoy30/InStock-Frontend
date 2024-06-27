@@ -25,6 +25,7 @@
   }
 
   &__logo {
+    background-color: $background-graphite;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -33,9 +34,11 @@
   &__img {
     width: 8.0369rem;
     height: 100%;
+    background-color: $background-graphite;
   }
 
   &__nav {
+    background-color: $background-graphite;
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
@@ -46,6 +49,7 @@
   }
 
   &__navItem {
+    background-color: $background-graphite;
     color: $secondary-cloud;
     text-align: center;
     padding: 0.5rem 0;

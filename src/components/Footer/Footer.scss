@@ -4,6 +4,7 @@
 
 .footer {
   padding: 2.5rem;
+  background-color: $background-lightgrey;
 
   @include desktop {
     padding: 3rem;
