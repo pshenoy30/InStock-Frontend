@@ -13,7 +13,7 @@ export default function Homepage() {
     <>
       <Header />
       <main className="warehouse">
-        <section className="warehouse__box">
+        <section className="box">
           <SearchNav title="Warehouse" buttonText="+ Add New Warehouse" />
             <MediaQuery minWidth={768}>
               <article className="list">
