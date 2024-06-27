@@ -8,6 +8,16 @@ body {
   height: 100%;
 }
 
+.mainBox {
+  position: relative;
+}
+
+.mainBox::after {
+  content: '';
+  display: block;
+  height: 3.125rem;
+}
+
 :root {
   font-size: 100% !important;
 }

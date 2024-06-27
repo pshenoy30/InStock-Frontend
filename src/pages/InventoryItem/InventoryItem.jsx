@@ -52,7 +52,7 @@ function InventoryItem() {
     <div>
       <Header />
       <main>
-      <section className="mainCard">
+      <section className="mainBox">
         <SearchNav title={item_name} hideSearch="true" buttonText="Edit" />
         <section className="inventoryItem">
           <article className="inventoryItem__container">
