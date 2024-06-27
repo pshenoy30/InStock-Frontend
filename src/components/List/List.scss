@@ -9,6 +9,18 @@
   display: flex;
   border-top: 1px solid $secondary-cloud;
 
+  &__left {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    gap: 1rem;
+  }
+
+  &__card {
+    display: flex;
+    flex-direction: column;
+  }
+
   &__title {
     color: $secondary-slate;
     font-weight: 400;
@@ -17,6 +29,7 @@
 
   &__subcard {
     display: flex;
+    align-items: center;
   }
 
   &__entry {
@@ -25,16 +38,14 @@
     }
   }
 
-  &__card {
-    display: flex;
-    flex-direction: column;
-  }
+  &__img {
+    width: 1.5rem;
+    height: 1.5rem;
 
-  &__left {
-    display: flex;
-    flex-direction: column;
-    flex: 1;
-    gap: 1rem;
+    &--right {
+      text-align: right;
+      align-self: flex-end;
+    }
   }
 
   &__detail {
@@ -50,16 +61,15 @@
       color: $primary-inStockIndigo;
       padding-left: 2rem;
       display: flex;
-      justify-content: center;
     }
 
-    &--smaller {
-      width: 7.75rem;
-    }
+    // &--smaller {
+    //   width: 7.75rem;
+    // }
 
-    &--larger {
-      width: 11rem;
-    }
+    // &--larger {
+    //   width: 11rem;
+    // }
   }
 
   &__right {
@@ -69,30 +79,21 @@
     gap: 1rem;
   }
 
-  &__img {
-    width: 1.5rem;
-    height: 1.5rem;
-
-    &--right {
-      text-align: right;
-      align-self: flex-end;
-    }
-  }
-
-  &__header {
-    @include tablet {
-      &:not(:first-child) {
-        display: none;
-      }
-    }
-  }
+  // &__header {
+  //   @include tablet {
+  //     &:not(:first-child) {
+  //       display: none;
+  //     }
+  //   }
+  // }
 
   &__table {
-    padding-bottom: 1rem;
     width: 100%;
+    padding-bottom: 1rem;
   }
 
   &__records {
+    box-sizing: border-box;
     border-top: 1px solid $secondary-cloud;
     display: flex;
     gap: 1rem;

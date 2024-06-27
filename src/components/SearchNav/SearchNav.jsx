@@ -11,7 +11,7 @@ function SearchNav({title, buttonText}) {
             type="text"
             id="searchNavBar"
             className="searchNav__search"
-            placeholder="Search"
+            placeholder="Search..."
           />
           <Buttons  buttonName={buttonText} />
         </div>

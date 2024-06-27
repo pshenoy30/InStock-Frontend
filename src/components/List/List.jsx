@@ -17,22 +17,25 @@ function List({
   title5,
   val5,
 }) {
+
   return (
     <>
       <MediaQuery maxWidth={767}>
         <article className="list" key={id}>
           <article className="list__left">
-            <div className="list__card">
-              <h3 className="list__title">{title1}</h3>
-              <div className="list__subcard">
-                <h3 className="list__entry list__entry--interactive">{val1}</h3>
-                <img className="list__img" src={arrowImg} alt="expand details button"></img>
-              </div>
-            </div>
-            <div className="list__card">
-              <h3 className="list__title">{title2}</h3>
-              <h3 className="list__detail">{val2}</h3>
-            </div>
+            <article className="list__container">
+                <div className="list__card">
+                    <h3 className="list__title">{title1}</h3>
+                    <div className="list__subcard">
+                        <h3 className="list__entry list__entry--interactive">{val1}</h3>
+                        <img className="list__img" src={arrowImg} alt="expand details button"></img>
+                    </div>
+                </div>
+                <div className="list__card">
+                    <h3 className="list__title">{title2}</h3>
+                    <h3 className="list__detail">{val2}</h3>
+                </div>
+            </article>
             <img className="list__img" src={deleteImg} alt="delete button"></img>
           </article>
           <article className="list__right">
@@ -42,10 +45,12 @@ function List({
             </div>
             <div className="list__card">
               <h3 className="list__title">{title4}</h3>
-              <h3 className="list__detail">
-                {val4}
-              </h3>
+              <h3 className="list__detail">{val4}</h3>
             </div>
+            {title5 && val5 && <div className="list__card">
+              <h3 className="list__title">{title5}</h3>
+              <h3 className="list__detail">{val5}</h3>
+            </div>}
             <img className="list__img list__img--right" src={editImg} alt="edit button"></img>
           </article>
         </article>
@@ -54,10 +59,11 @@ function List({
         <table className="list__table">
           <tbody className="list__body">
             <tr className="list__records" key={id}>
-              <td className="list__detail list__detail--left">{val1} <img className="list__img list__img__arrow" src={arrowImg} alt="expand details button"></img></td>
+              <td className="list__detail list__detail--left">{val1} <img className="list__img" src={arrowImg} alt="expand details button"></img></td>
               <td className="list__detail list__detail--smaller">{val2}</td>
               <td className="list__detail">{val3}</td>
               <td className="list__detail list__detail--larger">{val4}</td>
+              {val5 && <td className="list__detail">{val5}</td>}
               <td className="list__actions">
                 <img src={deleteImg} alt="delete button"></img>
                 <img src={editImg} alt="edit button"></img>
