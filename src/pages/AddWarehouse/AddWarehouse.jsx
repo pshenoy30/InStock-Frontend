@@ -1,97 +1,227 @@
 // src/pages/AddWarehouse/AddWarehouse.jsx
-import React, { useState } from 'react';
-import axios from 'axios';
-import Header from '../../components/Header/Header';
-import FormField from '../../components/FormField/FormField';
-import Buttons from '../../components/Buttons/Buttons';
-import FormInputs from '../../components/FormInputs/FormInputs';
-import './AddWarehouse.scss';
+import React, { useState } from "react";
+import "./AddWarehouse.scss";
+import FormInputs from "../../components/FormInputs/FormInputs";
+import { defaultFormData } from "../../components/formUtils";
+
+const validateEmail = (email) => {
+  const re = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+  return re.test(String(email).toLowerCase());
+};
+
+const validatePhoneNumber = (phoneNumber) => {
+  const re = /^\+?[1-9]\d{1,14}$/;
+  return re.test(String(phoneNumber));
+};
+
+const validateFormData = (data) => {
+  const errors = {};
+
+  if (!data.warehouseName) errors.warehouseName = "Warehouse Name is required";
+  if (!data.address) errors.address = "Address is required";
+  if (!data.city) errors.city = "City is required";
+  if (!data.country) errors.country = "Country is required";
+  if (!data.contactName) errors.contactName = "Contact Name is required";
+  if (!data.contactPosition) errors.contactPosition = "Position is required";
+  if (!data.contactPhone) {
+    errors.contactPhone = "Phone Number is required";
+  } else if (!validatePhoneNumber(data.contactPhone)) {
+    errors.contactPhone = "Phone Number is invalid";
+  }
+  if (!data.contactEmail) {
+    errors.contactEmail = "Email is required";
+  } else if (!validateEmail(data.contactEmail)) {
+    errors.contactEmail = "Email is invalid";
+  }
+
+  return errors;
+};
 
 const AddWarehouse = () => {
-  const [formData, setFormData] = useState({
-    warehouseName: '',
-    address: '',
-    city: '',
-    country: '',
-    contactName: '',
-    contactPosition: '',
-    contactPhone: '',
-    contactEmail: ''
-  });
-
-  const [errors, setErrors] = useState({});
-  const [isSubmitting, setIsSubmitting] = useState(false);
-
-  const validate = () => {
-    const errors = {};
-    if (!formData.warehouseName) errors.warehouseName = 'Warehouse name is required';
-    if (!formData.address) errors.address = 'Address is required';
-    if (!formData.city) errors.city = 'City is required';
-    if (!formData.country) errors.country = 'Country is required';
-    return errors;
-  };
+  const [formData, setFormData] = useState(defaultFormData);
+  const [formErrors, setFormErrors] = useState({});
 
   const handleChange = (e) => {
+    const { name, value } = e.target;
     setFormData({
       ...formData,
-      [e.target.name]: e.target.value
+      [name]: value,
     });
-    if (errors[e.target.name]) {
-      setErrors({
-        ...errors,
-        [e.target.name]: ''
-      });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const errors = validateFormData(formData);
+    if (Object.keys(errors).length === 0) {
+      console.log("Form submitted successfully", formData);
+    } else {
+      setFormErrors(errors);
     }
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    const validationErrors = validate();
-    setErrors(validationErrors);
-    if (Object.keys(validationErrors).length === 0) {
-      setIsSubmitting(true);
-      try {
-        const response = await axios.post('/routes/warehouse', formData);
-        console.log('Warehouse added successfully:', response.data);
-        setFormData({
-          warehouseName: '',
-          address: '',
-          city: '',
-          country: '',
-          contactName: '',
-          contactPosition: '',
-          contactPhone: '',
-          contactEmail: ''
-        });
-      } catch (error) {
-        console.error('Error adding warehouse:', error.response ? error.response.data : error.message);
-      } finally {
-        setIsSubmitting(false);
-      }
-    }
-  };
-
-  const handleCancel = (e) => {
-    e.preventDefault();
-    console.log('Cancel button clicked');
+  const handleReset = () => {
+    setFormData(defaultFormData);
+    setFormErrors({});
   };
 
   return (
-    <>
-      <Header />
-      <main>
-        <div className="add-warehouse__header">
-          <h2>Add New Warehouse</h2>
-        </div>
-        <div className="add-warehouse__divider"></div>
-        <form className="add-warehouse" onSubmit={handleSubmit}>
-          <FormInputs formData={formData} errors={errors} onChange={handleChange} />
-          <div className="add-warehouse__buttons-wrapper">
-            <Buttons showPrimaryWarehouse={true} showSecondary={true} />
+    <div className="form-container">
+      <div className="form-container__header">
+        <h1>Add New Warehouse</h1>
+      </div>
+      <form className="form" onSubmit={handleSubmit}>
+        <div className="form__section">
+          <h2 className="form__heading">Warehouse Details</h2>
+          <div className="form__group">
+            <label className="form__label" htmlFor="warehouseName">
+              Warehouse Name
+            </label>
+            <input
+              className="form__input"
+              type="text"
+              id="warehouseName"
+              name="warehouseName"
+              placeholder="Warehouse Name"
+              value={formData.warehouseName}
+              onChange={handleChange}
+            />
+            {formErrors.warehouseName && (
+              <div className="form__error">{formErrors.warehouseName}</div>
+            )}
           </div>
-        </form>
-      </main>
-    </>
+          <div className="form__group">
+            <label className="form__label" htmlFor="address">
+              Street Address
+            </label>
+            <input
+              className="form__input"
+              type="text"
+              id="address"
+              name="address"
+              placeholder="Street Address"
+              value={formData.address}
+              onChange={handleChange}
+            />
+            {formErrors.address && (
+              <div className="form__error">{formErrors.address}</div>
+            )}
+          </div>
+          <div className="form__group">
+            <label className="form__label" htmlFor="city">
+              City
+            </label>
+            <input
+              className="form__input"
+              type="text"
+              id="city"
+              name="city"
+              placeholder="City"
+              value={formData.city}
+              onChange={handleChange}
+            />
+            {formErrors.city && (
+              <div className="form__error">{formErrors.city}</div>
+            )}
+          </div>
+          <div className="form__group">
+            <label className="form__label" htmlFor="country">
+              Country
+            </label>
+            <input
+              className="form__input"
+              type="text"
+              id="country"
+              name="country"
+              placeholder="Country"
+              value={formData.country}
+              onChange={handleChange}
+            />
+            {formErrors.country && (
+              <div className="form__error">{formErrors.country}</div>
+            )}
+          </div>
+        </div>
+        <div className="form__section">
+          <h2 className="form__heading">Contact Details</h2>
+          <div className="form__group">
+            <label className="form__label" htmlFor="contactName">
+              Contact Name
+            </label>
+            <input
+              className="form__input"
+              type="text"
+              id="contactName"
+              name="contactName"
+              placeholder="Contact Name"
+              value={formData.contactName}
+              onChange={handleChange}
+            />
+            {formErrors.contactName && (
+              <div className="form__error">{formErrors.contactName}</div>
+            )}
+          </div>
+          <div className="form__group">
+            <label className="form__label" htmlFor="contactPosition">
+              Position
+            </label>
+            <input
+              className="form__input"
+              type="text"
+              id="contactPosition"
+              name="contactPosition"
+              placeholder="Position"
+              value={formData.contactPosition}
+              onChange={handleChange}
+            />
+            {formErrors.contactPosition && (
+              <div className="form__error">{formErrors.contactPosition}</div>
+            )}
+          </div>
+          <div className="form__group">
+            <label className="form__label" htmlFor="contactPhone">
+              Phone Number
+            </label>
+            <input
+              className="form__input"
+              type="text"
+              id="contactPhone"
+              name="contactPhone"
+              placeholder="Phone Number"
+              value={formData.contactPhone}
+              onChange={handleChange}
+            />
+            {formErrors.contactPhone && (
+              <div className="form__error">{formErrors.contactPhone}</div>
+            )}
+          </div>
+          <div className="form__group">
+            <label className="form__label" htmlFor="contactEmail">
+              Email
+            </label>
+            <input
+              className="form__input"
+              type="email"
+              id="contactEmail"
+              name="contactEmail"
+              placeholder="Email"
+              value={formData.contactEmail}
+              onChange={handleChange}
+            />
+            {formErrors.contactEmail && (
+              <div className="form__error">{formErrors.contactEmail}</div>
+            )}
+          </div>
+        </div>
+      </form>
+      <div className="form__footer">
+        <button className="form__reset" type="button" onClick={handleReset}>
+          Cancel
+        </button>
+        <button className="form__submit" type="submit" onClick={handleSubmit}>
+          + Add Warehouse
+        </button>
+      </div>
+    </div>
   );
 };
 

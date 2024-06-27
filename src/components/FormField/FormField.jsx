@@ -1,19 +1,22 @@
-// src/components/FormField/FormField.jsx
-import React from 'react';
+// FormField.jsx
+import React from "react";
 
-const FormField = ({ label, name, type, value, onChange, error, placeholder }) => {
+const FormField = ({ label, name, type, value, onChange, placeholder }) => {
   return (
-    <div className="add-warehouse__field">
-      <label className="add-warehouse__label">{label}</label>
+    <div className="form-inputs__group">
+      <label className="form-inputs__label" htmlFor={name}>
+        {label}
+      </label>
       <input
-        className="add-warehouse__input"
+        className="form-inputs__input"
         type={type}
+        id={name}
         name={name}
         value={value}
         onChange={onChange}
-        placeholder={placeholder} 
+        placeholder={placeholder}
+        aria-label={label}
       />
-      {error && <span className="add-warehouse__error">{error}</span>}
     </div>
   );
 };

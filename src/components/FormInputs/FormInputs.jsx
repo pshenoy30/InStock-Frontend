@@ -1,90 +1,83 @@
-// src/components/FormInputs/FormInputs.jsx
-import React from 'react';
-import FormField from '../FormField/FormField';
+// FormInputs.jsx
+import React from "react";
+import FormField from "../FormField/FormField";
 
-const FormInputs = ({ formData, errors, onChange }) => {
+const FormInputs = ({ formData, onChange }) => {
+  const fieldData = {
+    warehouseDetails: [
+      {
+        label: "Warehouse Name",
+        name: "warehouseName",
+        type: "text",
+        placeholder: "Warehouse Name",
+      },
+      {
+        label: "Address",
+        name: "address",
+        type: "text",
+        placeholder: "Street address",
+      },
+      { label: "City", name: "city", type: "text", placeholder: "City" },
+      {
+        label: "Country",
+        name: "country",
+        type: "text",
+        placeholder: "Country",
+      },
+    ],
+    contactDetails: [
+      {
+        label: "Contact Name",
+        name: "contactName",
+        type: "text",
+        placeholder: "Contact Name",
+      },
+      {
+        label: "Contact Position",
+        name: "contactPosition",
+        type: "text",
+        placeholder: "Position",
+      },
+      {
+        label: "Contact Phone",
+        name: "contactPhone",
+        type: "text",
+        placeholder: "Phone Number",
+      },
+      {
+        label: "Contact Email",
+        name: "contactEmail",
+        type: "email",
+        placeholder: "Enter contact email",
+      },
+    ],
+  };
+
+  const renderFormField = (field) => (
+    <FormField
+      key={field.name}
+      label={field.label}
+      name={field.name}
+      type={field.type}
+      value={formData[field.name]}
+      onChange={onChange}
+      placeholder={field.placeholder}
+    />
+  );
+
   return (
-    <>
-      <div className="add-warehouse__section">
-        <h2 className="add-warehouse__title">Warehouse Details</h2>
-        <FormField
-          label="Warehouse Name"
-          name="warehouseName"
-          type="text"
-          value={formData.warehouseName}
-          onChange={onChange}
-          error={errors.warehouseName}
-          placeholder="Warehouse Name"
-        />
-        <FormField
-          label="Address"
-          name="address"
-          type="text"
-          value={formData.address}
-          onChange={onChange}
-          error={errors.address}
-          placeholder="Street address"
-        />
-        <FormField
-          label="City"
-          name="city"
-          type="text"
-          value={formData.city}
-          onChange={onChange}
-          error={errors.city}
-          placeholder="City"
-        />
-        <FormField
-          label="Country"
-          name="country"
-          type="text"
-          value={formData.country}
-          onChange={onChange}
-          error={errors.country}
-          placeholder="Country"
-        />
-      </div>
-      <hr className="add-warehouse__divider" /> 
-      <div className="add-warehouse__section">
-        <h2 className="add-warehouse__title">Contact Details</h2>
-        <FormField
-          label="Contact Name"
-          name="contactName"
-          type="text"
-          value={formData.contactName}
-          onChange={onChange}
-          error={errors.contactName}
-          placeholder="Contact Name"
-        />
-        <FormField
-          label="Contact Position"
-          name="contactPosition"
-          type="text"
-          value={formData.contactPosition}
-          onChange={onChange}
-          error={errors.contactPosition}
-          placeholder="Position"
-        />
-        <FormField
-          label="Contact Phone"
-          name="contactPhone"
-          type="text"
-          value={formData.contactPhone}
-          onChange={onChange}
-          error={errors.contactPhone}
-          placeholder="Phone Number"
-        />
-        <FormField
-          label="Contact Email"
-          name="contactEmail"
-          type="email"
-          value={formData.contactEmail}
-          onChange={onChange}
-          error={errors.contactEmail}
-          placeholder="Enter contact email"
-        />
-      </div>
-    </>
+    <div className="form-inputs">
+      {Object.keys(fieldData).map((sectionKey, index) => (
+        <div key={index} className="form-inputs__section">
+          <h2 className="form-inputs__title">
+            {sectionKey === "warehouseDetails"
+              ? "Warehouse Details"
+              : "Contact Details"}
+          </h2>
+          {fieldData[sectionKey].map(renderFormField)}
+        </div>
+      ))}
+    </div>
   );
 };
 
