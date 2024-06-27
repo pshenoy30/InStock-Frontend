@@ -2,7 +2,18 @@
 @use "../../styles/partials/mixins" as *;
 @use "../../styles/partials/variables" as *;
 
+.mainCard {
+    width: 21.4375rem;
+    height: 100%;
+    // border: 1px solid rgba(0, 0, 0, 0.20);
+    border-radius: 0.1875rem;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.20);
+    display: flex;
+    flex-direction: column;
+}
+
 .inventoryItem {
+    box-sizing: border-box;
     padding: 1rem 1.5rem 1.5rem 1.5rem;
     border-top: 1px solid $secondary-cloud;
 
