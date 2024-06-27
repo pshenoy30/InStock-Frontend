@@ -9,8 +9,6 @@ import "./Warehouse.scss";
 import { useParams } from "react-router-dom";
 import { useEffect,useState } from "react";
 
-
-
 function Warehouse() {
   const [warehouseDetails, setWarehouseDetails] = useState(null);
   const [inventoryItems, setInventoryItems] = useState(null)
@@ -60,8 +58,9 @@ function Warehouse() {
     return (
       <>
       <Header />
-      <main className="box">
-        <SearchNav title={warehouseDetails.warehouse_name} buttonText="Edit"/>
+      <main className="wrapper">
+      <section className="box">
+      <SearchNav title={warehouseDetails.warehouse_name} buttonText="Edit"/>
         <MediaQuery minWidth={768}>
               <article className="list">
                 <table className="list__table">
@@ -102,7 +101,9 @@ function Warehouse() {
                 </>
               );
             })}
-      </main>
+      </section>
+      </main> 
+      <Footer />
       </>
     );
   }

@@ -55,8 +55,10 @@
     color: $secondary-cloud;
     text-align: center;
     padding: 0.5rem 0;
-    // @include selected-state;
 
+    &__selected{
+      @include selected-state;
+    }
     &:hover {
         @include hover-state;
     }

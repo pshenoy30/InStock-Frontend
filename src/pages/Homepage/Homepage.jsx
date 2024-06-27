@@ -12,7 +12,7 @@ export default function Homepage() {
   return (
     <>
       <Header />
-      <main className="warehouse">
+      <main className="wrapper">
         <section className="box">
           <SearchNav title="Warehouse" buttonText="+ Add New Warehouse" />
             <MediaQuery minWidth={768}>
@@ -59,7 +59,7 @@ export default function Homepage() {
               );
             })}
         </section>
-    </main>
+      </main>
       <Footer />
     </>
   )

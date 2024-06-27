@@ -118,6 +118,13 @@ p2 {
   }
 }
 
+.wrapper{
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  position: relative;
+}
+
 .box {
   background-color: $primary-white;
   width: 21.4375rem;
@@ -126,9 +133,8 @@ p2 {
   box-shadow: 0 4px 4px rgba(0, 0, 0, 0.20);
   display: flex;
   flex-direction: column;
-  position: absolute;
-  top: 8.375rem;
-  left: 1rem;
+  margin-top: -8rem;
+  margin-left: 1rem;
 }
 //body small
 // p3 { :p3 is not recognised ny the browser. This is moved to Footer.scss
