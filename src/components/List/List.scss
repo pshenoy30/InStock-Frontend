@@ -62,14 +62,12 @@
       padding-left: 2rem;
       display: flex;
     }
+  }
 
-    // &--smaller {
-    //   width: 7.75rem;
-    // }
-
-    // &--larger {
-    //   width: 11rem;
-    // }
+  &__container{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem
   }
 
   &__right {
@@ -78,14 +76,6 @@
     flex: 1;
     gap: 1rem;
   }
-
-  // &__header {
-  //   @include tablet {
-  //     &:not(:first-child) {
-  //       display: none;
-  //     }
-  //   }
-  // }
 
   &__table {
     width: 100%;
