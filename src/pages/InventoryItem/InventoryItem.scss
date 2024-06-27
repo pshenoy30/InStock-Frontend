@@ -8,14 +8,16 @@ div {
     flex-direction: column;
 }
 
-main {
-    flex: 1;
+.box {
+    min-height: 100vh;
+    margin: 0;
+    // position: relative;
 }
 
-.mainCard {
+.mainBox {
     width: 21.4375rem;
     height: max-content;
-    // border: 1px solid rgba(0, 0, 0, 0.20);
+    // height: 40rem;
     border-radius: 0.1875rem;
     box-shadow: 0 4px 4px rgba(0, 0, 0, 0.20);
     display: flex;
