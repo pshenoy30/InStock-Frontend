@@ -2,14 +2,27 @@
 @use "../../styles/partials/mixins" as *;
 @use "../../styles/partials/variables" as *;
 
-// .box {
-//   min-height: 100vh;
-//   margin: 0;
-//   width: 91.5vw;
-//   margin-left: 1rem;
-//   border-radius: 5px;
-//   background-color: $primary-white;
-// }
+.box {
+  width: 21.4375rem;
+  height: max-content;
+  border-radius: 0.1875rem;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  margin-top: -4.25rem;
+  margin-left: 1rem;
+
+  @include tablet {
+    width: 100%;
+    margin-top: -5.85rem;
+    margin-left: 2rem;
+  }
+
+  @include desktop {
+    margin-top: -5.85rem;
+    margin-left: 8rem;
+  }
+}
 
 .inventory {
     &__table {

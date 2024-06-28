@@ -11,15 +11,15 @@ body {
   position: relative;
 }
 
-.mainBox{
-  position: relative;
-}
+// .mainBox{
+//   position: relative;
+// }
 
-.mainBox::after {
-  content: '';
-  display: block;
-  height: 50px;
-}
+// .mainBox::after {
+//   content: '';
+//   display: block;
+//   height: 50px;
+// }
 
 :root {
   font-size: 100% !important;
@@ -148,8 +148,20 @@ p2 {
   box-shadow: 0 4px 4px rgba(0, 0, 0, 0.20);
   display: flex;
   flex-direction: column;
-  margin-top: -8rem;
+  margin-top: -4.25rem;
   margin-left: 1rem;
+
+  @include tablet {
+    width: 44rem;
+    margin-top: -5.85rem;
+    margin-left: 2rem;
+  }
+
+  @include desktop {
+    width: 63.75rem;
+    margin-top: -5.85rem;
+    margin-left: 8rem;
+  }
 }
 
 //body small
