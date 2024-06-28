@@ -1,0 +1,30 @@
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/typography" as *;
+
+.form-container__header {
+  background-color: $primary-white;
+  align-items: center;
+
+  .form-container__icon-title {
+    display: flex;
+    align-items: center;
+    background-color: $primary-white;
+
+    .form-container__icon {
+      width: 24px;
+      height: 24px;
+      margin-right: 1rem;
+      background-color: $primary-white;
+      cursor: pointer; 
+    }
+  }
+
+  .form-container__divider {
+    height: 1px;
+    background-color: $secondary-cloud;
+    margin-top: 2rem;
+    margin-left: -2rem;
+    margin-right: -2rem;
+  }
+}

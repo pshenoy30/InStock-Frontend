@@ -1,5 +1,10 @@
 @use "../partials/variables" as *;
 
+@mixin mobile {
+  @media (max-width: $mobile-max-width) {
+    @content;
+  }
+}
 @mixin tablet {
   @media (min-width: $tablet-min-width) {
     @content;
@@ -26,4 +31,37 @@
   color: $primary-white;
   text-decoration: underline;
   cursor: pointer;
+}
+
+@mixin flex-center($gap: 1rem) {
+  display: flex;
+  justify-content: center;
+  gap: $gap;
+}
+
+@mixin input-style {
+  width: 100%;
+  padding: 0rem 1rem 0rem 1rem;
+  border: 1px solid $secondary-cloud;
+  border-radius: 1.25rem;
+  font-size: 1rem;
+  box-sizing: border-box;
+}
+
+@mixin error-style {
+  color: $supporting-red;
+}
+
+@mixin button-style($bg-color, $hover-color) {
+  background-color: $bg-color;
+  color: #fff;
+  border: none;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  border-radius: 1.25rem;
+  cursor: pointer;
+
+  &:hover {
+    background-color: $hover-color;
+  }
 }
