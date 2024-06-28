@@ -8,7 +8,6 @@ import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
 import SectionHeader from "../../components/SectionHeader/SectionHeader";
 import FormFooter from "../../components/FormFooter/FormFooter";
-import { BASE_URL_API } from "../../utils/editwarehouseApi";
 
 const validateEmail = (email) => {
   const re = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
@@ -70,7 +69,7 @@ const AddWarehouse = () => {
           contact_email: formData.contactEmail,
         };
 
-        await axios.post(`${BASE_URL_API}/warehouse`, updatedFormData);
+        await axios.post(`http://localhost:8080/warehouse`, updatedFormData);
 
         handleReset();
       } catch (error) {
