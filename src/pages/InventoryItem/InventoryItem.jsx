@@ -2,7 +2,7 @@ import "./InventoryItem.scss";
 import axios from "axios";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import SearchNav from "../../components/SearchNav/SearchNav";
+import EditNav from "../../components/EditNav/EditNav";
 import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
 
@@ -53,7 +53,7 @@ function InventoryItem() {
       <Header />
       <main className="wrapper">
       <section className="box">
-        <SearchNav title={item_name} hideSearch="true" buttonText="Edit" />
+        <EditNav title={item_name} buttonText="Edit" />
         <section className="inventoryItem">
           <article className="inventoryItem__container">
             <article className="inventoryItem__card">

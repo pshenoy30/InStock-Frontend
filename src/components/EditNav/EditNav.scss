@@ -1,0 +1,45 @@
+@use "../../styles/partials/globals" as *;
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/variables" as *;
+
+.editNav {
+  box-sizing: border-box;
+  background-color: $primary-white;
+  padding: 1.5rem;
+  padding-top: 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  @include tablet {
+    width: 44rem;
+    padding: 2rem 2rem 1.3125rem 2rem;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-end;
+  }
+
+  @include desktop {
+    width: 63.75rem;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-end;
+  }
+
+  &__card {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  &__img {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+
+  &__title {
+    font-weight: 600;
+    background-color: $primary-white;
+  }
+}

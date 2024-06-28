@@ -2,6 +2,15 @@
 @use "../../styles/partials/mixins" as *;
 @use "../../styles/partials/variables" as *;
 
+// .box {
+//   min-height: 100vh;
+//   margin: 0;
+//   width: 91.5vw;
+//   margin-left: 1rem;
+//   border-radius: 5px;
+//   background-color: $primary-white;
+// }
+
 .inventory {
     &__table {
         width: 44rem;
