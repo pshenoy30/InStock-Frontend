@@ -1,5 +1,5 @@
 //320px
-$mobile-min-width: 375px;
+$mobile-min-width: 320px;
 $mobile-max-width: 767px;
 
 //768px
@@ -23,3 +23,14 @@ $background-lightgrey: #f7f8f9;
 
 $supporting-green: #158463;
 $supporting-red: #c94515;
+
+// Grid gaps
+$grid-gap: 1rem;
+$tablet-gap: 1.5rem;
+$desktop-gap: 1.5rem;
+$mobile-gap: 0.5rem;
+
+// Margins
+$tablet-margin: 2rem;
+$desktop-margin: 7.5rem;
+$mobile-margin: 1rem;
