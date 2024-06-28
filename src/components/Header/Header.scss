@@ -3,6 +3,10 @@
 @use "../../styles/partials/variables" as *;
 @use "../../styles/partials/typography" as *;
 
+.active {
+  @include selected-state;
+}
+
 .header {
   height: 12.5rem;
   background-color: $background-graphite;
@@ -29,7 +33,6 @@
   }
 
   &__logo {
-    background-color: $background-graphite;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -38,29 +41,30 @@
   &__img {
     width: 8.0369rem;
     height: 100%;
-    background-color: $background-graphite;
   }
 
   &__nav {
-    background-color: $background-graphite;
     display: flex;
     flex-direction: row;
-    justify-content: space-evenly;
+    gap: 1rem;
+    align-items: center;
 
     @include tablet{
         gap: 1.5rem;
     }
   }
 
+  &__link {
+    height: 1rem;
+    color: $primary-white;
+    text-decoration: none;
+  }
+
   &__navItem {
-    background-color: $background-graphite;
+    width: 10.3125rem;
     color: $secondary-cloud;
     text-align: center;
-    padding: 0.5rem 0;
 
-    // &__selected{
-    //   @include selected-state;
-    // }
     &:hover {
         @include hover-state;
     }
@@ -69,8 +73,4 @@
         padding: 0.5rem 1rem;
     }
   }
-}
-
-.active {
-  @include selected-state;
 }
