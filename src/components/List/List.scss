@@ -3,14 +3,13 @@
 @use "../../styles/partials/variables" as *;
 @use "../../styles/partials/typography" as *;
 
-
 .list {
   background-color: $primary-white;
   padding-top: 1rem;
   padding: 1.5rem;
   border-top: 1px solid $secondary-cloud;
   display: flex;
-  
+
   &__left {
     background-color: $primary-white;
     display: flex;
@@ -48,6 +47,11 @@
       color: $primary-inStockIndigo;
       text-decoration: none;
     }
+
+    &:hover {
+      text-decoration: underline;
+      cursor: pointer;
+    }
   }
 
   &__img {
@@ -78,11 +82,11 @@
     }
   }
 
-  &__container{
+  &__container {
     background-color: $primary-white;
     display: flex;
     flex-direction: column;
-    gap: 1rem
+    gap: 1rem;
   }
 
   &__right {
