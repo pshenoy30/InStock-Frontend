@@ -2,40 +2,130 @@
 @use "../../styles/partials/mixins" as *;
 @use "../../styles/partials/variables" as *;
 
+// div {
+//   min-height: 100%;
+//   display: flex;
+//   flex-direction: column;
+// }
+
+// .box {
+//   width: 21.4375rem;
+//   height: max-content;
+//   border-radius: 0.1875rem;
+//   box-shadow: 0 4px 4px rgba(0, 0, 0, 0.2);
+//   display: flex;
+//   flex-direction: column;
+//   margin-top: -4.25rem;
+//   margin-left: 1rem;
+
+//   @include tablet {
+//     margin-top: -5.85rem;
+//     margin-left: 2rem;
+//   }
+
+//   @include desktop {
+//     margin-top: -5.85rem;
+//     margin-left: 8rem;
+//   }
+// }
+
+// .mainBox {
+//   width: 21.4375rem;
+//   height: max-content;
+//   border-radius: 0.1875rem;
+//   box-shadow: 0 4px 4px rgba(0, 0, 0, 0.2);
+//   display: flex;
+//   flex-direction: column;
+//   position: absolute;
+//   top: 8.375rem;
+//   left: 1rem;
+// }
+
 .inventoryItem {
-    padding: 1rem 1.5rem 1.5rem 1.5rem;
-    border-top: 1px solid $secondary-cloud;
+  box-sizing: border-box;
+  background-color: $primary-white;
+  padding: 1rem 1.5rem 1.5rem 1.5rem;
+  border-top: 1px solid $secondary-cloud;
+  display: flex;
 
-    &__container {
-        display: flex;
-        flex-direction: column;
-        gap: 1rem;
+  @include tablet {
+    width: 44rem;
+    padding: 1.5rem 2rem 2rem 2rem;
+  }
+
+  @include desktop {
+    width: 63.75rem;
+    padding: 1.5rem 2.5rem 2.25rem 2.5rem;
+    display: block;
+  }
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+
+    @include tablet {
+      flex-direction: row;
     }
 
-    &__subcontainer {
-        display: flex;
-        flex-direction: column;
-        gap: 0.25rem;
+    @include desktop {
+      flex-direction: row;
+    }
+  }
+
+  &__subcontainer {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  &__card {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+
+    @include tablet {
+      flex: 1;
     }
 
-    &__card {
-        display: flex;
-        flex-direction: column;
-        gap: 1rem;
+    @include desktop {
+      flex: 1;
     }
 
-    &__subcard {
-        display: flex;
-        gap: 7rem;
+    &--divider {
+      @include tablet {
+        border-left: 1px solid $secondary-cloud;
+        padding-left: 2.5rem;
+      }
+
+      @include desktop {
+        border-left: 1px solid $secondary-cloud;
+        padding-left: 2.5rem;
+      }
+    }
+  }
+
+  &__subcard {
+    display: flex;
+    gap: 1rem;
+  }
+
+  &__title {
+    color: $secondary-slate;
+    font-weight: 400;
+  }
+
+  &__detail {
+    color: $primary-inStockBlack;
+    font-weight: 400;
+
+    @include tablet {
+      width: 90%;
     }
 
-    &__title {
-        color: $secondary-slate;
-        font-weight: 400;
+    @include desktop {
+      width: 100%;
     }
-
-    &__detail {
-        color: $primary-inStockBlack;
-        font-weight: 400;
-    }
+  }
 }
