@@ -1,17 +1,27 @@
 import "./Buttons.scss";
 
-function Buttons({buttonName}) {
-  const classToBeAssigned = ((buttonName ===  "+ Add New Warehouse" || buttonName ===  "+ Add New Item")? "button__primary" : 
-                             (buttonName ===  "Cancel" ? "button__secondary" : 
-                             (buttonName ===  "Delete" ? "button__delete" : 
-                             (buttonName ===  "Edit"? "button__edit" : "" ))))
-  let buttonText = "";                           
-  if (buttonName !== "Edit"){
-    buttonText = buttonName
-  }
+function Buttons({ buttonName, type = "submit", clickHandler }) {
+  const classToBeAssigned = (buttonName) => {
+    switch (buttonName) {
+      case "+ Add New Warehouse":
+      case "+ Add New Item":
+        return "button__primary";
+      case "Cancel":
+        return "button__secondary";
+      case "Delete":
+        return "button__delete";
+      case "Edit":
+        return "button__edit";
+      case "Save":
+        return "button__save";
+      default:
+        return "";
+    }
+  };
+
   return (
-    <button type="submit" className={classToBeAssigned}>
-      {buttonText}
+    <button type={type} className={classToBeAssigned(buttonName)} onClick={clickHandler}>
+      {buttonName}
     </button>
   );
 }

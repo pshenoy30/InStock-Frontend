@@ -35,6 +35,7 @@ h1 {
   font-size: 1.75rem;
   font-weight: 700;
   line-height: 2.25rem;
+  background-color: $primary-white;
 
   @include tablet {
     font-size: 2rem;
@@ -52,7 +53,7 @@ h2 {
   font-size: 1.25rem;
   font-weight: 600;
   line-height: 1.75rem;
-
+  
   @include tablet {
     font-size: 1.5rem;
     line-height: 2rem;
@@ -132,12 +133,17 @@ p2 {
   }
 }
 
-.wrapper{
-  background-color: $background-lightgrey;
-  min-height: 100vh;
-  position: relative;
+.wrapper {
   display: flex;
   flex-direction: column;
+  // min-height: 100vh;
+  position: relative;
+  background-color: $background-lightgrey;
+  padding: 0rem 1rem 0rem 1rem;
+
+  @include tablet {
+    padding: 0rem 2rem 0rem 2rem;
+  }
 }
 
 .box {
@@ -151,21 +157,15 @@ p2 {
   margin-top: -4.25rem;
   margin-left: 1rem;
 
-  @include tablet {
-    width: 44rem;
-    margin-top: -5.85rem;
-    margin-left: 2rem;
-  }
-
-  @include desktop {
-    width: 63.75rem;
-    margin-top: -5.85rem;
-    margin-left: 8rem;
+  @include tablet{
+    width: 100%;
   }
 }
 
+
+
 //body small
-// p3 { :p3 is not recognised ny the browser. This is moved to Footer.scss
+// .p3 {
 //   font-size: 0.6875rem;
 //   font-weight: 400;
 //   line-height: 1rem;
