@@ -42,4 +42,10 @@
     font-weight: 600;
     background-color: $primary-white;
   }
+
+  &__btn{
+    &--hidden {
+        display: none;
+    }
+  }
 }
