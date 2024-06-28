@@ -142,6 +142,10 @@ p2 {
   flex-direction: column;
   margin-top: -8rem;
   margin-left: 1rem;
+
+  @include tablet{
+    width: 100%;
+  }
 }
 
 

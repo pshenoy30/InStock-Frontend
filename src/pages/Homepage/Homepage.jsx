@@ -34,9 +34,8 @@ export default function Homepage() {
           <section className="box">
             <SearchNav title="Warehouse" buttonText="+ Add New Warehouse" />
               <MediaQuery minWidth={768}>
-                <article className="list">
                   <table className="list__table">
-                    <thead className="list__header">
+                    {/* <thead className="list__header"> */}
                       <tr className="list__row">
                         <th className="list__columnheader">warehouse</th>
                         <th className="list__columnheader">Address</th>
@@ -44,10 +43,7 @@ export default function Homepage() {
                         <th className="list__columnheader">Contact information</th>
                         <th className="list__columnheader">ACTIONS</th>
                       </tr>
-                    </thead>
-                  </table>
-                </article>
-              </MediaQuery>
+                    {/* </thead> */}
               {warehouseDetails.map((warehouse) => {
                 const {
                   id,
@@ -76,6 +72,8 @@ export default function Homepage() {
                   </>
                 );
               })}
+              </table>
+              </MediaQuery>
           </section>
         </main>
         <Footer />

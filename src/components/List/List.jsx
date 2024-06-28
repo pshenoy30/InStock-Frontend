@@ -109,8 +109,6 @@ function List({
         </Modal>
       </MediaQuery>
       <MediaQuery minWidth={768}>
-        <table className="list__table">
-          <tbody className="list__body">
             <tr className="list__records" key={id}>
               <td className="list__detail list__detail--left">{val1} <img className="list__img" src={arrowImg} alt="expand details button"></img></td>
               <td className="list__detail list__detail--smaller">{val2}</td>
@@ -141,8 +139,6 @@ function List({
                 <img src={editImg} alt="edit button"></img>
               </td>
             </tr>
-          </tbody>
-        </table>
       </MediaQuery>
     </>
   );
