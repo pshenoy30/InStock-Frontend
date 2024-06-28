@@ -1,7 +1,8 @@
+import React from 'react';
 import "./Buttons.scss";
 
-function Buttons({ buttonName, type = "submit", onClick }) {
-  const classToBeAssigned = (buttonName) => {
+function Buttons({ buttonName, type = "submit", clickHandler }) {
+  const getClassToBeAssigned = (buttonName) => {
     switch (buttonName) {
       case "+ Add New Warehouse":
       case "+ Add New Item":
@@ -20,7 +21,7 @@ function Buttons({ buttonName, type = "submit", onClick }) {
   };
 
   return (
-    <button type={type} className={classToBeAssigned(buttonName)} onClick={onClick}>
+    <button type={type} className={getClassToBeAssigned(buttonName)} onClick={clickHandler}>
       {buttonName}
     </button>
   );

@@ -18,8 +18,8 @@ function List({
   val4,
   title5,
   val5,
-}) {
-
+})
+{
   return (
     <>
       <MediaQuery maxWidth={767}>
