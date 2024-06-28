@@ -1,6 +1,6 @@
 import "./Buttons.scss";
 
-function Buttons({ buttonName, type = "submit", onClick }) {
+function Buttons({ buttonName, type = "submit", clickHandler }) {
   const classToBeAssigned = (buttonName) => {
     switch (buttonName) {
       case "+ Add New Warehouse":
@@ -20,7 +20,7 @@ function Buttons({ buttonName, type = "submit", onClick }) {
   };
 
   return (
-    <button type={type} className={classToBeAssigned(buttonName)} onClick={onClick}>
+    <button type={type} className={classToBeAssigned(buttonName)} onClick={clickHandler}>
       {buttonName}
     </button>
   );

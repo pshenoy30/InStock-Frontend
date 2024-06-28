@@ -38,10 +38,12 @@ function List({
   function deleteModal(event) {
     event.preventDefault;
     if(listType === "warehouse"){
+      console.log("delete");
       deleteWarehouseDetails(id);
       setIsOpen(false);
     }
     else if (listType === "inventories"){
+      console.log("delete");
       deleteInventoryDetails(id);
       setIsOpen(false);
     }
