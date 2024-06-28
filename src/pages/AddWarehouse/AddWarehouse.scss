@@ -1,65 +1,13 @@
+// AddWarehouse.scss
 @use "../../styles/partials/globals" as *;
 @use "../../styles/partials/mixins" as *;
 @use "../../styles/partials/variables" as *;
 @use "../../styles/partials/typography" as *;
 @use "../../styles/partials/layout" as *;
 
-// Variables
-$form-padding: 0rem 1rem 0rem 1rem;
-$form-margin: 1rem 0;
-$form-container-padding: 2rem;
-$color-divider: #ccc;
-$color-header-bg: #bdc5d5;
-$color-submit-bg: #007bff;
-$color-submit-hover-bg: #0056b3;
-$color-reset-bg: #dc3545;
-$color-reset-hover-bg: #c82333;
-$color-error: #dc3545;
-$color-error-bg: #f8d7da;
-
-// Mixins
-@mixin flex-center($gap: 1rem) {
-  display: flex;
-  justify-content: center;
-  gap: $gap;
-}
-
-@mixin flex-end($gap: 1rem) {
-  display: flex;
-  justify-content: flex-end;
-  gap: $gap;
-}
-
-@mixin input-style {
-  width: 100%;
-  padding: $form-padding;
-  border: 1px solid $color-divider;
-  border-radius: 1.25rem;
-  font-size: 1rem;
-  box-sizing: border-box;
-}
-
-@mixin error-style {
-  color: $color-error;
-}
-
-@mixin button-style($bg-color, $hover-color) {
-  background-color: $bg-color;
-  color: #fff;
-  border: none;
-  padding: 0.5rem 1rem;
-  font-size: 1rem;
-  border-radius: 1.25rem;
-  cursor: pointer;
-
-  &:hover {
-    background-color: $hover-color;
-  }
-}
-
-// BEM Classes
 .form-container {
-  padding: $form-container-padding;
+  padding: 2rem;
+  padding-bottom: 2.5rem;
   width: 100%;
   box-sizing: border-box;
   background-color: $primary-white;
@@ -67,8 +15,6 @@ $color-error-bg: #f8d7da;
   &__header {
     text-align: left;
     margin-bottom: 2rem;
-
-
   }
 
   .form {
@@ -77,7 +23,6 @@ $color-error-bg: #f8d7da;
     gap: 2rem;
     background-color: $primary-white;
     margin-bottom: 2rem;
-    // margin-right: -2rem;
 
     @media (max-width: $mobile-max-width) {
       flex-direction: column;
@@ -98,7 +43,7 @@ $color-error-bg: #f8d7da;
     }
 
     &__group {
-      margin: $form-margin;
+      margin: 1rem 0;
       background-color: $primary-white;
     }
 
@@ -111,12 +56,12 @@ $color-error-bg: #f8d7da;
 
     &__input {
       @include input-style;
-      margin-bottom: $form-margin;
+      margin-bottom: 1rem 0;
       background-color: $primary-white;
-      height: 2.25rem; // default height
-  
-      @media (min-width: $tablet-min-width) {
-        height: 2.375rem; // adjust height for larger screens
+      height: 2.25rem;
+
+      @mixin tablet {
+        height: 2.375rem;
       }
     }
 
@@ -124,42 +69,17 @@ $color-error-bg: #f8d7da;
       @include error-style;
       background-color: $primary-white;
     }
-
-    &__footer {
-      @include flex-end;
-      background-color: #232940;
-      width: calc(100% + 5rem);
-      padding: 2.25rem 2.5rem;
-      box-sizing: border-box;
-      margin: 0 -2.5rem -4.5rem;
-      bottom: 0;
-
-      .form__submit {
-        @include button-style($color-submit-bg, $color-submit-hover-bg);
-        flex: 1;
-        max-width: 100%;
-      }
-
-      .form__reset {
-        @include button-style($color-reset-bg, $color-reset-hover-bg);
-        flex: 1;
-        max-width: 100%;
-      }
-    }
   }
 }
-
-
 
 .mainBox {
   flex: 1;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   background-color: $primary-white;
-  margin: -4rem 0rem 1rem 0rem; //for the extra space under the form section
+  margin: -4rem 0rem 0rem 0rem;
   border-radius: 0.1875rem;
 
   @include tablet {
-    margin: -6.6rem 0 24rem 0;
+    margin: -6.6rem 0 5rem 0;
   }
 }
-

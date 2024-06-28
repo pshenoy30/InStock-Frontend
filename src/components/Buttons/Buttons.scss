@@ -8,7 +8,8 @@
   &__primary,
   &__secondary,
   &__delete,
-  &__edit {
+  &__edit,
+  &__save { 
     min-width: 4.4375rem;
     height: 2.375rem;
     padding: 0rem 1rem 0rem 1rem;
@@ -32,7 +33,8 @@
     }
   }
 
-  &__primary {
+  &__primary,
+  &__save { 
     color: $primary-white;
     background-color: $primary-inStockIndigo;
     border: 1px solid $primary-inStockIndigo;
@@ -45,8 +47,8 @@
 
   &__secondary {
     color: $secondary-slate;
-    background-color: $background-lightgrey;
-    border: 1px solid $secondary-slate;
+    background-color: $primary-white;
+    border: 1px solid $secondary-cloud;
 
     &:hover {
       color: $primary-inStockIndigo;

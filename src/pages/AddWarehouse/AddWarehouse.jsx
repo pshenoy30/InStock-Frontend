@@ -1,12 +1,14 @@
+// AddWarehouse.jsx
 import React, { useState } from "react";
+import axios from "axios";
 import "./AddWarehouse.scss";
 import FormInputs from "../../components/FormInputs/FormInputs";
 import { defaultFormData } from "../../components/formUtils";
-import axios from "axios";
 import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
-import Buttons from "../../components/Buttons/Buttons"; 
-import SectionHeader from '../../components/SectionHeader/SectionHeader'; 
+import SectionHeader from "../../components/SectionHeader/SectionHeader";
+import FormFooter from "../../components/FormFooter/FormFooter";
+import { BASE_URL_API } from "../../utils/editwarehouseApi";
 
 const validateEmail = (email) => {
   const re = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
@@ -20,7 +22,6 @@ const validatePhoneNumber = (phoneNumber) => {
 
 const validateFormData = (data) => {
   const errors = {};
-
   if (!data.warehouseName) errors.warehouseName = "Warehouse Name is required";
   if (!data.address) errors.address = "Address is required";
   if (!data.city) errors.city = "City is required";
@@ -37,7 +38,6 @@ const validateFormData = (data) => {
   } else if (!validateEmail(data.contactEmail)) {
     errors.contactEmail = "Email is invalid";
   }
-
   return errors;
 };
 
@@ -53,12 +53,29 @@ const AddWarehouse = () => {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const errors = validateFormData(formData);
+
     if (Object.keys(errors).length === 0) {
-      console.log("Form submitted successfully", formData);
-      // Submit form data to the server using axios or any other method
+      try {
+        const updatedFormData = {
+          warehouse_name: formData.warehouseName,
+          address: formData.address,
+          city: formData.city,
+          country: formData.country,
+          contact_name: formData.contactName,
+          contact_position: formData.contactPosition,
+          contact_phone: formData.contactPhone,
+          contact_email: formData.contactEmail,
+        };
+
+        await axios.post(`${BASE_URL_API}/warehouse`, updatedFormData);
+
+        handleReset();
+      } catch (error) {
+        console.error("Error submitting form:", error);
+      }
     } else {
       setFormErrors(errors);
     }
@@ -69,172 +86,83 @@ const AddWarehouse = () => {
     setFormErrors({});
   };
 
+  const warehouseFields = [
+    {
+      name: "warehouseName",
+      label: "Warehouse Name",
+      type: "text",
+      placeholder: "Warehouse Name",
+    },
+    {
+      name: "address",
+      label: "Street Address",
+      type: "text",
+      placeholder: "Street Address",
+    },
+    {
+      name: "city",
+      label: "City",
+      type: "text",
+      placeholder: "City",
+    },
+    {
+      name: "country",
+      label: "Country",
+      type: "text",
+      placeholder: "Country",
+    },
+  ];
+
+  const contactFields = [
+    {
+      name: "contactName",
+      label: "Contact Name",
+      type: "text",
+      placeholder: "Contact Name",
+    },
+    {
+      name: "contactPosition",
+      label: "Position",
+      type: "text",
+      placeholder: "Position",
+    },
+    {
+      name: "contactPhone",
+      label: "Phone Number",
+      type: "text",
+      placeholder: "Phone Number",
+    },
+    {
+      name: "contactEmail",
+      label: "Email",
+      type: "email",
+      placeholder: "Email",
+    },
+  ];
+
   return (
     <>
       <Header />
       <main className="wrapper">
         <section className="mainBox">
           <div className="form-container">
-          <SectionHeader title="Add New Warehouse" />
-
+            <SectionHeader title="Add New Warehouse" />
             <form className="form" onSubmit={handleSubmit}>
-              <div className="form__section">
-                <h2 className="form__heading">Warehouse Details</h2>
-                <div className="form__group">
-                  <label className="form__label" htmlFor="warehouseName">
-                    Warehouse Name
-                  </label>
-                  <input
-                    className="form__input"
-                    type="text"
-                    id="warehouseName"
-                    name="warehouseName"
-                    placeholder="Warehouse Name"
-                    value={formData.warehouseName}
-                    onChange={handleChange}
-                  />
-                  {formErrors.warehouseName && (
-                    <div className="form__error">
-                      {formErrors.warehouseName}
-                    </div>
-                  )}
-                </div>
-                <div className="form__group">
-                  <label className="form__label" htmlFor="address">
-                    Street Address
-                  </label>
-                  <input
-                    className="form__input"
-                    type="text"
-                    id="address"
-                    name="address"
-                    placeholder="Street Address"
-                    value={formData.address}
-                    onChange={handleChange}
-                  />
-                  {formErrors.address && (
-                    <div className="form__error">{formErrors.address}</div>
-                  )}
-                </div>
-                <div className="form__group">
-                  <label className="form__label" htmlFor="city">
-                    City
-                  </label>
-                  <input
-                    className="form__input"
-                    type="text"
-                    id="city"
-                    name="city"
-                    placeholder="City"
-                    value={formData.city}
-                    onChange={handleChange}
-                  />
-                  {formErrors.city && (
-                    <div className="form__error">{formErrors.city}</div>
-                  )}
-                </div>
-                <div className="form__group">
-                  <label className="form__label" htmlFor="country">
-                    Country
-                  </label>
-                  <input
-                    className="form__input"
-                    type="text"
-                    id="country"
-                    name="country"
-                    placeholder="Country"
-                    value={formData.country}
-                    onChange={handleChange}
-                  />
-                  {formErrors.country && (
-                    <div className="form__error">{formErrors.country}</div>
-                  )}
-                </div>
-              </div>
-              <div className="form__section">
-                <h2 className="form__heading">Contact Details</h2>
-                <div className="form__group">
-                  <label className="form__label" htmlFor="contactName">
-                    Contact Name
-                  </label>
-                  <input
-                    className="form__input"
-                    type="text"
-                    id="contactName"
-                    name="contactName"
-                    placeholder="Contact Name"
-                    value={formData.contactName}
-                    onChange={handleChange}
-                  />
-                  {formErrors.contactName && (
-                    <div className="form__error">{formErrors.contactName}</div>
-                  )}
-                </div>
-                <div className="form__group">
-                  <label className="form__label" htmlFor="contactPosition">
-                    Position
-                  </label>
-                  <input
-                    className="form__input"
-                    type="text"
-                    id="contactPosition"
-                    name="contactPosition"
-                    placeholder="Position"
-                    value={formData.contactPosition}
-                    onChange={handleChange}
-                  />
-                  {formErrors.contactPosition && (
-                    <div className="form__error">
-                      {formErrors.contactPosition}
-                    </div>
-                  )}
-                </div>
-                <div className="form__group">
-                  <label className="form__label" htmlFor="contactPhone">
-                    Phone Number
-                  </label>
-                  <input
-                    className="form__input"
-                    type="text"
-                    id="contactPhone"
-                    name="contactPhone"
-                    placeholder="Phone Number"
-                    value={formData.contactPhone}
-                    onChange={handleChange}
-                  />
-                  {formErrors.contactPhone && (
-                    <div className="form__error">{formErrors.contactPhone}</div>
-                  )}
-                </div>
-                <div className="form__group">
-                  <label className="form__label" htmlFor="contactEmail">
-                    Email
-                  </label>
-                  <input
-                    className="form__input"
-                    type="email"
-                    id="contactEmail"
-                    name="contactEmail"
-                    placeholder="Email"
-                    value={formData.contactEmail}
-                    onChange={handleChange}
-                  />
-                  {formErrors.contactEmail && (
-                    <div className="form__error">{formErrors.contactEmail}</div>
-                  )}
-                </div>
-              </div>
-              <div className="form__footer">
-                <Buttons
-                  buttonName="Cancel"
-                  type="button"
-                  onClick={handleReset}
-                />
-                <Buttons
-                  buttonName="+ Add New Warehouse"
-                  type="submit"
-                />
-              </div>
+              <FormInputs
+                sectionTitle="Warehouse Details"
+                fields={warehouseFields}
+                formData={formData}
+                formErrors={formErrors}
+                handleChange={handleChange}
+              />
+              <FormInputs
+                sectionTitle="Contact Details"
+                fields={contactFields}
+                formData={formData}
+                formErrors={formErrors}
+                handleChange={handleChange}
+              />
+              <FormFooter onReset={handleReset} onSubmit={handleSubmit} />
             </form>
           </div>
         </section>
