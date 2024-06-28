@@ -6,17 +6,15 @@ function Header() {
   return (
     <header className="header">
       <section className="header__logo">
-        <img
-          className="header__img"
-          src={InStockLogo}
-          alt="InStock Logo"
-        ></img>
+        <img className="header__img" src={InStockLogo} alt="InStock Logo"></img>
       </section>
       <nav className="header__nav">
-      <Link to="/" className="header__selected">
-        <h3 className="header__navItem">Warehouses</h3>
-      </Link>
-        <h3 className="header__navItem">Inventory</h3>
+        <NavLink to="/">
+          <h3 className="header__navItem">Warehouses</h3>
+        </NavLink>
+        <NavLink to="/inventories">
+          <h3 className="header__navItem">Inventory</h3>
+        </NavLink>
       </nav>
     </header>
   );

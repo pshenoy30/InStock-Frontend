@@ -88,7 +88,7 @@ function Warehouse() {
                 <>
                   <List
                     id={id}
-                    listType="inventories"
+                    relativePath={"inventories/" + id}
                     title1="inventory item"
                     val1={item_name}
                     title2="category"

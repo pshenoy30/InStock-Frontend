@@ -5,24 +5,26 @@
 
 
 .list {
+  background-color: $primary-white;
   padding-top: 1rem;
   padding: 1.5rem;
-  display: flex;
   border-top: 1px solid $secondary-cloud;
-  background-color: $primary-white;
+  display: flex;
   
   &__left {
+    background-color: $primary-white;
     display: flex;
     flex-direction: column;
     flex: 1;
     gap: 1rem;
-    background-color: $primary-white;
+    justify-content: space-between;
   }
 
   &__card {
+    min-height: 1rem;
+    background-color: $primary-white;
     display: flex;
     flex-direction: column;
-    background-color: $primary-white;
   }
 
   &__title {
@@ -34,14 +36,17 @@
 
   &__subcard {
     display: flex;
+    flex-direction: row;
     align-items: center;
     background-color: $primary-white;
   }
 
   &__entry {
     background-color: $primary-white;
+
     &--interactive {
       color: $primary-inStockIndigo;
+      text-decoration: none;
     }
   }
 

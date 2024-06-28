@@ -58,9 +58,9 @@
     text-align: center;
     padding: 0.5rem 0;
 
-    &__selected{
-      @include selected-state;
-    }
+    // &__selected{
+    //   @include selected-state;
+    // }
     &:hover {
         @include hover-state;
     }
@@ -69,4 +69,8 @@
         padding: 0.5rem 1rem;
     }
   }
+}
+
+.active {
+  @include selected-state;
 }

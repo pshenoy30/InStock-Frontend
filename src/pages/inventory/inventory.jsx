@@ -25,6 +25,7 @@ function Inventory() {
         return (
           <List
               id={id}
+              relativePath={id}
               title1="Inventory Item"
               val1={item_name}
               title2="Category"
