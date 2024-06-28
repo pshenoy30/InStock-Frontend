@@ -155,16 +155,15 @@ p2 {
   display: flex;
   flex-direction: column;
   margin-top: -4.25rem;
-  margin-left: 1rem;
+  margin-left: 0;
 
   @include tablet {
-    width: 44rem;
+    width: 100%;
     margin-top: -5.85rem;
     margin-left: 2rem;
   }
 
   @include desktop {
-    width: 63.75rem;
     margin-top: -5.85rem;
     margin-left: 8rem;
   }
