@@ -3,28 +3,43 @@
 @use "../../styles/partials/variables" as *;
 
 .stockTag {
-    width: 100%;
-    height: 1.5rem;
-    padding: 0 0.5rem;
+  &__inStock {
+    color: $supporting-green;
+    background-color: rgba(21, 132, 99, 0.07);
     border-radius: 20px;
+    width: fit-content;
+    max-width: 5.75rem;
+    padding: 0 0.5rem;
+    height: 1.5rem;
+    display: flex;
+    justify-content: center;
 
     @include tablet {
-        height: 1.625rem;
+      height: 1.625rem;
     }
 
     @include desktop {
-        height: 1.625rem;
+      height: 1.625rem;
     }
-}
+  }
 
-.inStock {
-    color: $supporting-green;
-    background-color: $supporting-green;
-    opacity: 7%;
-}
-
-.inStock {
+  &__outOfStock {
     color: $supporting-red;
-    background-color: $supporting-red;
-    opacity: 7%;
+    background-color: rgba(201, 69, 21, 0.07);
+    border-radius: 20px;
+    width: fit-content;
+    max-width: 5.75rem;
+    padding: 0 0.5rem;
+    height: 1.5rem;
+    display: flex;
+    justify-content: center;
+
+    @include tablet {
+      height: 1.625rem;
+    }
+
+    @include desktop {
+      height: 1.625rem;
+    }
+  }
 }

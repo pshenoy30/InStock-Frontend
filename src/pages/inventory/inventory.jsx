@@ -2,6 +2,7 @@ import SearchNav from "../../components/SearchNav/SearchNav";
 import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
 import List from "../../components/List/List";
+import StockTag from "../../components/StockTag/StockTag";
 import getInventoriesData from "../../utils/getInventoriesData";
 import "./Inventory.scss";
 
@@ -32,7 +33,7 @@ function Inventory() {
                 title2="Category"
                 val2={category}
                 title3="Status"
-                val3={status}
+                val3={<StockTag stockStatus={status} />}
                 title4="Qty"
                 val4={quantity}
                 title5="Warehouse"

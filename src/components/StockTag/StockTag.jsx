@@ -3,10 +3,10 @@ import "./StockTag.scss";
 function StockTag({ stockStatus }) {
   let className = "stockTag";
 
-  if (stockStatus === "in stock") {
-    className += " inStock";
-  } else if (stockStatus === "out of stock") {
-    className += " outOfStock";
+  if (stockStatus === "In Stock") {
+    className += "__inStock";
+  } else if (stockStatus === "Out of Stock") {
+    className += "__outOfStock";
   }
 
   return (
