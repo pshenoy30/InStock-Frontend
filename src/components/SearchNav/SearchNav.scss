@@ -12,6 +12,7 @@
     flex-direction: column;
 
     @include tablet {
+        width: 44rem;
         flex-direction: row;
         justify-content: space-between;
         align-items: flex-end;

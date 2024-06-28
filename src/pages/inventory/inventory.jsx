@@ -1,3 +1,4 @@
+import MediaQuery from "react-responsive";
 import SearchNav from "../../components/SearchNav/SearchNav";
 import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
@@ -15,6 +16,22 @@ function Inventory() {
       <main className="wrapper">
         <section className="box">
           <SearchNav title="Inventory" buttonText="+ Add New Item" />
+          <MediaQuery minWidth={768}>
+              <article className="inventory">
+                <table className="inventory__table">
+                  <thead className="inventory__header">
+                    <tr className="inventory__row">
+                      <th className="inventory__columnheader">inventory item</th>
+                      <th className="inventory__columnheader">category</th>
+                      <th className="inventory__columnheader">status</th>
+                      <th className="inventory__columnheader">qty</th>
+                      <th className="inventory__columnheader">warehouse</th>
+                      <th className="inventory__columnheader">actions</th>
+                    </tr>
+                  </thead>
+                </table>
+              </article>
+            </MediaQuery>
           {inventoryDetails.map((inventory) => {
             const {
               id,
