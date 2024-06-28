@@ -10,7 +10,17 @@ import "./Homepage.scss"
 const warehouseDetails = await getAllWarehouseDetails();
 
 export default function Homepage() {
-  const tableHeader = ["Warehouse", "Address", "Contact Name", "Contact information"]
+  const tableHeader = [{id: 0,
+    header: "Warehouse"}, 
+    {id: 1,
+      header: "Address"}, 
+    {id: 2,
+      header: "Contact Name"},
+    {id: 3,
+      header: "Contact information"},
+    {id: 4,
+      header: "Actions"}];
+      
   return (
     <>
       <Header />
@@ -48,7 +58,7 @@ export default function Homepage() {
               })}
             </MediaQuery>
             <MediaQuery minWidth={768}>
-              <Table listheader={tableHeader} listData={warehouseDetails} />
+              <Table listheader={tableHeader} listData={warehouseDetails} listType="warehouse" />
             </MediaQuery>
         </section>
       </main>
