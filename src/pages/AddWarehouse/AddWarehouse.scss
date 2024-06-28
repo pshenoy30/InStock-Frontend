@@ -2,11 +2,12 @@
 @use "../../styles/partials/mixins" as *;
 @use "../../styles/partials/variables" as *;
 @use "../../styles/partials/typography" as *;
+@use "../../styles/partials/layout" as *;
 
 // Variables
-$form-padding: 1rem;
-$form-margin: 0.5rem 0;
-$form-container-padding: 2.5rem;
+$form-padding: 0rem 1rem 0rem 1rem;
+$form-margin: 1rem 0;
+$form-container-padding: 2rem;
 $color-divider: #ccc;
 $color-header-bg: #bdc5d5;
 $color-submit-bg: #007bff;
@@ -23,11 +24,17 @@ $color-error-bg: #f8d7da;
   gap: $gap;
 }
 
+@mixin flex-end($gap: 1rem) {
+  display: flex;
+  justify-content: flex-end;
+  gap: $gap;
+}
+
 @mixin input-style {
-  width: calc(100% - 2 * $form-padding);
+  width: 100%;
   padding: $form-padding;
   border: 1px solid $color-divider;
-  border-radius: 50px;
+  border-radius: 1.25rem;
   font-size: 1rem;
   box-sizing: border-box;
 }
@@ -36,28 +43,41 @@ $color-error-bg: #f8d7da;
   color: $color-error;
 }
 
+@mixin button-style($bg-color, $hover-color) {
+  background-color: $bg-color;
+  color: #fff;
+  border: none;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  border-radius: 1.25rem;
+  cursor: pointer;
+
+  &:hover {
+    background-color: $hover-color;
+  }
+}
+
 // BEM Classes
 .form-container {
   padding: $form-container-padding;
   width: 100%;
   box-sizing: border-box;
+  background-color: $primary-white;
 
   &__header {
     text-align: left;
     margin-bottom: 2rem;
 
-    h1 {
-      font-size: 2rem;
-      margin-bottom: 1rem;
-    }
+
   }
 
   .form {
     display: flex;
     flex-wrap: wrap;
     gap: 2rem;
+    background-color: $primary-white;
     margin-bottom: 2rem;
-    margin-right: -2rem;
+    // margin-right: -2rem;
 
     @media (max-width: $mobile-max-width) {
       flex-direction: column;
@@ -65,39 +85,54 @@ $color-error-bg: #f8d7da;
 
     &__section {
       flex: 1;
+      background-color: $primary-white;
 
       &__heading {
         font-size: 1.5rem;
         margin-bottom: 1rem;
       }
+
+      h2 {
+        background-color: $primary-white;
+      }
     }
 
     &__group {
       margin: $form-margin;
+      background-color: $primary-white;
     }
 
     &__label {
       display: block;
-      margin-bottom: 0.5rem;
+      margin-bottom: 0.25rem;
       font-weight: bold;
+      background-color: $primary-white;
     }
 
     &__input {
       @include input-style;
       margin-bottom: $form-margin;
+      background-color: $primary-white;
+      height: 2.25rem; // default height
+  
+      @media (min-width: $tablet-min-width) {
+        height: 2.375rem; // adjust height for larger screens
+      }
     }
 
     &__error {
       @include error-style;
+      background-color: $primary-white;
     }
 
     &__footer {
-      @include flex-center;
-      background-color: $color-header-bg;
+      @include flex-end;
+      background-color: #232940;
       width: calc(100% + 5rem);
-      padding: 5rem 2.5rem;
+      padding: 2.25rem 2.5rem;
       box-sizing: border-box;
-      margin: 0 -2.5rem -5rem;
+      margin: 0 -2.5rem -4.5rem;
+      bottom: 0;
 
       .form__submit {
         @include button-style($color-submit-bg, $color-submit-hover-bg);
@@ -113,3 +148,18 @@ $color-error-bg: #f8d7da;
     }
   }
 }
+
+
+
+.mainBox {
+  flex: 1;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background-color: $primary-white;
+  margin: -4rem 0rem 1rem 0rem; //for the extra space under the form section
+  border-radius: 0.1875rem;
+
+  @include tablet {
+    margin: -6.6rem 0 24rem 0;
+  }
+}
+
