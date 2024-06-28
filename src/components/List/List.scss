@@ -106,6 +106,10 @@
     @include tablet {
       width: 44rem;
     }
+
+    @include desktop {
+      width: 6.5rem;
+    }
   }
 
   &__records {
