@@ -13,9 +13,10 @@
   position: relative;
 
   @include tablet {
+    height: 10rem;
     padding: 2rem 2rem;
     flex-direction: row;
-    align-items: center;
+    align-items: start;
     justify-content: space-between;
   }
 

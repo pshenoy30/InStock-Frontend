@@ -59,7 +59,7 @@
   &__detail {
     color: $primary-inStockBlack;
     font-weight: 400;
-    width: 70%;
+    width: 80%;
     background-color: $primary-white;
 
     @include tablet {
@@ -70,6 +70,10 @@
       color: $primary-inStockIndigo;
       padding-left: 2rem;
       display: flex;
+    }
+
+    &--no-link{
+      height: 1.5rem;
     }
   }
 
@@ -92,6 +96,9 @@
     background-color: $primary-white;
     width: 100%;
     padding-bottom: 1rem;
+    @include tablet{
+      width: 45rem;
+    }
   }
 
   &__records {
@@ -110,4 +117,8 @@
     gap: 0.5rem;
     padding-right: 2rem;
   }
+
+  @include tablet{
+    all: revert;
+} 
 }

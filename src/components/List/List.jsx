@@ -1,8 +1,10 @@
-import MediaQuery from "react-responsive";
-import { Link } from 'react-router-dom';
-import deleteImg from "../../assets/icons/delete_outline-24px.svg";
-import editImg from "../../assets/icons/edit-24px.svg";
-import arrowImg from "../../assets/icons/chevron_right-24px.svg";
+import MediaQuery from 'react-responsive';
+import { Link} from 'react-router-dom';
+import deleteImg from '../../assets/icons/delete_outline-24px.svg';
+import editImg from '../../assets/icons/edit-24px.svg';
+import arrowImg from '../../assets/icons/chevron_right-24px.svg';
+import closeImg from '../../assets/icons/close-24px.svg'
+import Buttons from '../Buttons/Buttons';
 import "./List.scss";
 
 function List({
@@ -19,7 +21,6 @@ function List({
   title5,
   val5,
 }) {
-
   return (
     <>
       <MediaQuery maxWidth={767}>
@@ -40,7 +41,7 @@ function List({
                     <h3 className="list__detail">{val2}</h3>
                 </div>
             </article>
-            <img className="list__img" src={deleteImg} alt="delete button"></img>
+              <img className="list__img" src={deleteImg} alt="delete button"></img>
           </article>
           <article className="list__right">
             <div className="list__card">
@@ -69,7 +70,7 @@ function List({
               <td className="list__detail list__detail--larger">{val4}</td>
               {val5 && <td className="list__detail">{val5}</td>}
               <td className="list__actions">
-                <img src={deleteImg} alt="delete button"></img>
+                  <img src={deleteImg} alt="delete button"></img>
                 <img src={editImg} alt="edit button"></img>
               </td>
             </tr>

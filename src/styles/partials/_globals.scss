@@ -135,6 +135,12 @@ p2 {
   flex-direction: column;
   margin-top: -8rem;
   margin-left: 1rem;
+
+  @include tablet{
+    width: 44rem;
+    margin-left: 2rem;
+    margin-right: 2rem;
+  }
 }
 //body small
 // p3 { :p3 is not recognised ny the browser. This is moved to Footer.scss
