@@ -34,13 +34,11 @@
         gap: 1rem;
         display: flex;
         flex-direction: column;
-<<<<<<< HEAD
         background-color: $primary-white;
+        
         @include tablet {
             flex-direction: row;
         }
-=======
->>>>>>> develop
     }
 
     &__search {

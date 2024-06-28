@@ -5,7 +5,7 @@ import Footer from "../../components/Footer/Footer";
 import List from "../../components/List/List";
 import StockTag from "../../components/StockTag/StockTag";
 import getInventoriesData from "../../utils/getInventoriesData";
-import "./inventory.scss";
+import "./Inventory.scss";
 
 const inventoryDetails = await getInventoriesData();
 console.log(inventoryDetails);
