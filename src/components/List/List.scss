@@ -108,7 +108,7 @@
     }
 
     @include desktop {
-      width: 6.5rem;
+      width: 63.75rem;
     }
   }
 
@@ -124,6 +124,10 @@
     
     @include tablet {
       width: 43.75rem;
+    }
+
+    @include desktop {
+      width: 63.75rem;
     }
   }
 

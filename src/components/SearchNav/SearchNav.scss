@@ -18,6 +18,13 @@
         align-items: flex-end;
     }
 
+    @include desktop {
+        width: 63.75rem;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: flex-end;
+    }
+
     &__title {
         font-weight: 600;
         background-color: $primary-white;
