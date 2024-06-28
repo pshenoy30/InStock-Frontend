@@ -10,6 +10,9 @@
     height: 3.125rem;
     margin-top: auto;
     background-color: $background-lightgrey;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
   @include desktop {
     padding: 3rem;

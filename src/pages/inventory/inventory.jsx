@@ -11,34 +11,36 @@ function Inventory() {
   return (
     <>
       <Header />
-      <main>
-        <SearchNav title = "Inventory" buttonText = "+ Add New Item"/>
-        {inventoryDetails.map((inventory) => {
-        const {
-          id,
-          warehouse_name,
-          item_name,
-          category,
-          status,
-          quantity
-        } = inventory;
-        return (
-          <List
-              id={id}
-              relativePath={id}
-              title1="Inventory Item"
-              val1={item_name}
-              title2="Category"
-              val2={category}
-              title3="Status"
-              val3={status}
-              title4="Qty"
-              val4={quantity}
-              title5="Warehouse"
-              val5={warehouse_name}
-            />
-        )
-        })}
+      <main className="wrapper">
+        <section className="box">
+          <SearchNav title="Inventory" buttonText="+ Add New Item" />
+          {inventoryDetails.map((inventory) => {
+            const {
+              id,
+              warehouse_name,
+              item_name,
+              category,
+              status,
+              quantity,
+            } = inventory;
+            return (
+              <List
+                id={id}
+                relativePath={id}
+                title1="Inventory Item"
+                val1={item_name}
+                title2="Category"
+                val2={category}
+                title3="Status"
+                val3={status}
+                title4="Qty"
+                val4={quantity}
+                title5="Warehouse"
+                val5={warehouse_name}
+              />
+            );
+          })}
+        </section>
       </main>
       <Footer />
     </>

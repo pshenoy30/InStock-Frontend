@@ -51,8 +51,8 @@ function InventoryItem() {
   return (
     <div>
       <Header />
-      <main className="box">
-      <section className="mainBox">
+      <main className="wrapper">
+      <section className="box">
         <SearchNav title={item_name} hideSearch="true" buttonText="Edit" />
         <section className="inventoryItem">
           <article className="inventoryItem__container">
