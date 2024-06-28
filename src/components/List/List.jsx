@@ -7,6 +7,7 @@ import "./List.scss";
 
 function List({
   id,
+  relativePath,
   title1,
   val1,
   title2,
@@ -27,12 +28,12 @@ function List({
             <article className="list__container">
                 <div className="list__card">
                     <h3 className="list__title">{title1}</h3>
-                    <div className="list__subcard">
-                        <Link to={`./${id}`}>
+                    <Link to={`./${relativePath}`} className="list__entry--interactive">  
+                      <div className="list__subcard">
                             <h3 className="list__entry list__entry--interactive">{val1}</h3>
-                            <img className="list__img" src={arrowImg} alt="expand details button"></img>
-                        </Link>  
-                    </div>
+                            <img className="list__img" src={arrowImg} alt="expand details button"></img> 
+                      </div>
+                    </Link> 
                 </div>
                 <div className="list__card">
                     <h3 className="list__title">{title2}</h3>
@@ -62,7 +63,9 @@ function List({
         <table className="list__table">
           <tbody className="list__body">
             <tr className="list__records" key={id}>
+            <Link to={`./${relativePath}`} className="list__entry--interactive">  
               <td className="list__detail list__detail--left">{val1} <img className="list__img" src={arrowImg} alt="expand details button"></img></td>
+            </Link>
               <td className="list__detail list__detail--smaller">{val2}</td>
               <td className="list__detail">{val3}</td>
               <td className="list__detail list__detail--larger">{val4}</td>

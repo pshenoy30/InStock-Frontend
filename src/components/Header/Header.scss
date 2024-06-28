@@ -3,8 +3,12 @@
 @use "../../styles/partials/variables" as *;
 @use "../../styles/partials/typography" as *;
 
+.active {
+  @include selected-state;
+}
+
 .header {
-  height: 12.5rem;
+  height: 9.5rem;
   background-color: $background-graphite;
   padding: 1.5rem 1rem;
   gap: 1.5rem;
@@ -13,16 +17,16 @@
   position: relative;
 
   @include tablet {
-    height: 11.625rem;
-    padding: 2rem 2rem;
+    height: 1.75rem;
+    padding: 2rem 2rem 7.875rem 2rem;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
   }
 
   @include desktop {
-    height: 11.625rem;
-    padding: 2rem 5.625rem;
+    height: 1.75rem;
+    padding: 1.6875rem 8.125rem 7.5625rem 8.125rem;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
@@ -42,25 +46,35 @@
   &__nav {
     display: flex;
     flex-direction: row;
-    justify-content: space-evenly;
+    gap: 1rem;
+    align-items: center;
 
     @include tablet{
         gap: 1.5rem;
     }
   }
 
+  &__link {
+    height: 1rem;
+    color: $primary-white;
+    text-decoration: none;
+
+    @include tablet {
+      height: 1rem;
+    }
+
+    @include desktop {
+      height: 1rem;
+    }
+  }
+
   &__navItem {
+    width: 10.3125rem;
     color: $secondary-cloud;
     text-align: center;
-    padding: 0.5rem 0;
-    // @include selected-state;
 
     &:hover {
         @include hover-state;
-    }
-
-    @include tablet {
-        padding: 0.5rem 1rem;
     }
   }
 }

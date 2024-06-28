@@ -5,11 +5,13 @@ function Buttons({buttonName}) {
                              (buttonName ===  "Cancel" ? "button__secondary" : 
                              (buttonName ===  "Delete" ? "button__delete" : 
                              (buttonName ===  "Edit"? "button__edit" : "" ))))
-
-  
+  let buttonText = "";                           
+  if (buttonName !== "Edit"){
+    buttonText = buttonName
+  }
   return (
     <button type="submit" className={classToBeAssigned}>
-      {buttonName}
+      {buttonText}
     </button>
   );
 }

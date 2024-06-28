@@ -6,17 +6,20 @@ body {
   font-family: "Titillium Web";
   font-weight: 400;
   height: 100%;
-}
-
-.mainBox {
+  min-height: 100vh;
+  margin: 0;
   position: relative;
 }
 
-.mainBox::after {
-  content: '';
-  display: block;
-  height: 3.125rem;
-}
+// .mainBox{
+//   position: relative;
+// }
+
+// .mainBox::after {
+//   content: '';
+//   display: block;
+//   height: 50px;
+// }
 
 :root {
   font-size: 100% !important;
@@ -126,6 +129,38 @@ p2 {
   @include desktop {
     font-size: 0.875rem;
     line-height: 1.375rem;
+  }
+}
+
+.wrapper{
+  background-color: $background-lightgrey;
+  min-height: 100vh;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.box {
+  background-color: $primary-white;
+  width: 21.4375rem;
+  height: max-content;
+  border-radius: 0.1875rem;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.20);
+  display: flex;
+  flex-direction: column;
+  margin-top: -4.25rem;
+  margin-left: 1rem;
+
+  @include tablet {
+    width: 44rem;
+    margin-top: -5.85rem;
+    margin-left: 2rem;
+  }
+
+  @include desktop {
+    width: 63.75rem;
+    margin-top: -5.85rem;
+    margin-left: 8rem;
   }
 }
 

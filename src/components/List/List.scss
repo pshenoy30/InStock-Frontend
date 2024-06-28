@@ -4,19 +4,24 @@
 @use "../../styles/partials/typography" as *;
 
 .list {
+  background-color: $primary-white;
   padding-top: 1rem;
   padding: 1.5rem;
-  display: flex;
   border-top: 1px solid $secondary-cloud;
+  display: flex;
 
   &__left {
+    background-color: $primary-white;
     display: flex;
     flex-direction: column;
     flex: 1;
     gap: 1rem;
+    justify-content: space-between;
   }
 
   &__card {
+    min-height: 1rem;
+    background-color: $primary-white;
     display: flex;
     flex-direction: column;
   }
@@ -25,22 +30,35 @@
     color: $secondary-slate;
     font-weight: 400;
     text-transform: uppercase;
+    background-color: $primary-white;
   }
 
   &__subcard {
+    background-color: $primary-white;
     display: flex;
+    flex-direction: row;
     align-items: center;
+    gap: 0.25rem;
   }
 
   &__entry {
+    background-color: $primary-white;
+
     &--interactive {
       color: $primary-inStockIndigo;
+      text-decoration: none;
+    }
+
+    &:hover {
+      text-decoration: underline;
+      cursor: pointer;
     }
   }
 
   &__img {
     width: 1.5rem;
     height: 1.5rem;
+    background-color: $primary-white;
 
     &--right {
       text-align: right;
@@ -52,6 +70,7 @@
     color: $primary-inStockBlack;
     font-weight: 400;
     width: 70%;
+    background-color: $primary-white;
 
     @include tablet {
       width: 9rem;
@@ -62,37 +81,39 @@
       padding-left: 2rem;
       display: flex;
     }
+  }
 
-    // &--smaller {
-    //   width: 7.75rem;
-    // }
-
-    // &--larger {
-    //   width: 11rem;
-    // }
+  &__container {
+    background-color: $primary-white;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
   }
 
   &__right {
+    background-color: $primary-white;
     display: flex;
     flex-direction: column;
     flex: 1;
     gap: 1rem;
   }
 
-  // &__header {
-  //   @include tablet {
-  //     &:not(:first-child) {
-  //       display: none;
-  //     }
-  //   }
-  // }
-
   &__table {
+    background-color: $primary-white;
     width: 100%;
     padding-bottom: 1rem;
+
+    @include tablet {
+      width: 44rem;
+    }
+
+    @include desktop {
+      width: 63.75rem;
+    }
   }
 
   &__records {
+    background-color: $primary-white;
     box-sizing: border-box;
     border-top: 1px solid $secondary-cloud;
     display: flex;
@@ -100,6 +121,14 @@
     padding-top: 1rem;
     align-items: center;
     justify-content: space-between;
+    
+    @include tablet {
+      width: 43.75rem;
+    }
+
+    @include desktop {
+      width: 63.75rem;
+    }
   }
 
   &__actions {
