@@ -34,10 +34,11 @@
   }
 
   &__subcard {
+    background-color: $primary-white;
     display: flex;
     flex-direction: row;
     align-items: center;
-    background-color: $primary-white;
+    gap: 0.25rem;
   }
 
   &__entry {
