@@ -2,9 +2,10 @@ import "./InventoryItem.scss";
 import axios from "axios";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import SearchNav from "../../components/SearchNav/SearchNav";
+import EditNav from "../../components/EditNav/EditNav";
 import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
+import StockTag from "../../components/StockTag/StockTag";
 
 function InventoryItem() {
   const API_URL = import.meta.env.VITE_API_URL;
@@ -51,8 +52,9 @@ function InventoryItem() {
   return (
     <div>
       <Header />
-      <main>
-        <SearchNav title={item_name} hideSearch="true" buttonText="Edit" />
+      <main className="wrapper">
+      <section className="box">
+        <EditNav title={item_name} buttonText="Edit" />
         <section className="inventoryItem">
           <article className="inventoryItem__container">
             <article className="inventoryItem__card">
@@ -65,11 +67,11 @@ function InventoryItem() {
                 <h3 className="inventoryItem__detail">{category}</h3>
               </div>
             </article>
-            <article className="inventoryItem__card">
+            <article className="inventoryItem__card inventoryItem__card--divider">
               <article className="inventoryItem__subcard">
                 <div className="inventoryItem__subcontainer">
                   <h3 className="inventoryItem__title">STATUS:</h3>
-                  <h3 className="inventoryItem__detail">{status}</h3>
+                  <h3 className="inventoryItem__detail">{<StockTag stockStatus={status} />}</h3>
                 </div>
                 <div className="inventoryItem__subcontainer">
                   <h3 className="inventoryItem__title">QUANTITY:</h3>
@@ -83,6 +85,7 @@ function InventoryItem() {
             </article>
           </article>
         </section>
+      </section>
       </main>
       <Footer />
     </div>

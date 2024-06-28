@@ -5,7 +5,21 @@
 body {
   font-family: "Titillium Web";
   font-weight: 400;
+  height: 100%;
+  min-height: 100vh;
+  margin: 0;
+  position: relative;
 }
+
+// .mainBox{
+//   position: relative;
+// }
+
+// .mainBox::after {
+//   content: '';
+//   display: block;
+//   height: 50px;
+// }
 
 :root {
   font-size: 100% !important;
@@ -119,10 +133,11 @@ p2 {
 }
 
 .wrapper{
-  display: flex;
-  flex-direction: column;
+  background-color: $background-lightgrey;
   min-height: 100vh;
   position: relative;
+  display: flex;
+  flex-direction: column;
 }
 
 .box {
@@ -133,15 +148,22 @@ p2 {
   box-shadow: 0 4px 4px rgba(0, 0, 0, 0.20);
   display: flex;
   flex-direction: column;
-  margin-top: -8rem;
+  margin-top: -4.25rem;
   margin-left: 1rem;
 
-  @include tablet{
+  @include tablet {
     width: 44rem;
+    margin-top: -5.85rem;
     margin-left: 2rem;
-    margin-right: 2rem;
+  }
+
+  @include desktop {
+    width: 63.75rem;
+    margin-top: -5.85rem;
+    margin-left: 8rem;
   }
 }
+
 //body small
 // p3 { :p3 is not recognised ny the browser. This is moved to Footer.scss
 //   font-size: 0.6875rem;
