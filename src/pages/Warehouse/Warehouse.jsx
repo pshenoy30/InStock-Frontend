@@ -36,10 +36,9 @@ function Warehouse() {
         
       }
     }
-    
     getWarehouseData(warehouseId);
     getInventoryData(warehouseId);
-  },[warehouseId])
+  })
 
   if (loadingWarehouseDetails) {
     return <p> Loading warehouse data... </p>;
@@ -54,7 +53,6 @@ function Warehouse() {
   }
 
   if(!loadingWarehouseDetails&&!loadingInventoryDetails){
-    console.log(inventoryItems);
     return (
       <>
       <Header />

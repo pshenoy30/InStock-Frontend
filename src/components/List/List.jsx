@@ -6,8 +6,9 @@ import arrowImg from '../../assets/icons/chevron_right-24px.svg';
 import closeImg from '../../assets/icons/close-24px.svg'
 import Buttons from '../Buttons/Buttons';
 import Modal from 'react-modal';
+import deleteWarehouseDetails from '../../utils/deleteWarehouse';
+import deleteInventoryDetails from '../../utils/deleteInventoryItem';
 import { useState } from 'react';
-
 import "./List.scss";
 
 function List({
@@ -25,6 +26,7 @@ function List({
   val5,
 }) {
   const [isOpen, setIsOpen] = useState(false);
+
   function openModal(){
     setIsOpen(true);
   }
@@ -33,9 +35,19 @@ function List({
     setIsOpen(false);
   }
 
-  function deleteModal() {
-
+  function deleteModal(event) {
+    event.preventDefault;
+    if(listType === "warehouse"){
+      deleteWarehouseDetails(id);
+      setIsOpen(false);
+    }
+    else if (listType === "inventories"){
+      deleteInventoryDetails(id);
+      setIsOpen(false);
+    }
+    
   }
+
   return (
     <>
       <MediaQuery maxWidth={767}>
@@ -76,7 +88,7 @@ function List({
             <img className="list__img list__img--right" src={editImg} alt="edit button"></img>
           </article>
         </article>
-        <Modal isOpen={isOpen} onRequestClose={closeModal} contentLabel="Delete a warehouse" className='list__modal'>
+        <Modal isOpen={isOpen} onRequestClose={closeModal} contentLabel="Delete a warehouse" className="list__modal">
           <>
             <button className='list__modal__close' onClick={closeModal}>
               <img className="list__img" src={closeImg} alt="edit button"></img>
@@ -84,7 +96,7 @@ function List({
             <section className='list__modal__container'>
               <article className='list__modal__text-container'>
                 <h1 className='list__modal__title'>Delete {val1} warehouse?</h1>
-                <p1 className='list__modal__text'>Please confirm that you'd like to delete the {val1} from the list of warehouses. You wont be able to undo this action</p1>
+                <p className='list__modal__text'>Please confirm that you'd like to delete the {val1} from the list of warehouses. You wont be able to undo this action</p>
               </article>
               <article className='list__modal__button-container'>
                 <Buttons buttonName="Cancel" clickHandler={closeModal} />
