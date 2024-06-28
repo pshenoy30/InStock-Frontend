@@ -117,8 +117,4 @@
     gap: 0.5rem;
     padding-right: 2rem;
   }
-
-  @include tablet{
-    all: revert;
-} 
 }
