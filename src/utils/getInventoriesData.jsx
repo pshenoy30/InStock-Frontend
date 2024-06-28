@@ -1,6 +1,7 @@
 import axios from "axios";
 
-const API_URL = import.meta.env.VITE_API_URL;
+const API_URL = import.meta.env.VITE_BACKEND_URL;
+// const API_URL = import.meta.env.VITE_API_URL;
 // const [isLoading, setIsLoading] = useState(true);
 // const [error, setError] = useState(false);
 // const [inventoriesData, setInventoriesData] = useState(null);

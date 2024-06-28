@@ -35,6 +35,7 @@
         display: flex;
         flex-direction: column;
         background-color: $primary-white;
+        
         @include tablet {
             flex-direction: row;
         }
@@ -49,16 +50,9 @@
         background-repeat: no-repeat;
         background-position: 14.5rem center;
         color: $secondary-slate;
+        background-color: $background-lightgrey;
         padding: 0.5rem 1rem;
-        border: 1px solid $secondary-cloud;
+        border: 1px solid $secondary-slate;
         border-radius: 20px;
-
-        &--hidden {
-            display: none;
-        }
-
-        @include tablet {
-            background-position: 7.25rem center;
-        }
     }
 }

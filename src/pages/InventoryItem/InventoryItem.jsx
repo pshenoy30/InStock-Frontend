@@ -8,8 +8,7 @@ import Footer from "../../components/Footer/Footer";
 import StockTag from "../../components/StockTag/StockTag";
 
 function InventoryItem() {
-  const API_URL = import.meta.env.VITE_API_URL;
-
+  const API_URL = import.meta.env.VITE_BACKEND_URL;
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(false);
   const [inventoriesItemData, setInventoriesItemData] = useState(null);
@@ -19,7 +18,6 @@ function InventoryItem() {
     try {
       const response = await axios.get(`${API_URL}/inventory/${inventoryId}`);
       setInventoriesItemData(response.data);
-      console.log(response.data);
       setIsLoading(false);
     } catch (err) {
       console.log(err);
