@@ -63,7 +63,9 @@ function List({
         <table className="list__table">
           <tbody className="list__body">
             <tr className="list__records" key={id}>
+            <Link to={`./${relativePath}`} className="list__entry--interactive">  
               <td className="list__detail list__detail--left">{val1} <img className="list__img" src={arrowImg} alt="expand details button"></img></td>
+            </Link>
               <td className="list__detail list__detail--smaller">{val2}</td>
               <td className="list__detail">{val3}</td>
               <td className="list__detail list__detail--larger">{val4}</td>
