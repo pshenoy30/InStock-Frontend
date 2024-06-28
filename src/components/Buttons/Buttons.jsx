@@ -27,4 +27,3 @@ function Buttons({ buttonName, type = "submit", onClick }) {
 }
 
 export default Buttons;
-
