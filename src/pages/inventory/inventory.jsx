@@ -60,7 +60,6 @@ function Inventory() {
               listheader={tableHeader}
               listData={inventoryDetails}
               listType="inventory"
-              relativePath="inventories"
             />
           </MediaQuery>
         </section>

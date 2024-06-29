@@ -5,7 +5,7 @@ import arrowImg from "../../assets/icons/chevron_right-24px.svg";
 import sortImg from "../../assets/icons/sort-24px.svg";
 import "./Table.scss";
 
-function Table({ listData, listType, listheader, relativePath }) {
+function Table({ listData, listType, listheader }) {
   let tableInfo = [];
 
   function createTableInfo() {
@@ -22,6 +22,7 @@ function Table({ listData, listType, listheader, relativePath }) {
     } else if (listType === "inventory") {
       listData.forEach((item) => {
         let element = {};
+        element.id = item.id;
         element.itemName = item.item_name;
         element.category = item.category;
         element.status = item.status;
@@ -93,7 +94,7 @@ function Table({ listData, listType, listheader, relativePath }) {
         <tbody className="list__body">
           {tableInfo.map((data) => (
             <tr className="list__records">
-              <Link to={`./${relativePath}/${data.id}`}>
+              <Link to={`./${data.id}`}>
                 <td className="list__detail list__detail--left">
                   {data.itemName}
                   <img
@@ -113,7 +114,9 @@ function Table({ listData, listType, listheader, relativePath }) {
               <td className="list__detail">{data.warehouseName}</td>
               <td className="list__actions">
                 <img src={deleteImg} alt="delete button"></img>
-                <img src={editImg} alt="edit button"></img>
+                <Link to={`../edit-inventory/${data.id}`}>
+                  <img src={editImg} alt="edit button"></img>
+                </Link>
               </td>
             </tr>
           ))}
