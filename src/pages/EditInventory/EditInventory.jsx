@@ -28,6 +28,7 @@ function EditInventory() {
             status: InventoryData.status,
             quantity: InventoryData.quantity,
             warehouseName: InventoryData.warehouse_name,
+            warehouseId: InventoryData.warehouse_id
           });
         }
       } catch (error) {
@@ -40,7 +41,6 @@ function EditInventory() {
 
   //validate form data
   const validateFormData = (data) => {
-    console.log(data);
     const errors = {};
     if (!data.itemName) errors.itemName = "Item Name is required";
     if (!data.description) errors.description = "Description is required";
@@ -60,6 +60,42 @@ function EditInventory() {
     "Electronics",
     "Gear",
     "Health",
+  ];
+
+  //TODO
+  const warehouseOptions = [
+    {
+      warehouseName: "Manhattan",
+      warehouseId: "1"
+    },
+    {
+      warehouseName: "Washington",
+      warehouseId: "2"
+    },
+    {
+      warehouseName: "Jersey",
+      warehouseId: "3"
+    },
+    {
+      warehouseName: "SF",
+      warehouseId: "4"
+    },
+    {
+       warehouseName: "Santa Monica",
+      warehouseId: "5"
+    },
+    {
+      warehouseName: "Seattle",
+      warehouseId: "6"
+    },
+    {
+       warehouseName: "Miami",
+      warehouseId: "7"
+    },
+    {
+      warehouseName: "Boston",
+      warehouseId: "8"
+    },
   ];
 
   const inventoryFields = [
@@ -91,8 +127,9 @@ function EditInventory() {
     {
       name: "warehouseName",
       label: "Warehouse",
-      type: "text",
-    },
+      type: "drop-down",
+      options: warehouseOptions.map(option => option.warehouseName)
+    }
   ];
 
   const handleChange = (e) => {
@@ -123,10 +160,13 @@ function EditInventory() {
           description: formData.description,
           category: formData.category,
           status: formData.status,
-          warehouseName: formData.warehouse,
+          warehouseName: formData.warehouseName,
+          warehouseId: getWarehouseIdByName(formData.warehouseName, warehouseOptions),
+          quantity: formData.quantity
         };
         const API_URL = import.meta.env.VITE_BACKEND_URL;
         const updateUrl = `${API_URL}/inventory/${id}`;
+        console.log(updatedFormData);
         await axios.put(updateUrl, updatedFormData);
         console.log("Inventory updated successfully");
       } catch (error) {
@@ -186,3 +226,8 @@ function EditInventory() {
 }
 
 export default EditInventory;
+
+function getWarehouseIdByName(inputName, warehouseOptions) {
+  const warehouse = warehouseOptions.find(option => option.warehouseName === inputName);
+  return warehouse.warehouseId;
+}
