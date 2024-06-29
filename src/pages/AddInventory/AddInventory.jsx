@@ -1,9 +1,7 @@
-// AddWarehouse.jsx
+// AddInventory.jsx
 import React, { useState } from "react";
 import axios from "axios";
-import "./AddWarehouse.scss";
-import FormInputs from "../../components/FormInputs/FormInputs";
-import { defaultFormData } from "../../components/formUtils";
+import InventoryForm from "../../components/InventoryForm/InventoryForm";
 import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
 import SectionHeader from "../../components/SectionHeader/SectionHeader";
@@ -20,28 +18,18 @@ const validatePhoneNumber = (phoneNumber) => {
   return re.test(String(phoneNumber));
 };
 
-const validateFormData = (data) => {
-  const errors = {};
-  if (!data.warehouseName) errors.warehouseName = "Warehouse Name is required";
-  if (!data.address) errors.address = "Address is required";
-  if (!data.city) errors.city = "City is required";
-  if (!data.country) errors.country = "Country is required";
-  if (!data.contactName) errors.contactName = "Contact Name is required";
-  if (!data.contactPosition) errors.contactPosition = "Position is required";
-  if (!data.contactPhone) {
-    errors.contactPhone = "Phone Number is required";
-  } else if (!validatePhoneNumber(data.contactPhone)) {
-    errors.contactPhone = "Phone Number is invalid";
-  }
-  if (!data.contactEmail) {
-    errors.contactEmail = "Email is required";
-  } else if (!validateEmail(data.contactEmail)) {
-    errors.contactEmail = "Email is invalid";
-  }
-  return errors;
+const defaultFormData = {
+  warehouseName: "",
+  address: "",
+  city: "",
+  country: "",
+  contactName: "",
+  contactPosition: "",
+  contactPhone: "",
+  contactEmail: "",
 };
 
-const AddWarehouse = () => {
+const AddInventory = () => {
   const [formData, setFormData] = useState(defaultFormData);
   const [formErrors, setFormErrors] = useState({});
 
@@ -88,57 +76,76 @@ const AddWarehouse = () => {
 
   const warehouseFields = [
     {
-      name: "warehouseName",
-      label: "Warehouse Name",
+      name: "itemName",
+      label: "Item Name",
       type: "text",
-      placeholder: "Warehouse Name",
+      placeholder: "Item Name",
     },
     {
-      name: "address",
-      label: "Street Address",
+      name: "description",
+      label: "Description",
       type: "text",
-      placeholder: "Street Address",
+      placeholder: "Please enter a brief item description...",
     },
     {
-      name: "city",
-      label: "City",
-      type: "text",
-      placeholder: "City",
+      name: "category",
+      label: "Category",
+      type: "select",
+      options: [
+        { value: "electronics", label: "Electronics" },
+        { value: "clothing", label: "Clothing" },
+        { value: "books", label: "Books" },
+      ],
+      placeholder: "Please select",
     },
     {
-      name: "country",
-      label: "Country",
-      type: "text",
-      placeholder: "Country",
+      name: "status",
+      label: "Status",
+      type: "radio",
+      options: [
+        { value: "inStock", label: "In stock" },
+        { value: "outOfStock", label: "Out of stock" },
+      ],
+    },
+    {
+      name: "quantity",
+      label: "Quantity",
+      type: "number",
+      placeholder: "0",
+    },
+    {
+      name: "warehouse",
+      label: "Warehouse",
+      type: "select",
+      options: [
+        { value: "warehouse1", label: "Warehouse 1" },
+        { value: "warehouse2", label: "Warehouse 2" },
+        { value: "warehouse3", label: "Warehouse 3" },
+      ],
+      placeholder: "Please select",
     },
   ];
 
-  const contactFields = [
-    {
-      name: "contactName",
-      label: "Contact Name",
-      type: "text",
-      placeholder: "Contact Name",
-    },
-    {
-      name: "contactPosition",
-      label: "Position",
-      type: "text",
-      placeholder: "Position",
-    },
-    {
-      name: "contactPhone",
-      label: "Phone Number",
-      type: "text",
-      placeholder: "Phone Number",
-    },
-    {
-      name: "contactEmail",
-      label: "Email",
-      type: "email",
-      placeholder: "Email",
-    },
-  ];
+  const validateFormData = (data) => {
+    const errors = {};
+    if (!data.warehouseName) errors.warehouseName = "Item Name is required";
+    if (!data.address) errors.address = "Address is required";
+    if (!data.city) errors.city = "City is required";
+    if (!data.country) errors.country = "Country is required";
+    if (!data.contactName) errors.contactName = "Contact Name is required";
+    if (!data.contactPosition) errors.contactPosition = "Position is required";
+    if (!data.contactPhone) {
+      errors.contactPhone = "Phone Number is required";
+    } else if (!validatePhoneNumber(data.contactPhone)) {
+      errors.contactPhone = "Phone Number is invalid";
+    }
+    if (!data.contactEmail) {
+      errors.contactEmail = "Email is required";
+    } else if (!validateEmail(data.contactEmail)) {
+      errors.contactEmail = "Email is invalid";
+    }
+    return errors;
+  };
 
   return (
     <>
@@ -146,18 +153,18 @@ const AddWarehouse = () => {
       <main className="wrapper">
         <section className="mainBox">
           <div className="form-container">
-            <SectionHeader title="Add New Warehouse" />
+            <SectionHeader title="Add New Inventory Item" />
             <form className="form" onSubmit={handleSubmit}>
-              <FormInputs
-                sectionTitle="Warehouse Details"
-                fields={warehouseFields}
+              <InventoryForm
+                sectionTitle="Item Details"
+                fields={warehouseFields.slice(0, 3)}
                 formData={formData}
                 formErrors={formErrors}
                 handleChange={handleChange}
               />
-              <FormInputs
-                sectionTitle="Contact Details"
-                fields={contactFields}
+              <InventoryForm
+                sectionTitle="Item Availability"
+                fields={warehouseFields.slice(3)}
                 formData={formData}
                 formErrors={formErrors}
                 handleChange={handleChange}
@@ -165,7 +172,7 @@ const AddWarehouse = () => {
               <FormFooter
                 onReset={handleReset}
                 onSubmit={handleSubmit}
-                isAddWarehouseMode
+                isAddWarehouseMode={false}
               />
             </form>
           </div>
@@ -176,4 +183,4 @@ const AddWarehouse = () => {
   );
 };
 
-export default AddWarehouse;
+export default AddInventory;

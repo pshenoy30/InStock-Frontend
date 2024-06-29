@@ -1,16 +1,34 @@
-// components/FormFooter/FormFooter.js
-
+// FormFooter.jsx
 import React from "react";
 import Buttons from "../Buttons/Buttons";
 import "./FormFooter.scss";
 
-const FormFooter = ({ onReset, onSubmit, isEditMode }) => {
+const FormFooter = ({
+  onReset,
+  onSubmit,
+  isEditMode,
+  onAddItem,
+  isAddWarehouseMode,
+}) => {
   const secondButtonLabel = isEditMode ? "Save" : "+ Add New Warehouse";
+  const thirdButtonLabel = "+ Add Item";
 
   return (
-    <div className="form__footer">
-      <Buttons buttonName="Cancel" type="button" onClick={onReset} />
-      <Buttons buttonName={secondButtonLabel} type="submit" onClick={onSubmit} />
+    <div className="form-footer">
+      <Buttons buttonName="Cancel" type="button" clickHandler={onReset} />
+      {isAddWarehouseMode ? (
+        <Buttons
+          buttonName={secondButtonLabel}
+          type="submit"
+          clickHandler={onSubmit}
+        />
+      ) : (
+        <Buttons
+          buttonName={thirdButtonLabel}
+          type="button"
+          clickHandler={onAddItem}
+        />
+      )}
     </div>
   );
 };

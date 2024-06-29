@@ -1,3 +1,4 @@
+// Buttons.scss
 @use "../../styles/partials/globals" as *;
 @use "../../styles/partials/mixins" as *;
 @use "../../styles/partials/variables" as *;
@@ -9,7 +10,8 @@
   &__secondary,
   &__delete,
   &__edit,
-  &__save { 
+  &__save,
+  &__item {
     min-width: 4.4375rem;
     height: 2.375rem;
     padding: 0rem 1rem 0rem 1rem;
@@ -34,7 +36,8 @@
   }
 
   &__primary,
-  &__save { 
+  &__save,
+  &__item {
     color: $primary-white;
     background-color: $primary-inStockIndigo;
     border: 1px solid $primary-inStockIndigo;

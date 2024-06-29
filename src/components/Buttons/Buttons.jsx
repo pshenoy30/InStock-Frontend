@@ -1,4 +1,5 @@
-import React from 'react';
+// Buttons.jsx
+import React from "react";
 import "./Buttons.scss";
 
 function Buttons({ buttonName, type = "submit", clickHandler }) {
@@ -15,13 +16,19 @@ function Buttons({ buttonName, type = "submit", clickHandler }) {
         return "button__edit";
       case "Save":
         return "button__save";
+      case "+ Add Item":
+        return "button__item";
       default:
         return "";
     }
   };
 
   return (
-    <button type={type} className={getClassToBeAssigned(buttonName)} onClick={clickHandler}>
+    <button
+      type={type}
+      className={`button ${getClassToBeAssigned(buttonName)}`}
+      onClick={clickHandler}
+    >
       {buttonName}
     </button>
   );

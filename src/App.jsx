@@ -3,7 +3,7 @@ import HomePage from "../src/pages/Homepage/Homepage.jsx";
 import Warehouse from "../src/pages/Warehouse/Warehouse.jsx";
 // import Inventory from "../src/pages/Inventory/Inventory.jsx";
 import AddWarehouse from "./pages/AddWarehouse/AddWarehouse.jsx";
-
+import AddInventory from "./pages/AddInventory/AddInventory.jsx";
 import InventoryItem from "../src/pages/InventoryItem/InventoryItem.jsx";
 import NotFoundPage from "../src/pages/NotFoundPage/NotFoundPage.jsx";
 import "./App.scss";
@@ -19,7 +19,7 @@ function App() {
         <Route path="/inventory/:inventoryId" element={<InventoryItem />} />
         <Route path="/add-warehouse" element={<AddWarehouse />} />
         <Route path="/edit-warehouse/:warehouseId" element={<EditWarehouse />} />
-
+        <Route path="/add-inventory" element={<AddInventory />} />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </BrowserRouter>

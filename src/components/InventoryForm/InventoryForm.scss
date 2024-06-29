@@ -1,0 +1,151 @@
+// InventoryForm.scss
+@use "../../styles/partials/globals" as *;
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/typography" as *;
+@use "../../styles/partials/layout" as *;
+
+.form-container {
+  padding: 2rem;
+  padding-bottom: 2.5rem;
+  width: 100%;
+  box-sizing: border-box;
+  background-color: $primary-white;
+
+  &__header {
+    text-align: left;
+    margin-bottom: 2rem;
+  }
+
+  .form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    background-color: $primary-white;
+    margin-bottom: 2rem;
+
+    @media (max-width: $mobile-max-width) {
+      flex-direction: column;
+    }
+
+    &__section {
+      flex: 1;
+      background-color: $primary-white;
+
+      &__heading {
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+      }
+    }
+
+    &__group {
+      margin-bottom: 1rem;
+    }
+
+    &__label {
+      display: block;
+      margin-bottom: 0.25rem;
+      font-weight: bold;
+    }
+
+    &__input {
+      @include input-style;
+      margin-bottom: 1rem;
+      background-color: $primary-white;
+      height: 2.25rem;
+
+      @include tablet {
+        height: 2.375rem;
+      }
+    }
+
+    &__textarea {
+      width: 100%;
+      padding: 0.5rem;
+      font-size: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 0.25rem;
+      resize: vertical;
+    }
+
+    &__error {
+      color: red;
+      font-size: 0.875rem;
+      margin-top: 0.25rem;
+    }
+
+    &__select-wrapper {
+      position: relative;
+      width: 100%;
+      background-color: $primary-white;
+
+      &__custom-select-arrow {
+        background-color: $primary-white;
+        position: absolute;
+        top: 50%;
+        right: 0.75rem;
+        transform: translateY(-50%);
+        width: 1.5rem;
+        height: 100%;
+        pointer-events: none;
+        background-image: url("../../assets/icons/arrow_drop_down-24px.svg");
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: contain;
+      }
+    }
+
+    &__radio-group {
+      display: flex;
+      background-color: $primary-white;
+
+      gap: 1rem;
+
+      &__radio-label {
+        display: flex;
+        align-items: center;
+      }
+
+      &__radio {
+        margin-right: 0.5rem;
+      }
+    }
+  }
+}
+
+.form__input--description {
+  height: 120px !important;
+  align-items: center;
+}
+
+.form__radio-group {
+  // align-items: center;
+  // flex-direction: column;
+}
+
+.form__radio-label {
+  background-color: $primary-white;
+  // align-items: center;
+  // margin-bottom: 8px;
+}
+
+.form__radio {
+  margin-right: 10px;
+}
+
+.form__radio--status__inStock {
+  // height: 20px;
+}
+
+.form__radio-label--status__inStock {
+  // font-weight: bold;
+}
+
+.form__radio--status__outOfStock {
+  // height: 30px;
+}
+
+.form__radio-label--status__outOfStock {
+  // font-style: italic;
+}
+
