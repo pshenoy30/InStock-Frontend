@@ -17,19 +17,14 @@ function List({
   val4,
   title5,
   val5,
-<<<<<<< HEAD
 }) {
-=======
-})
-{
->>>>>>> feature/A24W2-22
   return (
     <article className="list" key={id}>
       <article className="list__left">
         <article className="list__container">
             <div className="list__card">
                 <h3 className="list__title">{title1}</h3>
-                <Link to={`./${listType}/${id}`}>  
+                <Link to={`./${relativePath}`}>  
                   <div className="list__subcard">
                         <h3 className="list__entry list__entry--interactive">{val1}</h3>
                         <img className="list__img" src={arrowImg} alt="expand details button"></img> 

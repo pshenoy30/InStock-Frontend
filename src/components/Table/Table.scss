@@ -1,0 +1,51 @@
+@use "../../styles/partials/globals" as *;
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/variables" as *;
+
+.list {
+  padding-top: 1rem;
+  padding: 1.5rem;
+  display: flex;
+  border-top: 1px solid $secondary-cloud;
+  background-color: $primary-white;
+
+  &__table {
+    background-color: $primary-white;
+    width: 100%;
+    padding-bottom: 1rem;
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__header {
+    display: flex;
+  }
+
+  &__row {
+    width: 100%;
+    width: 100%;
+    background-color: $background-lightgrey;
+    box-sizing: border-box;
+    display: flex;
+    /* gap: 1rem; */
+    padding: 0 2rem;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__columnheader {
+    font-size: 0.6875rem;
+    font-weight: 400;
+    line-height: 1rem;
+
+    @include tablet {
+      font-size: 0.75rem;
+      line-height: 1.125rem;
+    }
+
+    @include desktop {
+      font-size: 0.75rem;
+      line-height: 1.125rem;
+    }
+  }
+}
