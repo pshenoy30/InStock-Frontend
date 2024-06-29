@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
-import SectionHeader from "../../components/SectionHeader/SectionHeader";
+import EditNav from "../../components/EditNav/EditNav";
 import StockTag from "../../components/StockTag/StockTag";
 
 function InventoryItem() {
@@ -52,7 +52,7 @@ function InventoryItem() {
       <Header />
       <main className="wrapper">
       <section className="box">
-        <SectionHeader />
+        <EditNav inventoryId={id} title={item_name} buttonText="Edit"/>
         <section className="inventoryItem">
           <article className="inventoryItem__container">
             <article className="inventoryItem__card">

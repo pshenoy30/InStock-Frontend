@@ -99,7 +99,7 @@ function Table({ listData, listType, listheader }) {
         <tbody className="list__body">
           {tableInfo.map((data) => (
             <tr className="list__records">
-              <Link to={`./${data.id}`}>
+              <Link to={`./${data.id}`} className="list__link">
                 <td className="list__detail list__detail--left">
                   {data.itemName}
                   <img

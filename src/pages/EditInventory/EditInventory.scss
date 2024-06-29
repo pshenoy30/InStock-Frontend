@@ -11,7 +11,17 @@
   flex-direction: column;
 
   &__card {
+   display: flex;
+
+   @include tablet {
+    border-top: 1px solid $secondary-cloud;
+    padding: 1.5rem 2.5rem;
+    display: flex;
+  }
+
     @include desktop {
+      border-top: 1px solid $secondary-cloud;
+      padding: 1.5rem;
       display: flex;
     }
   }
@@ -19,7 +29,7 @@
   &__section {
     box-sizing: border-box;
     width: 100%;
-    padding: 1rem 1.5rem;
+    padding: 0 1.5rem 0.5rem 1.5rem;
     border-top: 1px solid $secondary-cloud;
     display: flex;
     flex-direction: column;
@@ -27,6 +37,26 @@
 
     &:nth-child(1){
       border-top: none;
+    }
+
+    @include tablet{
+      border-top: none;
+      border-left: 1px solid $secondary-cloud;
+
+      &:nth-child(1){
+        border-top: none;
+        border-left: none;
+      }
+    }
+
+    @include desktop {
+      border-top: none;
+      border-left: 1px solid $secondary-cloud;
+
+      &:nth-child(1){
+        border-top: none;
+        border-left: none;
+      }
     }
   }
 
@@ -42,6 +72,12 @@
 
   &__radio {
     font-family: "Titillium Web";
+    display: flex;
+    gap: 0.5rem;
+  }
+
+  &__radioBox {
+    display: flex;
   }
 
   &__input {

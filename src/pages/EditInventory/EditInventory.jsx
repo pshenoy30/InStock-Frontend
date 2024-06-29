@@ -28,7 +28,7 @@ function EditInventory() {
             status: InventoryData.status,
             quantity: InventoryData.quantity,
             warehouseName: InventoryData.warehouse_name,
-            warehouseId: InventoryData.warehouse_id
+            warehouseId: InventoryData.warehouse_id,
           });
         }
       } catch (error) {
@@ -65,35 +65,35 @@ function EditInventory() {
   const warehouseOptions = [
     {
       warehouseName: "Manhattan",
-      warehouseId: "1"
+      warehouseId: "1",
     },
     {
       warehouseName: "Washington",
-      warehouseId: "2"
+      warehouseId: "2",
     },
     {
       warehouseName: "Jersey",
-      warehouseId: "3"
+      warehouseId: "3",
     },
     {
       warehouseName: "SF",
-      warehouseId: "4"
+      warehouseId: "4",
     },
     {
-       warehouseName: "Santa Monica",
-      warehouseId: "5"
+      warehouseName: "Santa Monica",
+      warehouseId: "5",
     },
     {
       warehouseName: "Seattle",
-      warehouseId: "6"
+      warehouseId: "6",
     },
     {
-       warehouseName: "Miami",
-      warehouseId: "7"
+      warehouseName: "Miami",
+      warehouseId: "7",
     },
     {
       warehouseName: "Boston",
-      warehouseId: "8"
+      warehouseId: "8",
     },
   ];
 
@@ -127,8 +127,8 @@ function EditInventory() {
       name: "warehouseName",
       label: "Warehouse",
       type: "drop-down",
-      options: warehouseOptions.map(option => option.warehouseName)
-    }
+      options: warehouseOptions.map((option) => option.warehouseName),
+    },
   ];
 
   const handleChange = (e) => {
@@ -160,8 +160,11 @@ function EditInventory() {
           category: formData.category,
           status: formData.status,
           warehouseName: formData.warehouseName,
-          warehouseId: getWarehouseIdByName(formData.warehouseName, warehouseOptions),
-          quantity: formData.quantity
+          warehouseId: getWarehouseIdByName(
+            formData.warehouseName,
+            warehouseOptions
+          ),
+          quantity: formData.quantity,
         };
         const API_URL = import.meta.env.VITE_BACKEND_URL;
         const updateUrl = `${API_URL}/inventory/${id}`;
@@ -197,6 +200,7 @@ function EditInventory() {
             <EditNav title="Edit Inventory Item" />
             <div className="form__card">
               <EditInventoryForm
+                className="form__subcard-left"
                 sectionTitle="Item Details"
                 fields={inventoryFields}
                 formData={formData}
@@ -204,6 +208,7 @@ function EditInventory() {
                 handleChange={handleChange}
               />
               <EditInventoryForm
+                className="form__subcard-right"
                 sectionTitle="Item Availability"
                 fields={availabilityFields}
                 formData={formData}
@@ -227,6 +232,8 @@ function EditInventory() {
 export default EditInventory;
 
 function getWarehouseIdByName(inputName, warehouseOptions) {
-  const warehouse = warehouseOptions.find(option => option.warehouseName === inputName);
+  const warehouse = warehouseOptions.find(
+    (option) => option.warehouseName === inputName
+  );
   return warehouse.warehouseId;
 }

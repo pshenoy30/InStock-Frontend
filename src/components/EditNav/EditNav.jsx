@@ -1,33 +1,44 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { useNavigate } from 'react-router-dom';
-import icon from '../../assets/icons/arrow_back-24px.svg'; 
-import './EditNav.scss';
+import React from "react";
+import { Link } from "react-router-dom";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import icon from "../../assets/icons/arrow_back-24px.svg";
+import Buttons from "../Buttons/Buttons";
+import "./EditNav.scss";
 
-const EditNav = ({ title }) => {
+const EditNav = ({ inventoryId, title, buttonText }) => {
+  const [showButton, setShowButton] = useState(true);
   const navigate = useNavigate();
 
   const handleBackClick = () => {
-    navigate(-1); // Navigates back to the previous page, but I will set to Link
+    navigate("/inventories");
+  };
+
+  const handleEditClick = (e) => {
+    e.preventDefault();
+    console.log("Edit button clicked");
   };
 
   return (
-    <div className="editNav__header">
+    <section className="editNav__header">
       <div className="editNav__img">
-        <img 
-          src={icon} 
-          alt="Icon" 
-          className="editNav__icon" 
-          onClick={handleBackClick} 
+        <img
+          src={icon}
+          alt="Icon"
+          className="editNav__icon"
+          onClick={handleBackClick}
         />
         <h1 className="editNav__title">{title}</h1>
       </div>
-    </div>
+      {showButton ? (
+        <Link to={`../edit-inventory/${inventoryId}`}>
+          <Buttons buttonName={buttonText} className="editNav__btn"/>
+        </Link>
+      ) : (
+        <div className="editNav__btn--hidden"></div>
+      )}
+    </section>
   );
-};
-
-EditNav.propTypes = {
-  title: PropTypes.string.isRequired,
 };
 
 export default EditNav;
