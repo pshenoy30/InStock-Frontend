@@ -18,6 +18,7 @@ function List({
   title5,
   val5,
 }) {
+  console.log("entered list");
   return (
     <article className="list" key={id}>
       <article className="list__left">
