@@ -76,8 +76,13 @@ function List({
           </article>
           <article className="list__right">
             <div className="list__card">
-              <h3 className="list__title">{title3}</h3>
-              <h3 className="list__detail">{val3}</h3>
+                <h3 className="list__title">{title1}</h3>
+                <Link to={`./${relativePath}`}>  
+                  <div className="list__subcard">
+                        <h3 className="list__entry list__entry--interactive">{val1}</h3>
+                        <img className="list__img" src={arrowImg} alt="expand details button"></img> 
+                  </div>
+                </Link> 
             </div>
             <div className="list__card">
               <h3 className="list__title">{title4}</h3>

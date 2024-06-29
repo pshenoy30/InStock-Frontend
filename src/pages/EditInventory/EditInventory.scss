@@ -1,0 +1,66 @@
+@use "../../styles/partials/globals" as *;
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/typography" as *;
+
+.form {
+  width: 100%;
+  box-sizing: border-box;
+  background-color: $primary-white;
+  display: flex;
+  flex-direction: column;
+  //   padding: 2rem;
+  //   padding-bottom: 2.5rem;
+  margin-bottom: 2rem;
+
+  &__section {
+    box-sizing: border-box;
+    width: 100%;
+    padding: 1rem 1.5rem 1.5rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  &__group {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__label {
+    @include input-font;
+    font-weight: 600;
+  }
+
+  &__radio {
+    font-family: "Titillium Web";
+  }
+
+  &__input {
+    @include input-style;
+    @include input-font;
+    font-family: "Titillium Web";
+    height: 2.25rem;
+    background-color: $primary-white;
+    margin-bottom: 1rem 0;
+
+    @mixin tablet {
+      height: 2.375rem;
+    }
+  }
+
+  &__textarea {
+    @include input-style;
+    @include input-font;
+    width: 100%;
+    min-height: 100px;
+    font-family: "Titillium Web";
+    padding-top: 0.5rem;
+  }
+
+  &__error {
+    @include error-style;
+    @include input-font;
+    background-color: $primary-white;
+  }
+}
