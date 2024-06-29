@@ -17,7 +17,12 @@ function List({
   val4,
   title5,
   val5,
+<<<<<<< HEAD
 }) {
+=======
+})
+{
+>>>>>>> feature/A24W2-22
   return (
     <article className="list" key={id}>
       <article className="list__left">
