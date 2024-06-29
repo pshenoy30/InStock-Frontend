@@ -158,14 +158,15 @@ p2 {
   margin-left: 0;
 
   @include tablet {
-    width: 100%;
+    width: 44rem;
     margin-top: -5.85rem;
     margin-left: 0;
   }
 
   @include desktop {
+    width: 63.75rem;
     margin-top: -5.85rem;
-    margin-left: 0;
+    margin-left: 4.5rem;
   }
 }
 

@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import deleteImg from "../../assets/icons/delete_outline-24px.svg";
 import editImg from "../../assets/icons/edit-24px.svg";
 import arrowImg from "../../assets/icons/chevron_right-24px.svg";
+import sortImg from "../../assets/icons/sort-24px.svg";
 import "./Table.scss";
 
 function Table({ listData, listType, listheader }) {
@@ -29,7 +30,7 @@ function Table({ listData, listType, listheader }) {
           <tr className="list__row">
             {listheader.map((headerTitle) => (
               <th className="list__columnheader" key={headerTitle.id}>
-                {headerTitle.header}
+                {headerTitle.header} <img className="list__sort" src={sortImg} alt="sort button"></img>
               </th>
             ))}
           </tr>
