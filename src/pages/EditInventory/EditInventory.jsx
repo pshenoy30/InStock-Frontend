@@ -26,7 +26,8 @@ function EditInventory() {
                     description: InventoryData.description,
                     category: InventoryData.category,
                     status: InventoryData.status,
-                    warehouseName: InventoryData.warehouseName,
+                    quantity: InventoryData.quantity,
+                    warehouseName: InventoryData.warehouse_name,
                 });
             }
         } catch (error) {
@@ -39,13 +40,14 @@ function EditInventory() {
 
   //validate form data
   const validateFormData = (data) => {
+    console.log(data);
     const errors = {};
     if (!data.itemName) errors.itemName = "Item Name is required";
     if (!data.description) errors.description = "Description is required";
     if (!data.category) errors.category = "Please select a category";
-    if (data.status === "In Stock" && !data.quantity)
+    if (data.status === "In Stock" && (data.quantity === 0))
       errors.quantity = "Please select the availability.";
-    if (!data.warehouse) errors.warehouse = "Please specify the warehouse";
+    if (!data.warehouseName) errors.warehouseName = "Please specify the warehouse";
 
     setFormErrors(errors);
     return errors;
@@ -86,7 +88,7 @@ function EditInventory() {
       options: ["In Stock", "Out of Stock"]
     },
     {
-      name: "warehouse",
+      name: "warehouseName",
       label: "Warehouse",
       type: "text",
     },
@@ -107,7 +109,6 @@ function EditInventory() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
     if (!id) {
         console.error("No inventory ID provided for update");
         return;
@@ -123,7 +124,6 @@ function EditInventory() {
                 status: formData.status,
                 warehouseName: formData.warehouse,
             };
-
             const API_URL = import.meta.env.VITE_BACKEND_URL;
             const updateUrl = `${API_URL}/inventory/${id}`;
             await axios.put(updateUrl, updatedFormData);
@@ -148,7 +148,6 @@ function EditInventory() {
   };
   
   if (isLoading) return <p>Loading...</p>;
-
   return (
     <>
       <Header />
