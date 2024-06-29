@@ -1,6 +1,6 @@
 import React from "react";
 
-const EditForm = ({
+const EditInventoryForm = ({
   sectionTitle,
   fields,
   formData,
@@ -75,4 +75,4 @@ const EditForm = ({
   );
 };
 
-export default EditForm;
+export default EditInventoryForm;
