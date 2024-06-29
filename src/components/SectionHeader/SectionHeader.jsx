@@ -23,7 +23,7 @@ const SectionHeader = ({ title }) => {
         />
         <h1 className="form-container__title">{title}</h1>
       </div>
-      <div className="form-container__divider"></div>
+      {/* <div className="form-container__divider"></div> */}
     </div>
   );
 };

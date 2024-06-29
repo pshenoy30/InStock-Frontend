@@ -1,6 +1,7 @@
 import "./StockTag.scss";
 
 function StockTag({ stockStatus }) {
+  console.log("enter stock tag");
   let className = "stockTag";
 
   if (stockStatus === "In Stock") {
