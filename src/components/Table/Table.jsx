@@ -87,6 +87,11 @@ function Table({ listData, listType, listheader }) {
             {listheader.map((headerTitle) => (
               <th className="list__columnheader" key={headerTitle.id}>
                 {headerTitle.header}
+                <img
+                  className="list__sort"
+                  src={sortImg}
+                  alt="sort button"
+                ></img>
               </th>
             ))}
           </tr>
