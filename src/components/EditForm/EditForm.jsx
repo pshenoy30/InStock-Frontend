@@ -19,6 +19,7 @@ const EditForm = ({
             </label>
             {type === "drop-down" ? (
               <select
+                className="form__input"
                 name={name}
                 value={formData[name] || ""}
                 onChange={handleChange}
@@ -36,6 +37,7 @@ const EditForm = ({
               options.map((option, index) => (
                 <div key={index}>
                   <input
+                    className="form__radio"
                     type="radio"
                     name={name}
                     value={option}
@@ -45,8 +47,17 @@ const EditForm = ({
                   {option}
                 </div>
               ))
+            ) : type === "textarea" ? (
+              <textarea
+                className="form__textarea"
+                name={name}
+                placeholder={placeholder}
+                value={formData[name] || ""}
+                onChange={handleChange}
+              />
             ) : (
               <input
+                className="form__input"
                 type={type}
                 name={name}
                 placeholder={placeholder}

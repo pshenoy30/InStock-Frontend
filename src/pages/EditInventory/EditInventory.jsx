@@ -132,7 +132,7 @@ function EditInventory() {
             console.error("Error updating inventory:", error);
         }
     } else {
-        setFormErrors(error);
+        setFormErrors(errorOutput);
     }
   };
 
