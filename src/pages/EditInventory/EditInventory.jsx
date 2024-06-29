@@ -2,10 +2,10 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import EditInventoryForm from "../../components/EditInventoryForm/EditInventoryForm";
-import Footer from "../../components/Footer/Footer";
-import FormFooter from "../../components/FormFooter/FormFooter";
 import Header from "../../components/Header/Header";
-import SectionHeader from "../../components/SectionHeader/SectionHeader";
+import Footer from "../../components/Footer/Footer";
+import EditNav from "../../components/EditNav/EditNav";
+import EditInventoryFooter from "../../components/EditInventoryFooter/EditInventoryFooter";
 import getInventoryById from "../../utils/getInventoryById";
 import "./EditInventory.scss";
 
@@ -155,7 +155,7 @@ function EditInventory() {
       <main className="wrapper">
         <section className="box">
           <form className="form" onSubmit={handleSubmit}>
-            <SectionHeader title="Edit Inventory Item" />
+            <EditNav title="Edit Inventory Item" />
             <div className="form__card">
               <EditInventoryForm
                 sectionTitle="Item Details"
@@ -172,7 +172,7 @@ function EditInventory() {
                 handleChange={handleChange}
               />
             </div>
-            <FormFooter
+            <EditInventoryFooter
               onReset={handleReset}
               onSubmit={handleSubmit}
               isEditMode

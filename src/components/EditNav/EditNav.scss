@@ -1,0 +1,20 @@
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/typography" as *;
+
+.editNav {
+  &__header {
+    background-color: $primary-white;
+    padding: 2rem 1.5rem 1.5rem 1.5rem;
+  }
+
+  &__img {
+    display: flex;
+    gap: 0.5rem;
+  }
+
+  &__title {
+    color: $primary-inStockBlack;
+    font-weight: 600;
+  }
+}

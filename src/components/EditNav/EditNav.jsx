@@ -1,11 +1,10 @@
-// SectionHeader.js
 import React from 'react';
 import PropTypes from 'prop-types';
 import { useNavigate } from 'react-router-dom';
-import './SectionHeader.scss'; 
 import icon from '../../assets/icons/arrow_back-24px.svg'; 
+import './EditNav.scss';
 
-const SectionHeader = ({ title }) => {
+const EditNav = ({ title }) => {
   const navigate = useNavigate();
 
   const handleBackClick = () => {
@@ -13,23 +12,22 @@ const SectionHeader = ({ title }) => {
   };
 
   return (
-    <div className="form-container__header">
-      <div className="form-container__icon-title">
+    <div className="editNav__header">
+      <div className="editNav__img">
         <img 
           src={icon} 
           alt="Icon" 
-          className="form-container__icon" 
+          className="editNav__icon" 
           onClick={handleBackClick} 
         />
-        <h1 className="form-container__title">{title}</h1>
+        <h1 className="editNav__title">{title}</h1>
       </div>
-      <div className="form-container__divider"></div>
     </div>
   );
 };
 
-SectionHeader.propTypes = {
+EditNav.propTypes = {
   title: PropTypes.string.isRequired,
 };
 
-export default SectionHeader;
+export default EditNav;
