@@ -62,7 +62,6 @@ function EditInventory() {
     "Health",
   ];
 
-  //TODO
   const warehouseOptions = [
     {
       warehouseName: "Manhattan",
