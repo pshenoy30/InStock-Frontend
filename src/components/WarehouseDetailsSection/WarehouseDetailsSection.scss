@@ -1,0 +1,43 @@
+@use "../../styles/partials/globals" as *;
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/variables" as *;
+
+.details {
+  padding: 1.5rem;
+  border-top: 1px solid $secondary-cloud;
+  display: flex;
+  flex-direction: column;
+  gap: 2.25rem;
+
+  &__title {
+    color: $secondary-slate;
+  }
+
+  &__subcontainer {
+    @include tablet {
+      display: flex;
+      flex-direction: column;
+    }
+  }
+
+  &__data {
+    color: $primary-inStockBlack;
+  }
+
+  &__card {
+    display: flex;
+    flex: 1;
+  }
+
+  &__subcard {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+  }
+
+  &__person, 
+  &__info {
+    display: flex;
+    flex-direction: column;
+  }
+}

@@ -1,13 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import icon from "../../assets/icons/arrow_back-24px.svg";
 import Buttons from "../Buttons/Buttons";
 import "./EditNav.scss";
 
-const EditNav = ({ inventoryId, title, buttonText }) => {
-  const [showButton, setShowButton] = useState(true);
+const EditNav = ({ inventoryId, title, buttonText, showButton }) => {
   const navigate = useNavigate();
 
   const handleBackClick = () => {

@@ -195,7 +195,7 @@ function EditInventory() {
       <main className="wrapper">
         <section className="box">
           <form className="form" onSubmit={handleSubmit}>
-            <EditNav title="Edit Inventory Item" />
+            <EditNav title="Edit Inventory Item" showButton={false} />
             <div className="form__card">
               <EditInventoryForm
                 className="form__subcard-left"

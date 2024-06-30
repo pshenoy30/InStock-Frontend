@@ -24,7 +24,7 @@ function List({
         <article className="list__container">
             <div className="list__card">
                 <h3 className="list__title">{title1}</h3>
-                <Link to={`./${relativePath}`}>  
+                <Link to={`./${relativePath}`} className="list__link">  
                   <div className="list__subcard">
                         <h3 className="list__entry list__entry--interactive">{val1}</h3>
                         <img className="list__img" src={arrowImg} alt="expand details button"></img> 
