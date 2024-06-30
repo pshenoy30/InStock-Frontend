@@ -1,9 +1,10 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import HomePage from "../src/pages/Homepage/Homepage.jsx";
-import Warehouse from "../src/pages/Warehouse/Warehouse.jsx";
+// import Warehouse from "../src/pages/Warehouse/Warehouse.jsx";
 import Inventory from "../src/pages/Inventory/Inventory.jsx";
 import AddWarehouse from "../src/pages/AddWarehouse/AddWarehouse.jsx";
 import InventoryItem from "../src/pages/InventoryItem/InventoryItem.jsx";
+import InventorybyWarehouse from "../src/pages/InventoryByWarehouse/InventorybyWarehouse";
 import NotFoundPage from "../src/pages/NotFoundPage/NotFoundPage.jsx";
 import "./App.scss";
 import EditWarehouse from "../src/pages/EditWarehouse/EditWarehouse.jsx";
