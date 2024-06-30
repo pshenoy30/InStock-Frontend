@@ -168,9 +168,7 @@ function EditInventory() {
         };
         const API_URL = import.meta.env.VITE_BACKEND_URL;
         const updateUrl = `${API_URL}/inventory/${id}`;
-        console.log(updatedFormData);
         await axios.put(updateUrl, updatedFormData);
-        console.log("Inventory updated successfully");
       } catch (error) {
         console.error("Error updating inventory:", error);
       }

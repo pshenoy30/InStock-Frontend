@@ -1,13 +1,13 @@
-import SearchNav from "../../components/SearchNav/SearchNav";
-import Header from "../../components/Header/Header";
-import Footer from "../../components/Footer/Footer";
-import getWarehouseById from "../../utils/getSingleWarehouse.jsx";
-import getInventoryBasedOnWarehouseById from "../../utils/getInventoryItemsBasedOnWarehouseId.jsx";
-import List from "../../components/List/List.jsx";
-import MediaQuery from "react-responsive";
-import "./Warehouse.scss";
 import { useParams } from "react-router-dom";
 import { useEffect,useState } from "react";
+import MediaQuery from "react-responsive";
+import Header from "../../components/Header/Header";
+import Footer from "../../components/Footer/Footer";
+import SearchNav from "../../components/SearchNav/SearchNav";
+import List from "../../components/List/List.jsx";
+import getWarehouseById from "../../utils/getSingleWarehouse.jsx";
+import getInventoryBasedOnWarehouseById from "../../utils/getInventoryItemsBasedOnWarehouseId.jsx";
+import "./Warehouse.scss";
 
 function Warehouse() {
   const [warehouseDetails, setWarehouseDetails] = useState(null);
@@ -88,7 +88,7 @@ function Warehouse() {
                 <>
                   <List
                     id={id}
-                    relativePath={"inventories/" + id}
+                    relativePath={"/" + id}
                     title1="inventory item"
                     val1={item_name}
                     title2="category"

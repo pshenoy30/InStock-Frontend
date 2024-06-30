@@ -14,11 +14,6 @@ const EditNav = ({ inventoryId, title, buttonText }) => {
     navigate("/inventories");
   };
 
-  const handleEditClick = (e) => {
-    e.preventDefault();
-    console.log("Edit button clicked");
-  };
-
   return (
     <section className="editNav__header">
       <div className="editNav__img">

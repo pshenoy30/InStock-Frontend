@@ -1,4 +1,4 @@
-import { Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import deleteImg from '../../assets/icons/delete_outline-24px.svg';
 import editImg from '../../assets/icons/edit-24px.svg';
 import arrowImg from '../../assets/icons/chevron_right-24px.svg';
@@ -18,7 +18,6 @@ function List({
   title5,
   val5,
 }) {
-  console.log("entered list");
   return (
     <article className="list" key={id}>
       <article className="list__left">
