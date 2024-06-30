@@ -10,7 +10,6 @@ const EditInventoryFooter = ({
   isEditMode,
 }) => {
   const secondButtonLabel = isEditMode ? "Save" : "+ Add New Warehouse";
-  console.log(inventoryId);
   return (
     <div className="editInventory__footer">
       <Link to={`../../inventories`}>
