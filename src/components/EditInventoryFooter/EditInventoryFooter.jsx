@@ -3,12 +3,17 @@ import { Link } from "react-router-dom";
 import Buttons from "../Buttons/Buttons";
 import "./EditInventoryFooter.scss";
 
-const EditInventoryFooter = ({ inventoryId, onReset, onSubmit, isEditMode }) => {
+const EditInventoryFooter = ({
+  inventoryId,
+  onReset,
+  onSubmit,
+  isEditMode,
+}) => {
   const secondButtonLabel = isEditMode ? "Save" : "+ Add New Warehouse";
-console.log(inventoryId);
+  console.log(inventoryId);
   return (
     <div className="editInventory__footer">
-      <Link to={`../edit-inventory/${inventoryId}`}>
+      <Link to={`../../inventories`}>
         <Buttons buttonName="Cancel" type="button" onClick={onReset} />
       </Link>
       <Buttons

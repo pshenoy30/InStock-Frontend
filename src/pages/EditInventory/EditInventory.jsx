@@ -145,7 +145,9 @@ function EditInventory() {
   };
 
   const handleSubmit = async (e) => {
+    console.log("entered handle submit");
     e.preventDefault();
+
     if (!id) {
       console.error("No inventory ID provided for update");
       return;
@@ -215,6 +217,7 @@ function EditInventory() {
               />
             </div>
             <EditInventoryFooter
+              inventoryId={ id }
               onReset={handleReset}
               onSubmit={handleSubmit}
               isEditMode
