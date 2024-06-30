@@ -8,7 +8,6 @@
   &__primary,
   &__secondary,
   &__delete,
-  &__edit,
   &__save { 
     min-width: 4.4375rem;
     height: 2.375rem;
@@ -91,7 +90,6 @@
 
   &__edit {
     color: $primary-white;
-    width: 5.0625rem;
     background-image: url("../../assets/icons/edit-white-24px.svg");
     background-size: 1.25rem 1.25rem;
     background-repeat: no-repeat;
@@ -99,10 +97,19 @@
     background-color: $primary-inStockIndigo;
     padding: 0.5rem 2rem 0.5rem 2.5rem;
     border: 1px solid $primary-inStockIndigo;
+    border-radius: 20px;
 
     &:hover {
       background-color: $background-graphite;
       border-color: $background-graphite;
+    }
+
+    @include mobile {
+      width: 2.25rem;
+      height: 2.25rem;
+      text-indent: -9999px; // This will push the text out of the visible area
+      padding: 0.5rem; 
+      background-position: center;
     }
 
     @include tablet {
