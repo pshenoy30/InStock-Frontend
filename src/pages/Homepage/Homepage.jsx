@@ -40,6 +40,7 @@ export default function Homepage() {
                 <>
                   <List
                     id={id}
+                    relativePath={"warehouse/" + id}
                     listType="warehouse"
                     title1="Warehouse"
                     val1={warehouse_name}

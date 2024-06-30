@@ -2,10 +2,10 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import EditInventoryForm from "../../components/EditInventoryForm/EditInventoryForm";
-import Footer from "../../components/Footer/Footer";
-import FormFooter from "../../components/FormFooter/FormFooter";
 import Header from "../../components/Header/Header";
-import SectionHeader from "../../components/SectionHeader/SectionHeader";
+import Footer from "../../components/Footer/Footer";
+import EditNav from "../../components/EditNav/EditNav";
+import EditInventoryFooter from "../../components/EditInventoryFooter/EditInventoryFooter";
 import getInventoryById from "../../utils/getInventoryById";
 import "./EditInventory.scss";
 
@@ -28,6 +28,7 @@ function EditInventory() {
             status: InventoryData.status,
             quantity: InventoryData.quantity,
             warehouseName: InventoryData.warehouse_name,
+            warehouseId: InventoryData.warehouse_id,
           });
         }
       } catch (error) {
@@ -40,7 +41,6 @@ function EditInventory() {
 
   //validate form data
   const validateFormData = (data) => {
-    console.log(data);
     const errors = {};
     if (!data.itemName) errors.itemName = "Item Name is required";
     if (!data.description) errors.description = "Description is required";
@@ -60,6 +60,41 @@ function EditInventory() {
     "Electronics",
     "Gear",
     "Health",
+  ];
+
+  const warehouseOptions = [
+    {
+      warehouseName: "Manhattan",
+      warehouseId: "1",
+    },
+    {
+      warehouseName: "Washington",
+      warehouseId: "2",
+    },
+    {
+      warehouseName: "Jersey",
+      warehouseId: "3",
+    },
+    {
+      warehouseName: "SF",
+      warehouseId: "4",
+    },
+    {
+      warehouseName: "Santa Monica",
+      warehouseId: "5",
+    },
+    {
+      warehouseName: "Seattle",
+      warehouseId: "6",
+    },
+    {
+      warehouseName: "Miami",
+      warehouseId: "7",
+    },
+    {
+      warehouseName: "Boston",
+      warehouseId: "8",
+    },
   ];
 
   const inventoryFields = [
@@ -91,7 +126,8 @@ function EditInventory() {
     {
       name: "warehouseName",
       label: "Warehouse",
-      type: "text",
+      type: "drop-down",
+      options: warehouseOptions.map((option) => option.warehouseName),
     },
   ];
 
@@ -123,12 +159,16 @@ function EditInventory() {
           description: formData.description,
           category: formData.category,
           status: formData.status,
-          warehouseName: formData.warehouse,
+          warehouseName: formData.warehouseName,
+          warehouseId: getWarehouseIdByName(
+            formData.warehouseName,
+            warehouseOptions
+          ),
+          quantity: formData.quantity,
         };
         const API_URL = import.meta.env.VITE_BACKEND_URL;
         const updateUrl = `${API_URL}/inventory/${id}`;
         await axios.put(updateUrl, updatedFormData);
-        console.log("Inventory updated successfully");
       } catch (error) {
         console.error("Error updating inventory:", error);
       }
@@ -155,9 +195,10 @@ function EditInventory() {
       <main className="wrapper">
         <section className="box">
           <form className="form" onSubmit={handleSubmit}>
-            <SectionHeader title="Edit Inventory Item" />
+            <EditNav title="Edit Inventory Item" showButton={false} />
             <div className="form__card">
               <EditInventoryForm
+                className="form__subcard-left"
                 sectionTitle="Item Details"
                 fields={inventoryFields}
                 formData={formData}
@@ -165,6 +206,7 @@ function EditInventory() {
                 handleChange={handleChange}
               />
               <EditInventoryForm
+                className="form__subcard-right"
                 sectionTitle="Item Availability"
                 fields={availabilityFields}
                 formData={formData}
@@ -172,7 +214,7 @@ function EditInventory() {
                 handleChange={handleChange}
               />
             </div>
-            <FormFooter
+            <EditInventoryFooter
               onReset={handleReset}
               onSubmit={handleSubmit}
               isEditMode
@@ -186,3 +228,10 @@ function EditInventory() {
 }
 
 export default EditInventory;
+
+function getWarehouseIdByName(inputName, warehouseOptions) {
+  const warehouse = warehouseOptions.find(
+    (option) => option.warehouseName === inputName
+  );
+  return warehouse.warehouseId;
+}

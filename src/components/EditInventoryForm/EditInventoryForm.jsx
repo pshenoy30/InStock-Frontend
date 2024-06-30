@@ -35,9 +35,8 @@ const EditInventoryForm = ({
               </select>
             ) : type === "radio" ? (
               options.map((option, index) => (
-                <div key={index}>
+                <div key={index} className="form__radio">
                   <input
-                    className="form__radio"
                     type="radio"
                     name={name}
                     value={option}

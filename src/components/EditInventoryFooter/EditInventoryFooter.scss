@@ -1,0 +1,15 @@
+@use "../../styles/partials/globals" as *;
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/typography" as *;
+
+.editInventory__footer {
+    box-sizing: border-box;
+    height: 4.375rem;
+    background-color: $background-lightgrey;
+    display: flex;
+    gap: 1rem;
+    padding: 1rem 2rem;
+    justify-content: flex-end;
+}
+  
