@@ -2,7 +2,7 @@ import React from "react";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import MediaQuery from "react-responsive";
-import SearchNav from "../../components/SearchNav/SearchNav";
+import EditNav from "../../components/EditNav/EditNav";
 import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
 import List from "../../components/List/List";
@@ -70,7 +70,7 @@ function InventorybyWarehouse() {
       <Header />
       <main className="wrapper">
         <section className="box">
-          <SearchNav title="Inventory" buttonText="+ Add New Item" />
+          <EditNav title="Inventory" buttonText="Edit" showButton={true} />
           <WarehouseDetailsSection warehouseData={warehouseData} />
           <MediaQuery maxWidth={767}>
             {inventoryItem.map((inventory) => {
@@ -97,7 +97,7 @@ function InventorybyWarehouse() {
             <Table
               listheader={tableHeader}
               listData={inventoryItem}
-              listType="inventory"
+              listType="inventoryWarehouseId"
             />
           </MediaQuery>
         </section>

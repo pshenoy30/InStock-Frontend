@@ -30,8 +30,18 @@ function Table({ listData, listType, listheader }) {
         element.warehouseName = item.warehouse_name;
         tableInfo.push(element);
       });
+    } else if (listType === "inventoryWarehouseId") {
+      listData.forEach((item) => {
+        let element = {};
+        element.id = item.id;
+        element.itemName = item.item_name;
+        element.category = item.category;
+        element.status = item.status;
+        element.quantity = item.quantity;
+        tableInfo.push(element);
+      });
+      return tableInfo;
     }
-    return tableInfo;
   }
 
   createTableInfo();
@@ -79,7 +89,7 @@ function Table({ listData, listType, listheader }) {
         </tbody>
       </table>
     );
-  } else {
+  } else if (listType === "inventory") {
     return (
       <table className="list__table">
         <thead className="list__header">
@@ -128,7 +138,54 @@ function Table({ listData, listType, listheader }) {
         </tbody>
       </table>
     );
+  } else if (listType === "inventoryWarehouseId") {
+    return (
+      <table className="list__table">
+        <thead className="list__header">
+          <tr className="list__row">
+            {listheader.map((headerTitle) => (
+              <th className="list__columnheader" key={headerTitle.id}>
+                {headerTitle.header}
+                <img
+                  className="list__sort"
+                  src={sortImg}
+                  alt="sort button"
+                ></img>
+              </th>
+            ))}
+          </tr>
+        </thead>
+        <tbody className="list__body">
+          {tableInfo.map((data) => (
+            <tr className="list__records">
+              <Link to={`./${data.id}`} className="list__link">
+                <td className="list__detail list__detail--left">
+                  {data.itemName}
+                  <img
+                    className="list__img"
+                    src={arrowImg}
+                    alt="expand details button"
+                  ></img>
+                </td>
+              </Link>
+              <td className="list__detail list__detail--smaller">
+                {data.category}
+              </td>
+              <td className="list__detail">{data.status}</td>
+              <td className="list__detail list__detail--larger">
+                {data.quantity}
+              </td>
+              <td className="list__actions">
+                <img src={deleteImg} alt="delete button"></img>
+                <Link to={`../edit-inventory/${data.id}`}>
+                  <img src={editImg} alt="edit button"></img>
+                </Link>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    );
   }
 }
-
 export default Table;
