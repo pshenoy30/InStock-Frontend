@@ -13,7 +13,7 @@ import "./List.scss";
 
 function List({
   id,
-  listType,
+  relativePath,
   title1,
   val1,
   title2,
@@ -76,8 +76,13 @@ function List({
           </article>
           <article className="list__right">
             <div className="list__card">
-              <h3 className="list__title">{title3}</h3>
-              <h3 className="list__detail">{val3}</h3>
+                <h3 className="list__title">{title1}</h3>
+                <Link to={`./${relativePath}`}>  
+                  <div className="list__subcard">
+                        <h3 className="list__entry list__entry--interactive">{val1}</h3>
+                        <img className="list__img" src={arrowImg} alt="expand details button"></img> 
+                  </div>
+                </Link> 
             </div>
             <div className="list__card">
               <h3 className="list__title">{title4}</h3>
@@ -109,8 +114,6 @@ function List({
         </Modal>
       </MediaQuery>
       <MediaQuery minWidth={768}>
-        <table className="list__table">
-          <tbody className="list__body">
             <tr className="list__records" key={id}>
               <td className="list__detail list__detail--left">{val1} <img className="list__img" src={arrowImg} alt="expand details button"></img></td>
               <td className="list__detail list__detail--smaller">{val2}</td>
@@ -141,8 +144,6 @@ function List({
                 <img src={editImg} alt="edit button"></img>
               </td>
             </tr>
-          </tbody>
-        </table>
       </MediaQuery>
     </>
   );

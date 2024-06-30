@@ -3,14 +3,13 @@
 @use "../../styles/partials/variables" as *;
 @use "../../styles/partials/typography" as *;
 
-.warehouse{
+.editInventory__footer {
+    box-sizing: border-box;
+    height: 4.375rem;
     background-color: $background-lightgrey;
-
-    &__box{
-        width:91.5vw;
-        margin-left: 1rem;
-        border-radius: 5px;
-        background-color: $primary-white;
-    }
-    
+    display: flex;
+    gap: 1rem;
+    padding: 1rem 2rem;
+    justify-content: flex-end;
 }
+  

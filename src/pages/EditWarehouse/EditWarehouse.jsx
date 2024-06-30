@@ -110,7 +110,7 @@ const EditWarehouse = () => {
                 console.error("Error updating warehouse:", error);
             }
         } else {
-            setFormErrors(errors);
+            setFormErrors(errorOutput);
         }
     };
 

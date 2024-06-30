@@ -16,6 +16,12 @@
     border-radius: 20px;
     cursor: pointer;
 
+    @include mobile {
+      width: 100%;
+      max-width: none;
+      height: 2.25rem;
+    }
+
     @include tablet {
       max-width: 100%;
       height: 2.375rem;
@@ -25,15 +31,9 @@
       max-width: 100%;
       height: 2.375rem;
     }
-
-    @include mobile {
-      width: 100%;
-      max-width: none;
-      height: 2.25rem;
-    }
+   
   }
 
-  &__primary,
   &__save { 
     color: $primary-white;
     background-color: $primary-inStockIndigo;
@@ -42,6 +42,28 @@
     &:hover {
       background-color: $background-graphite;
       border-color: $background-graphite;
+    }
+  }
+
+  &__primary {
+    width: auto;
+    color: $primary-white;
+    background-color: $primary-inStockIndigo;
+    border: 1px solid $primary-inStockIndigo;
+
+    &:hover {
+      background-color: $background-graphite;
+      border-color: $background-graphite;
+    }
+
+    @include tablet {
+      width: 100%;
+      max-width: 11rem;
+    }
+
+    @include desktop {
+      width: 100%;
+      max-width: 11.5rem;
     }
   }
 
@@ -68,6 +90,7 @@
   }
 
   &__edit {
+    color: $primary-white;
     width: 5.0625rem;
     background-image: url("../../assets/icons/edit-white-24px.svg");
     background-size: 1.25rem 1.25rem;
@@ -80,6 +103,10 @@
     &:hover {
       background-color: $background-graphite;
       border-color: $background-graphite;
+    }
+
+    @include tablet {
+      max-width: 5.0625rem;
     }
   }
 }
