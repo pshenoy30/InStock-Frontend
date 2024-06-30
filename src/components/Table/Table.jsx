@@ -47,43 +47,45 @@ function Table({ listData, listType, listheader }) {
   createTableInfo();
   if (listType === "warehouse") {
     return (
-      <table className="list__table">
-        <thead className="list__header">
-          <tr className="list__row">
+      <table className="table-element__table">
+        <thead className="table-element__header">
+          <tr className="table-element__row">
             {listheader.map((headerTitle) => (
-              <th className="list__columnheader" key={headerTitle.id}>
-                {headerTitle.header}{" "}
-                <img
-                  className="list__sort"
-                  src={sortImg}
-                  alt="sort button"
-                ></img>
+              <th className="table-element__columnheader" key={headerTitle.id}>
+                <div className="table-element__columnheader--align">
+                  {headerTitle.header}{" "}
+                  <img
+                    className="table-element__sort"
+                    src={sortImg}
+                    alt="sort button"
+                  ></img>
+                </div>
               </th>
             ))}
           </tr>
         </thead>
-        <tbody className="list__body">
+        <tbody className="table-element__body">
           {tableInfo.map((data) => (
-            <tr className="list__records" key={data.id}>
-              <td className="list__detail list__detail--left">
-                {data.warehouseName}
-                <img
-                  className="list__img"
-                  src={arrowImg}
-                  alt="expand details button"
-                ></img>
-              </td>
-              <td className="list__detail list__detail--smaller">
-                {data.address}
-              </td>
-              <td className="list__detail">{data.contactName}</td>
-              <td className="list__detail list__detail--larger">
-                {data.contactInformation}
-              </td>
-              <td className="list__actions">
-                <img src={deleteImg} alt="delete button"></img>
-                <img src={editImg} alt="edit button"></img>
-              </td>
+            <tr className="table-element__records" key={data.id}>
+              <td className="table-element__detail table-element__detail--left">
+                  {data.warehouseName}
+                  <img
+                    className="list__img"
+                    src={arrowImg}
+                    alt="expand details button"
+                  ></img>
+                </td>
+                <td className="table-element__detail">
+                  {data.address}
+                </td>
+                <td className="table-element__detail">{data.contactName}</td>
+                <td className="table-element__detail">
+                  {data.contactInformation}
+                </td>
+                <td className="table-element__detail table-element__actions">
+                  <img src={deleteImg} alt="delete button"></img>
+                  <img src={editImg} alt="edit button"></img>
+                </td>
             </tr>
           ))}
         </tbody>
@@ -91,14 +93,14 @@ function Table({ listData, listType, listheader }) {
     );
   } else if (listType === "inventory") {
     return (
-      <table className="list__table">
-        <thead className="list__header">
-          <tr className="list__row">
+      <table className="table-element__table">
+        <thead className="table-element__header">
+          <tr className="table-element__row">
             {listheader.map((headerTitle) => (
-              <th className="list__columnheader" key={headerTitle.id}>
+              <th className="table-element__columnheader" key={headerTitle.id}>
                 {headerTitle.header}
                 <img
-                  className="list__sort"
+                  className="table-element__sort"
                   src={sortImg}
                   alt="sort button"
                 ></img>
@@ -106,28 +108,28 @@ function Table({ listData, listType, listheader }) {
             ))}
           </tr>
         </thead>
-        <tbody className="list__body">
+        <tbody className="table-element__body">
           {tableInfo.map((data) => (
-            <tr className="list__records">
-              <Link to={`./${data.id}`} className="list__link">
-                <td className="list__detail list__detail--left">
+            <tr className="table-element__records">
+              <Link to={`./${data.id}`} className="table-element__link">
+                <td className="table-element__detail table-element__detail--left">
                   {data.itemName}
                   <img
-                    className="list__img"
+                    className="table-element__img"
                     src={arrowImg}
                     alt="expand details button"
                   ></img>
                 </td>
               </Link>
-              <td className="list__detail list__detail--smaller">
+              <td className="table-element__detail table-element__detail--smaller">
                 {data.category}
               </td>
-              <td className="list__detail">{data.status}</td>
-              <td className="list__detail list__detail--larger">
+              <td className="table-element__detail">{data.status}</td>
+              <td className="table-element__detail table-element__detail--larger">
                 {data.quantity}
               </td>
-              <td className="list__detail">{data.warehouseName}</td>
-              <td className="list__actions">
+              <td className="table-element__detail">{data.warehouseName}</td>
+              <td className="table-element__actions">
                 <img src={deleteImg} alt="delete button"></img>
                 <Link to={`../edit-inventory/${data.id}`}>
                   <img src={editImg} alt="edit button"></img>
@@ -140,14 +142,14 @@ function Table({ listData, listType, listheader }) {
     );
   } else if (listType === "inventoryWarehouseId") {
     return (
-      <table className="list__table">
-        <thead className="list__header">
-          <tr className="list__row">
+      <table className="table-element__table">
+        <thead className="table-element__header">
+          <tr className="table-element__row">
             {listheader.map((headerTitle) => (
-              <th className="list__columnheader" key={headerTitle.id}>
+              <th className="table-element__columnheader" key={headerTitle.id}>
                 {headerTitle.header}
                 <img
-                  className="list__sort"
+                  className="table-element__sort"
                   src={sortImg}
                   alt="sort button"
                 ></img>
@@ -155,27 +157,27 @@ function Table({ listData, listType, listheader }) {
             ))}
           </tr>
         </thead>
-        <tbody className="list__body">
+        <tbody className="table-element__body">
           {tableInfo.map((data) => (
-            <tr className="list__records">
-              <Link to={`./${data.id}`} className="list__link">
-                <td className="list__detail list__detail--left">
+            <tr className="table-element__records">
+              <Link to={`./${data.id}`} className="table-element__link">
+                <td className="table-element__detail table-element__detail--left">
                   {data.itemName}
                   <img
-                    className="list__img"
+                    className="table-element__img"
                     src={arrowImg}
                     alt="expand details button"
                   ></img>
                 </td>
               </Link>
-              <td className="list__detail list__detail--smaller">
+              <td className="table-element__detail table-element__detail--smaller">
                 {data.category}
               </td>
-              <td className="list__detail">{data.status}</td>
-              <td className="list__detail list__detail--larger">
+              <td className="table-element__detail">{data.status}</td>
+              <td className="table-element__detail table-element__detail--larger">
                 {data.quantity}
               </td>
-              <td className="list__actions">
+              <td className="table-element__actions">
                 <img src={deleteImg} alt="delete button"></img>
                 <Link to={`../edit-inventory/${data.id}`}>
                   <img src={editImg} alt="edit button"></img>

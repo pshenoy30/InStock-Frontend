@@ -3,12 +3,6 @@
 @use "../../styles/partials/variables" as *;
 @use "../../styles/partials/typography" as *;
 
-*{
-  @include tablet{
-    all: revert;
-  }
-}
-
 .list {
   padding-top: 1rem;
   padding: 1.5rem;
@@ -72,7 +66,6 @@
     background-color: $primary-white;
 
     @include tablet {
-      width:revert;
       text-align: center;
     }
 
@@ -84,6 +77,12 @@
 
     &--no-link{
       height: 1.5rem;
+    }
+
+    &--address{
+      @include tablet{
+        width: 83%;
+      }
     }
   }
 
@@ -126,9 +125,6 @@
     display: flex;
     gap: 0.5rem;
     padding-right: 2rem;
-    @include tablet{
-      all: revert;
-    }
   }
 
   &__modal{

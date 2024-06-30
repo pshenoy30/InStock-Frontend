@@ -2,10 +2,9 @@
 @use "../../styles/partials/mixins" as *;
 @use "../../styles/partials/variables" as *;
 
-.list {
+.table-element {
   padding-top: 1rem;
   padding: 1.5rem;
-  display: flex;
   border-top: 1px solid $secondary-cloud;
   background-color: $primary-white;
 
@@ -13,7 +12,6 @@
     background-color: $primary-white;
     width: 100%;
     padding-bottom: 1rem;
-    display: flex;
     flex-direction: column;
     border-collapse: collapse;
     table-layout: fixed;
@@ -27,7 +25,6 @@
     background-color: $background-lightgrey;
     box-sizing: border-box;
     width: 100%;
-    display: inline-flex;
     gap: 0.5rem;
     padding: 0.6875rem 0;
     align-items: center;
@@ -43,11 +40,7 @@
     box-sizing: border-box;
     width: 100%;
     border-top: 1px solid $secondary-cloud;
-    display: inline-flex;
-    gap: 0.5rem;
-    padding-top: 1rem;
-    padding-bottom: 1rem;
-    align-items: center;
+    vertical-align: top;
   }
 
   &__link {
@@ -58,7 +51,6 @@
     width: 100%;
     background-color: $background-lightgrey;
     box-sizing: border-box;
-    display: flex;
     gap: 2.75rem;
     padding-left: 2rem;
     align-items: center;
@@ -75,13 +67,18 @@
     font-size: 0.6875rem;
     font-weight: 400;
     line-height: 1rem;
-    display: flex;
-    align-items: center;
-    gap: 0.25rem;
+    padding: 0.5rem 0 0.5rem 2rem;
+    &:nth-child(5) &--align{
+      margin-left: 1rem;
+    }
 
-    @include tablet {
-      font-size: 0.75rem;
-      line-height: 1.125rem;
+    &:nth-child(4){
+      width:100%;
+    }
+
+    &--align{
+      display: flex;
+      align-items: center;
     }
 
     @include desktop {
@@ -91,10 +88,11 @@
   }
 
   &__detail {
-    font-size: 0.8125rem;
+    font-size: 0.875rem;
+    line-height: 1.375rem;
     font-weight: 400;
-    line-height: 1.25rem;
     text-align: left;
+    padding: 1rem 0 1rem 2rem;
 
     @include tablet {
       font-size: 0.875rem;
@@ -107,14 +105,13 @@
     }
 
     &--left {
-      font-size: 0.8125rem;
+      color: $primary-inStockIndigo;
+      font-size: 0.875rem;
+      line-height: 1.375rem;
       font-weight: 600;
-      line-height: 1.25rem;
-
-      @include tablet {
-        font-size: 0.875rem;
-        line-height: 1.375rem;
-      }
+      display: flex;
+      padding-left: 2.25rem;
+      width: 7.5rem;
 
       @include desktop {
         font-size: 0.875rem;
@@ -125,10 +122,15 @@
 
   &__right {
     background-color: $primary-white;
-    display: flex;
     flex-direction: column;
     flex: 1;
     gap: 1rem;
     justify-content: space-between;
+  }
+
+  &__actions {
+    display: flex;
+    gap: 0.5rem;
+    padding-left: 3rem;
   }
 }
