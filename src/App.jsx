@@ -1,14 +1,13 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import HomePage from "../src/pages/Homepage/Homepage.jsx";
-// import Warehouse from "../src/pages/Warehouse/Warehouse.jsx";
-import Inventory from "./pages/Inventory/Inventory.jsx";
-import AddWarehouse from "./pages/AddWarehouse/AddWarehouse.jsx";
+import Warehouse from "../src/pages/Warehouse/Warehouse.jsx";
+import Inventory from "../src/pages/Inventory/Inventory.jsx";
+import AddWarehouse from "../src/pages/AddWarehouse/AddWarehouse.jsx";
 import InventoryItem from "../src/pages/InventoryItem/InventoryItem.jsx";
 import NotFoundPage from "../src/pages/NotFoundPage/NotFoundPage.jsx";
-import EditWarehouse from "./pages/EditWarehouse/EditWarehouse.jsx";
-import EditInventory from "./pages/EditInventory/EditInventory.jsx";
-import InventorybyWarehouse from "./pages/InventoryByWarehouse/InventorybyWarehouse.jsx";
 import "./App.scss";
+import EditWarehouse from "../src/pages/EditWarehouse/EditWarehouse.jsx";
+import EditInventory from "../src/pages/EditInventory/EditInventory.jsx";
 
 function App() {
   return (

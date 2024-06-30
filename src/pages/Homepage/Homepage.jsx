@@ -23,7 +23,7 @@ export default function Homepage() {
       <Header />
       <main className="wrapper">
         <section className="box">
-          <SearchNav title="Warehouse" buttonText="+ Add New Warehouse" />
+          <SearchNav TitlePage="Warehouse" buttonText="+ Add New Warehouse" />
           <MediaQuery maxWidth={767}>
             {warehouseDetails.map((warehouse) => {
               const {
