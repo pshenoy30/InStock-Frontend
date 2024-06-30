@@ -9,6 +9,23 @@
   flex-direction: column;
   gap: 2.25rem;
 
+  @include tablet {
+    flex-direction: row;
+  }
+
+  @include desktop {
+    flex-direction: row;
+    padding: 1.5rem 2.5rem;
+  }
+
+  &__container {
+    @include tablet {
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+    }
+  }
+
   &__title {
     color: $secondary-slate;
   }
@@ -27,6 +44,12 @@
   &__card {
     display: flex;
     flex: 1;
+
+    @include tablet {
+        border-left: 1px solid $secondary-cloud;
+        padding-left: 2.5rem;
+        flex: 2;
+    }
   }
 
   &__subcard {
