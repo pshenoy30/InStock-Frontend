@@ -50,6 +50,10 @@
     align-items: center;
   }
 
+  &__link {
+    text-decoration: none;
+  }
+
   &__row {
     width: 100%;
     background-color: $background-lightgrey;

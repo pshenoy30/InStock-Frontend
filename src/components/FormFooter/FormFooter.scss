@@ -5,31 +5,22 @@
 @use "../../styles/partials/typography" as *;
 @use "../../styles/partials/layout" as *;
 
-// @mixin flex-end($gap: 1rem) {
-//   display: flex;
-//   justify-content: flex-end;
-//   gap: $gap;
-// }
-
-// .form__footer {
-//   display: flex;
-//   justify-content: space-between;
-//   padding: 1rem;
-//   @include flex-end;
-//   background-color: $background-lightgrey;
-//   width: calc(100% + 4rem);
-//   padding: 2.25rem 2rem;
-//   box-sizing: border-box;
-//   margin: 0 -2rem -4.5rem;
-//   bottom: 0;
-// }
+@mixin flex-end($gap: 1rem) {
+  display: flex;
+  justify-content: flex-end;
+  gap: $gap;
+}
 
 .form__footer {
-  box-sizing: border-box;
-  height: 4.375rem;
-  background-color: $background-lightgrey;
   display: flex;
-  gap: 1rem;
-  padding: 1rem 2rem;
-  justify-content: flex-end;
+  justify-content: space-between;
+  padding: 1rem;
+  @include flex-end;
+  background-color: $background-lightgrey;
+  width: calc(100% + 4rem);
+  padding: 2.25rem 2rem;
+  box-sizing: border-box;
+  margin: 0 -2rem -4.5rem;
+  bottom: 0;
 }
+
