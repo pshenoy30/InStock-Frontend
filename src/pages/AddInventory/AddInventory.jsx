@@ -1,5 +1,5 @@
 // AddInventory.jsx
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import InventoryForm from "../../components/InventoryForm/InventoryForm";
 import Header from "../../components/Header/Header";
@@ -8,30 +8,39 @@ import SectionHeader from "../../components/SectionHeader/SectionHeader";
 import FormFooter from "../../components/FormFooter/FormFooter";
 import { BASE_URL_API } from "../../utils/editwarehouseApi";
 
-const validateEmail = (email) => {
-  const re = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-  return re.test(String(email).toLowerCase());
-};
-
-const validatePhoneNumber = (phoneNumber) => {
-  const re = /^\+?[1-9]\d{1,14}$/;
-  return re.test(String(phoneNumber));
-};
-
 const defaultFormData = {
-  warehouseName: "",
-  address: "",
-  city: "",
-  country: "",
-  contactName: "",
-  contactPosition: "",
-  contactPhone: "",
-  contactEmail: "",
+  item_name: "",
+  description: "",
+  category: "",
+  status: "In stock",
+  quantity: "",
+  warehouse_id: "",
 };
 
 const AddInventory = () => {
   const [formData, setFormData] = useState(defaultFormData);
   const [formErrors, setFormErrors] = useState({});
+  const [categories, setCategories] = useState([]);
+  const [warehouses, setWarehouses] = useState([]);
+  const [isUpdating, setIsUpdating] = useState(false);
+
+  useEffect(() => {
+    const fetchCategoriesAndWarehouses = async () => {
+      try {
+        const [categoriesResponse, warehousesResponse] = await Promise.all([
+          axios.get(`${BASE_URL_API}/inventory/categories`),
+          axios.get(`${BASE_URL_API}/warehouse/names`),
+        ]);
+
+        setCategories(categoriesResponse.data);
+        setWarehouses(warehousesResponse.data);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+
+    fetchCategoriesAndWarehouses();
+  }, []);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -41,25 +50,40 @@ const AddInventory = () => {
     });
   };
 
+  const checkIfUpdating = async (data) => {
+    try {
+      const response = await axios.get(`${BASE_URL_API}/inventory`, {
+        params: {
+          item_name: data.item_name,
+          category: data.category,
+          warehouse_id: data.warehouse_id,
+        },
+      });
+
+      if (response.data.length > 0) {
+        setIsUpdating(true);
+      } else {
+        setIsUpdating(false);
+      }
+    } catch (error) {
+      console.error("Error checking existing inventory:", error);
+      setIsUpdating(false);
+    }
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
+    await checkIfUpdating(formData);
     const errors = validateFormData(formData);
 
     if (Object.keys(errors).length === 0) {
+      const submissionData = {
+        ...formData,
+        quantity: formData.status === "Out of stock" ? "0" : formData.quantity,
+      };
+
       try {
-        const updatedFormData = {
-          warehouse_name: formData.warehouseName,
-          address: formData.address,
-          city: formData.city,
-          country: formData.country,
-          contact_name: formData.contactName,
-          contact_position: formData.contactPosition,
-          contact_phone: formData.contactPhone,
-          contact_email: formData.contactEmail,
-        };
-
-        await axios.post(`${BASE_URL_API}/warehouse`, updatedFormData);
-
+        await axios.post(`${BASE_URL_API}/inventory`, submissionData);
         handleReset();
       } catch (error) {
         console.error("Error submitting form:", error);
@@ -72,11 +96,25 @@ const AddInventory = () => {
   const handleReset = () => {
     setFormData(defaultFormData);
     setFormErrors({});
+    setIsUpdating(false);
   };
 
-  const warehouseFields = [
+  const validateFormData = (data) => {
+    const errors = {};
+    if (!data.item_name) errors.item_name = "Item Name is required";
+    if (data.status === "In stock" && !data.description)
+      errors.description = "Description is required";
+    if (!data.category) errors.category = "Category is required";
+    if (data.status === "In stock" && (!data.quantity || data.quantity < 0))
+      errors.quantity = "Quantity must be a positive number";
+    if (!data.warehouse_id) errors.warehouse_id = "Warehouse is required";
+
+    return errors;
+  };
+
+  const itemDetailsFields = [
     {
-      name: "itemName",
+      name: "item_name",
       label: "Item Name",
       type: "text",
       placeholder: "Item Name",
@@ -84,68 +122,50 @@ const AddInventory = () => {
     {
       name: "description",
       label: "Description",
-      type: "text",
+      type: "textarea",
       placeholder: "Please enter a brief item description...",
     },
     {
       name: "category",
       label: "Category",
       type: "select",
-      options: [
-        { value: "electronics", label: "Electronics" },
-        { value: "clothing", label: "Clothing" },
-        { value: "books", label: "Books" },
-      ],
+      options: categories.map((category, index) => ({
+        value: String(category.category),
+        label: category.category,
+        key: index,
+      })),
       placeholder: "Please select",
     },
+  ];
+
+  const availabilityFields = [
     {
       name: "status",
       label: "Status",
       type: "radio",
       options: [
-        { value: "inStock", label: "In stock" },
-        { value: "outOfStock", label: "Out of stock" },
+        { value: "In stock", label: "In stock", key: "in_stock" },
+        { value: "Out of stock", label: "Out of stock", key: "out_of_stock" },
       ],
     },
     {
       name: "quantity",
       label: "Quantity",
       type: "number",
-      placeholder: "0",
+      placeholder: "",
     },
     {
-      name: "warehouse",
+      name: "warehouse_id",
       label: "Warehouse",
       type: "select",
-      options: [
-        { value: "warehouse1", label: "Warehouse 1" },
-        { value: "warehouse2", label: "Warehouse 2" },
-        { value: "warehouse3", label: "Warehouse 3" },
-      ],
+      options: warehouses.map((warehouse, index) => ({
+        value: String(warehouse.warehouse_id),
+        label: warehouse.warehouse_name,
+        key: warehouse.warehouse_id,
+      })),
       placeholder: "Please select",
     },
   ];
-
-  const validateFormData = (data) => {
-    const errors = {};
-    if (!data.warehouseName) errors.warehouseName = "Item Name is required";
-    if (!data.address) errors.address = "Address is required";
-    if (!data.city) errors.city = "City is required";
-    if (!data.country) errors.country = "Country is required";
-    if (!data.contactName) errors.contactName = "Contact Name is required";
-    if (!data.contactPosition) errors.contactPosition = "Position is required";
-    if (!data.contactPhone) {
-      errors.contactPhone = "Phone Number is required";
-    } else if (!validatePhoneNumber(data.contactPhone)) {
-      errors.contactPhone = "Phone Number is invalid";
-    }
-    if (!data.contactEmail) {
-      errors.contactEmail = "Email is required";
-    } else if (!validateEmail(data.contactEmail)) {
-      errors.contactEmail = "Email is invalid";
-    }
-    return errors;
-  };
 
   return (
     <>
@@ -153,22 +173,34 @@ const AddInventory = () => {
       <main className="wrapper">
         <section className="mainBox">
           <div className="form-container">
-            <SectionHeader title="Add New Inventory Item" />
+            <SectionHeader
+              title="Add New Inventory Item"
+              backLink="/inventories/:inventoryId"
+            />
             <form className="form" onSubmit={handleSubmit}>
-              <InventoryForm
-                sectionTitle="Item Details"
-                fields={warehouseFields.slice(0, 3)}
-                formData={formData}
-                formErrors={formErrors}
-                handleChange={handleChange}
-              />
-              <InventoryForm
-                sectionTitle="Item Availability"
-                fields={warehouseFields.slice(3)}
-                formData={formData}
-                formErrors={formErrors}
-                handleChange={handleChange}
-              />
+              <div className="form__sections">
+                <InventoryForm
+                  sectionTitle="Item Details"
+                  fields={itemDetailsFields}
+                  formData={formData}
+                  formErrors={formErrors}
+                  handleChange={handleChange}
+                />
+                <div className="form__divider"></div>
+                <InventoryForm
+                  sectionTitle="Item Availability"
+                  fields={availabilityFields.filter(
+                    (field) =>
+                      !(
+                        field.name === "quantity" &&
+                        formData.status === "Out of stock"
+                      )
+                  )}
+                  formData={formData}
+                  formErrors={formErrors}
+                  handleChange={handleChange}
+                />
+              </div>
               <FormFooter
                 onReset={handleReset}
                 onSubmit={handleSubmit}

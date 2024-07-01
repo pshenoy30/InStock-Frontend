@@ -3,7 +3,6 @@
 @use "../../styles/partials/mixins" as *;
 @use "../../styles/partials/variables" as *;
 @use "../../styles/partials/typography" as *;
-@use "../../styles/partials/layout" as *;
 
 .form-container {
   padding: 2rem;
@@ -19,59 +18,86 @@
 
   .form {
     display: flex;
-    flex-wrap: wrap;
-    gap: 2rem;
+    flex-direction: column;
     background-color: $primary-white;
     margin-bottom: 2rem;
 
-    @media (max-width: $mobile-max-width) {
+    @media (min-width: $tablet-min-width) {
+      flex-direction: row;
+      gap: $tablet-gap;
+    }
+
+    &__sections {
+      display: flex;
       flex-direction: column;
+      width: 100%;
+      background-color: $primary-white;
+
+      @media (min-width: $tablet-min-width) {
+        flex-direction: row;
+      }
+    }
+
+    &__divider {
+      width: calc(100% + 4rem);
+      height: 1px;
+      background-color: $secondary-cloud;
+      margin: 2rem -2rem;
+
+      @media (min-width: $tablet-min-width) {
+        width: 1px;
+        height: auto;
+        margin: 0 2rem;
+      }
     }
 
     &__section {
       flex: 1;
       background-color: $primary-white;
-
-      &__heading {
-        font-size: 1.5rem;
-        margin-bottom: 1rem;
-      }
     }
 
     &__group {
       margin-bottom: 1rem;
-    }
 
-    &__label {
-      display: block;
-      margin-bottom: 0.25rem;
-      font-weight: bold;
-    }
-
-    &__input {
-      @include input-style;
-      margin-bottom: 1rem;
-      background-color: $primary-white;
-      height: 2.25rem;
-
-      @include tablet {
-        height: 2.375rem;
+      &__label {
+        display: block;
+        margin-bottom: 0.25rem;
+        @extend p2;
       }
     }
 
     &__textarea {
-      width: 100%;
-      padding: 0.5rem;
-      font-size: 1rem;
-      border: 1px solid #ccc;
-      border-radius: 0.25rem;
-      resize: vertical;
+      width: calc(100% + -2rem);
+      padding: 1rem;
+      background-color: $primary-white;
+      min-height: 7.5rem;
+      border-radius: 1.25rem;
+      resize: none;
+      border: 1px solid $secondary-cloud;
+      @include font-family;
+      color: $primary-inStockBlack;
+
+      &:focus {
+        outline: none;
+        border: 1px solid $primary-inStockIndigo;
+      }
+
+      &::placeholder {
+        @include font-family;
+        color: $secondary-slate;
+        @extend p2;
+      }
+    }
+
+    &__input {
+      color: $primary-inStockBlack;
     }
 
     &__error {
-      color: red;
-      font-size: 0.875rem;
+      color: $supporting-red;
+      font-size: 0.8125rem;
       margin-top: 0.25rem;
+      @include font-family;
     }
 
     &__select-wrapper {
@@ -83,69 +109,67 @@
         background-color: $primary-white;
         position: absolute;
         top: 50%;
-        right: 0.75rem;
+        right: 1rem;
         transform: translateY(-50%);
         width: 1.5rem;
-        height: 100%;
+        height: 85%;
         pointer-events: none;
         background-image: url("../../assets/icons/arrow_drop_down-24px.svg");
         background-repeat: no-repeat;
         background-position: center;
         background-size: contain;
       }
+
+      .form__input--category,
+      .form__input--warehouse_id {
+        padding-left: 0.8rem !important;
+        appearance: none;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        @extend p2;
+        color: $secondary-slate;
+      }
     }
 
     &__radio-group {
       display: flex;
       background-color: $primary-white;
+      gap: 10rem;
 
-      gap: 1rem;
-
-      &__radio-label {
-        display: flex;
-        align-items: center;
+      @media (min-width: $tablet-min-width) {
+        gap: $tablet-gap;
       }
 
-      &__radio {
+      .form__radio-label {
+        display: flex;
+        align-items: center;
+        @extend p2;
+        color: $secondary-slate;
+        background-color: $primary-white;
+
+        &--selected {
+          color: $primary-inStockBlack;
+        }
+      }
+
+      .form__radio {
         margin-right: 0.5rem;
+        @include font-family;
       }
     }
   }
 }
-
-.form__input--description {
-  height: 120px !important;
+.form__error {
+  display: flex;
   align-items: center;
+  color: red;
+  margin-top: 0.25rem;
+  font-size: 0.875rem;
 }
 
-.form__radio-group {
-  // align-items: center;
-  // flex-direction: column;
+.form__error-icon {
+  margin-right: 0.3125rem;
+  width: 16px;
+  height: 16px;
+  margin-top: 0.0625rem;
 }
-
-.form__radio-label {
-  background-color: $primary-white;
-  // align-items: center;
-  // margin-bottom: 8px;
-}
-
-.form__radio {
-  margin-right: 10px;
-}
-
-.form__radio--status__inStock {
-  // height: 20px;
-}
-
-.form__radio-label--status__inStock {
-  // font-weight: bold;
-}
-
-.form__radio--status__outOfStock {
-  // height: 30px;
-}
-
-.form__radio-label--status__outOfStock {
-  // font-style: italic;
-}
-

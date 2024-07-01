@@ -25,8 +25,8 @@ const FormFooter = ({
       ) : (
         <Buttons
           buttonName={thirdButtonLabel}
-          type="button"
-          clickHandler={onAddItem}
+          type="submit"
+          clickHandler={onSubmit}
         />
       )}
     </div>

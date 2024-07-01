@@ -1,5 +1,6 @@
 // FormInputs.jsx
 import React from "react";
+import errorIcon from "../../assets/icons/error-24px.svg";
 
 const FormInputs = ({
   sectionTitle,
@@ -26,7 +27,14 @@ const FormInputs = ({
             onChange={handleChange}
           />
           {formErrors[field.name] && (
-            <div className="form__error">{formErrors[field.name]}</div>
+            <div className="form__error">
+              <img
+                src={errorIcon}
+                alt="Error icon"
+                className="form__error-icon"
+              />
+              {formErrors[field.name]}
+            </div>
           )}
         </div>
       ))}

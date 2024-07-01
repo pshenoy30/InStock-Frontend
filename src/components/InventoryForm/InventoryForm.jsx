@@ -2,8 +2,15 @@
 import React from "react";
 import PropTypes from "prop-types";
 import "./InventoryForm.scss";
+import errorIcon from "../../assets/icons/error-24px.svg";
 
-const InventoryForm = ({ sectionTitle, fields, formData, formErrors, handleChange }) => {
+const InventoryForm = ({
+  sectionTitle,
+  fields,
+  formData,
+  formErrors,
+  handleChange,
+}) => {
   return (
     <div className="form__section">
       <h2 className="form__heading">{sectionTitle}</h2>
@@ -19,10 +26,13 @@ const InventoryForm = ({ sectionTitle, fields, formData, formErrors, handleChang
                 name={field.name}
                 value={formData[field.name]}
                 onChange={handleChange}
-                className={`form__input form__input--${field.name} ${formErrors[field.name] && "is-invalid"}`}
+                className={`form__input form__input--${field.name} ${
+                  formErrors[field.name] && "is-invalid"
+                }`}
               >
+                <option value="">{field.placeholder}</option>
                 {field.options.map((option) => (
-                  <option key={option.value} value={option.value}>
+                  <option key={option.key} value={option.value}>
                     {option.label}
                   </option>
                 ))}
@@ -36,12 +46,21 @@ const InventoryForm = ({ sectionTitle, fields, formData, formErrors, handleChang
               value={formData[field.name]}
               onChange={handleChange}
               placeholder={field.placeholder}
-              className={`form__textarea form__textarea--${field.name} ${formErrors[field.name] && "is-invalid"}`}
+              className={`form__textarea form__textarea--${field.name} ${
+                formErrors[field.name] && "is-invalid"
+              }`}
             />
           ) : field.type === "radio" ? (
             <div className="form__radio-group">
               {field.options.map((option) => (
-                <label key={option.value} className={`form__radio-label form__radio-label--${field.name}__${option.value}`}>
+                <label
+                  key={option.key}
+                  className={`form__radio-label ${
+                    formData[field.name] === option.value
+                      ? "form__radio-label--selected"
+                      : ""
+                  }`}
+                >
                   <input
                     type="radio"
                     id={option.value}
@@ -49,7 +68,9 @@ const InventoryForm = ({ sectionTitle, fields, formData, formErrors, handleChang
                     value={option.value}
                     checked={formData[field.name] === option.value}
                     onChange={handleChange}
-                    className={`form__radio form__radio--${field.name}__${option.value} ${formErrors[field.name] && "is-invalid"}`}
+                    className={`form__radio ${
+                      formErrors[field.name] && "is-invalid"
+                    }`}
                   />
                   {option.label}
                 </label>
@@ -63,11 +84,20 @@ const InventoryForm = ({ sectionTitle, fields, formData, formErrors, handleChang
               value={formData[field.name]}
               onChange={handleChange}
               placeholder={field.placeholder}
-              className={`form__input form__input--${field.name} ${formErrors[field.name] && "is-invalid"}`}
+              className={`form__input form__input--${field.name} ${
+                formErrors[field.name] && "is-invalid"
+              }`}
             />
           )}
           {formErrors[field.name] && (
-            <div className="form__error">{formErrors[field.name]}</div>
+            <div className="form__error">
+              <img
+                src={errorIcon}
+                alt="Error icon"
+                className="form__error-icon"
+              />
+              {formErrors[field.name]}
+            </div>
           )}
         </div>
       ))}
@@ -81,11 +111,20 @@ InventoryForm.propTypes = {
     PropTypes.shape({
       name: PropTypes.string.isRequired,
       label: PropTypes.string.isRequired,
-      type: PropTypes.oneOf(["text", "email", "number", "select", "textarea", "radio"]).isRequired,
+      type: PropTypes.oneOf([
+        "text",
+        "email",
+        "number",
+        "select",
+        "textarea",
+        "radio",
+      ]).isRequired,
       options: PropTypes.arrayOf(
         PropTypes.shape({
           value: PropTypes.string.isRequired,
           label: PropTypes.string.isRequired,
+          key: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
+            .isRequired,
         })
       ),
       placeholder: PropTypes.string,
