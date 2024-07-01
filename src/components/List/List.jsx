@@ -1,4 +1,6 @@
 import { Link } from 'react-router-dom';
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import deleteImg from '../../assets/icons/delete_outline-24px.svg';
 import editImg from '../../assets/icons/edit-24px.svg';
 import arrowImg from '../../assets/icons/chevron_right-24px.svg';
@@ -7,8 +9,6 @@ import Buttons from '../Buttons/Buttons';
 import Modal from 'react-modal';
 import deleteWarehouseDetails from '../../utils/deleteWarehouse';
 import deleteInventoryDetails from '../../utils/deleteInventoryItem';
-import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import "./List.scss";
 
 function List({
