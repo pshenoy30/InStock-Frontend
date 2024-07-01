@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import FormInputs from "../../components/FormInputs/FormInputs";
-import { defaultFormData } from "../../components/formUtils";
+import { defaultFormData } from "../../utils/formUtils";
 import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
 import SectionHeader from "../../components/SectionHeader/SectionHeader";

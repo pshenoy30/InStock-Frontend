@@ -51,7 +51,7 @@
       }
     }
 
-    &__section {
+    &__section-part {
       flex: 1;
       background-color: $primary-white;
     }
@@ -67,7 +67,7 @@
     }
 
     &__textarea {
-      width: calc(100% + -2rem);
+      // width: calc(100% + -2rem);
       padding: 1rem;
       background-color: $primary-white;
       min-height: 7.5rem;

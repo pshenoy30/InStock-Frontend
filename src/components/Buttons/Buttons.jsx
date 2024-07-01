@@ -1,5 +1,4 @@
-// Buttons.jsx
-import React from "react";
+import React from 'react';
 import "./Buttons.scss";
 
 function Buttons({ buttonName, type = "submit", clickHandler }) {
@@ -7,7 +6,10 @@ function Buttons({ buttonName, type = "submit", clickHandler }) {
     switch (buttonName) {
       case "+ Add New Warehouse":
       case "+ Add New Item":
-        return "button__primary";
+      return "button__primary" 
+      case "+ Add Item":
+        return "button__primary button__primary--item";
+        
       case "Cancel":
         return "button__secondary";
       case "Delete":
@@ -16,19 +18,14 @@ function Buttons({ buttonName, type = "submit", clickHandler }) {
         return "button__edit";
       case "Save":
         return "button__save";
-      case "+ Add Item":
-        return "button__item";
+        
       default:
         return "";
     }
   };
 
   return (
-    <button
-      type={type}
-      className={`button ${getClassToBeAssigned(buttonName)}`}
-      onClick={clickHandler}
-    >
+    <button type={type} className={getClassToBeAssigned(buttonName)} onClick={clickHandler}>
       {buttonName}
     </button>
   );

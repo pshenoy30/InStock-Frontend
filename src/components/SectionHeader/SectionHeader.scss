@@ -12,8 +12,9 @@
 
   .form-container__icon-title {
     display: flex;
-    align-items: center;
+    align-items: flex-end;
     background-color: $primary-white;
+    gap: 1rem;
 
     .form-container__icon-link-link {
       width: 24px;

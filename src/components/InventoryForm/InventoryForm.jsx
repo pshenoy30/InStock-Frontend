@@ -12,7 +12,7 @@ const InventoryForm = ({
   handleChange,
 }) => {
   return (
-    <div className="form__section">
+    <div className="form__section-part">
       <h2 className="form__heading">{sectionTitle}</h2>
       {fields.map((field) => (
         <div key={field.name} className="form__group">
