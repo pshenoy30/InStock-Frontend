@@ -37,6 +37,9 @@
     font-weight: 400;
     text-transform: uppercase;
     background-color: $primary-white;
+    @include tablet{
+      all: revert;
+    }
   }
 
   &__subcard {
@@ -70,7 +73,7 @@
     background-color: $primary-white;
 
     @include tablet {
-      width: 9rem;
+      text-align: center;
     }
 
     &--left {
@@ -81,6 +84,12 @@
 
     &--no-link {
       height: 1.5rem;
+    }
+
+    &--address{
+      @include tablet{
+        width: 83%;
+      }
     }
   }
 
@@ -97,6 +106,9 @@
     flex-direction: column;
     flex: 1;
     gap: 1rem;
+    @include tablet{
+      all: revert;
+    }
   }
 
   &__table {
@@ -123,6 +135,8 @@
   }
 
   &__link {
+    text-decoration: none;
+    
     &--edit {
       display: flex;
       align-items: flex-end;
@@ -135,6 +149,7 @@
     padding: 3.75rem 1rem 1.5rem 1rem;
     position: relative;
     background-color: $primary-white;
+    
 
     @include tablet {
       margin-left: 3rem;

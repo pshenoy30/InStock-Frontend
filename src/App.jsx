@@ -9,7 +9,6 @@ import NotFoundPage from "../src/pages/NotFoundPage/NotFoundPage.jsx";
 import "./App.scss";
 import EditWarehouse from "../src/pages/EditWarehouse/EditWarehouse.jsx";
 import EditInventory from "../src/pages/EditInventory/EditInventory.jsx";
-
 function App() {
   return (
     <BrowserRouter>
@@ -19,6 +18,7 @@ function App() {
         <Route path="/inventories/:inventoryId" element={<InventoryItem />} />
         <Route path="/warehouse/:warehouseId" element={<InventorybyWarehouse />} />
         <Route path="/edit-inventory/:inventoryId" element={<EditInventory />} /> 
+        {/* Route for Add Inventory */}
         <Route path="/add-warehouse" element={<AddWarehouse />} />
         <Route path="/edit-warehouse/:warehouseId" element={<EditWarehouse />} />
         <Route path="*" element={<NotFoundPage />} />
