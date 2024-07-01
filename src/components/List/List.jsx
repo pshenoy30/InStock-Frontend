@@ -58,7 +58,6 @@ function List({
               <div className="list__card">
                 <h3 className="list__title">{title1}</h3>
                 <Link to={`./${relativePath}`} className="list__link"> 
-                {/* Please do not change this relative path, it's working for both our ends */}
                   <div className="list__subcard">
                     <h3 className="list__entry list__entry--interactive">
                       {val1}
