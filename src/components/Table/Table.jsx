@@ -6,7 +6,7 @@ import sortImg from "../../assets/icons/sort-24px.svg";
 import closeImg from '../../assets/icons/close-24px.svg'
 import deleteWarehouseDetails from '../../utils/deleteWarehouse';
 import deleteInventoryDetails from '../../utils/deleteInventoryItem';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import Modal from 'react-modal';
 import Buttons from '../Buttons/Buttons';
 import "./Table.scss";
@@ -59,13 +59,13 @@ function Table({ listData, listType, listheader }) {
     setIsModalOpen(false);
   }
 
-  function deleteModal(event) {
-    event.preventDefault;
+  function deleteModal() {
     if(listType === "warehouse"){
       deleteWarehouseDetails(modalData.id);
       setIsModalOpen(false);
     }
-    else if (listType === "inventories"){
+    else if (listType === "inventory" || listType === "inventoryWarehouseId"){
+      console.log(modalData.id);
       deleteInventoryDetails(modalData.id);
       setIsModalOpen(false);
     }
@@ -205,7 +205,7 @@ function Table({ listData, listType, listheader }) {
               </td>
               <td className="table-element__detail">{data.warehouseName}</td>
               <td className="table-element__detail table-element__actions table-element__actions--inventory">
-              <button className="table-element__button" type='button' onClick={()=>{setModalData(data.itemName); setIsModalOpen(true);}}> 
+              <button className="table-element__button" type='button' onClick={()=>{setModalData(data); setIsModalOpen(true);}}> 
                 <img src={deleteImg} alt="delete button"></img>
               </button>
                 <Link to={`../edit-inventory/${data.id}`}>
@@ -274,30 +274,13 @@ function Table({ listData, listType, listheader }) {
                 {data.quantity}
               </td>
               <td className="table-element__detail table-element__actions">
-              <button className="table-element__button" type='button' onClick={openModal}> 
+              <button className="table-element__button" type='button' onClick={()=>{setModalData(data); setIsModalOpen(true);}}> 
                 <img src={deleteImg} alt="delete button"></img>
               </button> 
                 <Link to={`../edit-inventory/${data.id}`}>
                   <img src={editImg} alt="edit button"></img>
                 </Link>
               </td>
-              {modalData && <Modal isOpen={isModalOpen} onRequestClose={closeModal} contentLabel="Delete a warehouse" portalClassName="modal">
-                  <>
-                    <button className='modal__close' onClick={closeModal}>
-                      <img className="list__img" src={closeImg} alt="edit button"></img>
-                    </button>
-                    <section className='modal__container'>
-                      <article className='modal__text-container'>
-                        <h1 className='modal__title'>Delete {modalData.itemName} inventory item?</h1>
-                        <p className='modal__text'>Please confirm that you'd like to delete the {modalData.itemName} from the list of warehouses. You wont be able to undo this action</p>
-                      </article>
-                      <article className='modal__button-container'>
-                        <Buttons buttonName="Cancel" clickHandler={closeModal} />
-                        <Buttons buttonName="Delete" clickHandler={deleteModal} />
-                      </article>
-                    </section>
-                  </>
-                </Modal>}
             </tr>
           ))}
         </tbody>

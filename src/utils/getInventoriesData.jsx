@@ -27,7 +27,3 @@ export default getInventoriesData;
 //   if (isLoading) {
 //     return <p> Loading inventory data... </p>;
 //   }
-
-//   if (error) {
-//     return <p> Something went wrong. Please try refreshing the page</p>;
-//   }

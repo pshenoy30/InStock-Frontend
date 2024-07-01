@@ -19,7 +19,6 @@ function InventoryByWarehouse() {
   const [loadingWarehouse, setLoadingWarehouse] = useState(true);
   const [loadingInventory, setLoadingInventory] = useState(true);
   const [error, setError] = useState(false);
-
   const { warehouseId } = useParams();
 
   useEffect(() => {
@@ -44,7 +43,7 @@ function InventoryByWarehouse() {
 
     getWarehouseData(warehouseId);
     getInventoryData(warehouseId);
-  }, []);
+  });
 
   if (loadingWarehouse) {
     return <p> Loading warehouse data... </p>;
@@ -65,46 +64,49 @@ function InventoryByWarehouse() {
     { id: 3, header: "Qty" },
     { id: 4, header: "Actions" },
   ];
-  return (
-    <>
-      <Header />
-      <main className="wrapper">
-        <section className="box">
-          <EditNav title={warehouseData.warehouse_name} buttonText="Edit" showButton={true} />
-          <WarehouseDetailsSection warehouseData={warehouseData} />
-          <MediaQuery maxWidth={767}>
-            {inventoryItem.map((inventory) => {
-              const { id, item_name, category, status, quantity } = inventory;
-              return (
-                <>
-                  <List
-                    id={id}
-                    relativePath={"../../edit-inventory/" + id}
-                    title1="Inventory Item"
-                    val1={item_name}
-                    title2="Category"
-                    val2={category}
-                    title3="Status"
-                    val3={<StockTag stockStatus={status} />}
-                    title4="Qty"
-                    val4={quantity}
-                  />
-                </>
-              );
-            })}
-          </MediaQuery>
-          <MediaQuery minWidth={768}>
-            <Table
-              listheader={tableHeader}
-              listData={inventoryItem}
-              listType="inventoryWarehouseId"
-            />
-          </MediaQuery>
-        </section>
-      </main>
-      <Footer />
-    </>
-  );
+
+  if(!loadingWarehouse && !loadingInventory){
+    return (
+      <>
+        <Header />
+        <main className="wrapper">
+          <section className="box">
+            <EditNav title={warehouseData.warehouse_name} buttonText="Edit" showButton={true} />
+            <WarehouseDetailsSection warehouseData={warehouseData} />
+            <MediaQuery maxWidth={767}>
+              {inventoryItem.map((inventory) => {
+                const { id, item_name, category, status, quantity } = inventory;
+                return (
+                  <>
+                    <List
+                      id={id}
+                      relativePath={"../../edit-inventory/" + id}
+                      title1="Inventory Item"
+                      val1={item_name}
+                      title2="Category"
+                      val2={category}
+                      title3="Status"
+                      val3={<StockTag stockStatus={status} />}
+                      title4="Qty"
+                      val4={quantity}
+                    />
+                  </>
+                );
+              })}
+            </MediaQuery>
+            <MediaQuery minWidth={768}>
+              <Table
+                listheader={tableHeader}
+                listData={inventoryItem}
+                listType="inventoryWarehouseId"
+              />
+            </MediaQuery>
+          </section>
+        </main>
+        <Footer />
+      </>
+    );
+  }
 }
 
 export default InventoryByWarehouse;
