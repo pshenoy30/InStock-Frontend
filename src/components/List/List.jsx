@@ -7,6 +7,7 @@ import "./List.scss";
 function List({
   id,
   relativePath,
+  listType,
   title1,
   val1,
   title2,
