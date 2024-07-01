@@ -149,7 +149,7 @@ function Table({ listData, listType, listheader }) {
   } else if (listType === "inventory") {
     return (
       <>
-        {modalData && (<Modal isOpen={isModalOpen} onRequestClose={closeModal} contentLabel="Delete a warehouse" >
+        {modalData && (<Modal isOpen={isModalOpen} onRequestClose={closeModal} contentLabel="Delete a warehouse" className="modal" >
                   <>
                     <button className='modal__close' onClick={closeModal}>
                       <img className="img" src={closeImg} alt="edit button"></img>
@@ -221,7 +221,7 @@ function Table({ listData, listType, listheader }) {
   } else if (listType === "inventoryWarehouseId") {
     return (
       <>
-        {modalData && (<Modal isOpen={isModalOpen} onRequestClose={closeModal} contentLabel="Delete a warehouse" >
+        {modalData && (<Modal isOpen={isModalOpen} onRequestClose={closeModal} contentLabel="Delete a warehouse" className="modal" >
                   <>
                     <button className='modal__close' onClick={closeModal}>
                       <img className="img" src={closeImg} alt="edit button"></img>
