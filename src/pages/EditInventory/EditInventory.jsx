@@ -39,21 +39,6 @@ function EditInventory() {
     fetchInventoryData();
   }, [id]);
 
-  //validate form data
-  const validateFormData = (data) => {
-    const errors = {};
-    if (!data.itemName) errors.itemName = "Item Name is required";
-    if (!data.description) errors.description = "Description is required";
-    if (!data.category) errors.category = "Please select a category";
-    if (data.status === "In Stock" && data.quantity === 0)
-      errors.quantity = "Please select the availability.";
-    if (!data.warehouseName)
-      errors.warehouseName = "Please specify the warehouse";
-
-    setFormErrors(errors);
-    return errors;
-  };
-
   const categoryOptions = [
     "Apparel",
     "Accessories",
@@ -131,6 +116,21 @@ function EditInventory() {
     },
   ];
 
+  //validation checks
+  const validateFormData = (data) => {
+    const errors = {};
+    if (!data.itemName) errors.itemName = "Item Name is required";
+    if (!data.description) errors.description = "Description is required";
+    if (!data.category) errors.category = "Please select a category";
+    if (data.status === "In Stock" && data.quantity === 0)
+      errors.quantity = "Please select the availability.";
+    if (!data.warehouseName)
+      errors.warehouseName = "Please specify the warehouse";
+
+    setFormErrors(errors);
+    return errors;
+  };
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     if (name === "status" && value === "Out of Stock") {
@@ -145,7 +145,6 @@ function EditInventory() {
   };
 
   const handleSubmit = async (e) => {
-    console.log("entered handle submit");
     e.preventDefault();
 
     if (!id) {
@@ -217,7 +216,7 @@ function EditInventory() {
               />
             </div>
             <EditInventoryFooter
-              inventoryId={ id }
+              inventoryId={id}
               onReset={handleReset}
               onSubmit={handleSubmit}
               isEditMode
