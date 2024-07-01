@@ -11,7 +11,7 @@
     flex-direction: column;
 
     @include tablet {
-        width: 44rem;
+        width: 100%;
         padding: 2rem 2rem 1.4375rem 2rem;
         flex-direction: row;
         justify-content: space-between;
@@ -19,7 +19,6 @@
     }
 
     @include desktop {
-        width: 63.75rem;
         padding: 1.5rem 2.5rem;
         flex-direction: row;
         justify-content: space-between;
@@ -56,7 +55,7 @@
         height: 2.25rem;
         background-image: url("../../assets/icons/search-24px.svg");
         background-repeat: no-repeat;
-        background-position: 14.5rem center;
+        background-position: right 0.5rem center;
         color: $secondary-slate;
         background-color: $background-lightgrey;
         padding: 0.5rem 1rem;
@@ -65,12 +64,12 @@
 
         @include tablet {
             max-width: 11.5625rem;
-            background-position: 7.5rem center;
+            background-position: right 0.5rem center;
         }
 
         @include desktop {
             max-width: 17.125rem;
-            background-position: 14.5rem center;
+            background-position: right 0.5rem center;
         }
     }
 }
