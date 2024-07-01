@@ -3,10 +3,6 @@
 @use "../../styles/partials/variables" as *;
 @use "../../styles/partials/typography" as *;
 
-.active {
-  @include selected-state;
-}
-
 .header {
   height: 9.5rem;
   background-color: $background-graphite;
@@ -59,6 +55,11 @@
     color: $primary-white;
     text-decoration: none;
 
+    &--active {
+      color: $primary-white;
+      @include selected-state;
+    }
+
     @include tablet {
       height: 1rem;
     }
@@ -70,8 +71,12 @@
 
   &__navItem {
     width: 10.3125rem;
+    height: 100%;
     color: $secondary-cloud;
     text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
     &:hover {
         @include hover-state;

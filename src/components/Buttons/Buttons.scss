@@ -1,4 +1,3 @@
-// Buttons.scss
 @use "../../styles/partials/globals" as *;
 @use "../../styles/partials/mixins" as *;
 @use "../../styles/partials/variables" as *;
@@ -10,8 +9,7 @@
   &__secondary,
   &__delete,
   &__edit,
-  &__save,
-  &__item {
+  &__save { 
     min-width: 4.4375rem;
     height: 2.375rem;
     padding: 0rem 1rem 0rem 1rem;
@@ -27,17 +25,10 @@
       max-width: 100%;
       height: 2.375rem;
     }
-
-    @include mobile {
-      width: 100%;
-      max-width: none;
-      height: 2.25rem;
-    }
+   
   }
 
-  &__primary,
-  &__save,
-  &__item {
+  &__save { 
     color: $primary-white;
     background-color: $primary-inStockIndigo;
     border: 1px solid $primary-inStockIndigo;

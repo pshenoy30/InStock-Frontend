@@ -2,7 +2,6 @@ import React from "react";
 import "./WarehouseDetailsSection.scss";
 
 function WarehouseDetailsSection({ warehouseData }) {
-  console.log(warehouseData);
   const {
     id,
     address,

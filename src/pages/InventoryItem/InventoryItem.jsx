@@ -52,7 +52,7 @@ function InventoryItem() {
       <Header />
       <main className="wrapper">
       <section className="box">
-        <EditNav inventoryId={id} title={item_name} buttonText="Edit"/>
+        <EditNav inventoryId={id} title={item_name} buttonText="Edit" showButton={true}/>
         <section className="inventoryItem">
           <article className="inventoryItem__container">
             <article className="inventoryItem__card">

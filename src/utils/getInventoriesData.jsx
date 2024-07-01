@@ -7,7 +7,7 @@ const API_URL = import.meta.env.VITE_BACKEND_URL;
 // const [inventoriesData, setInventoriesData] = useState(null);
 async function getInventoriesData() {
   try {
-    const response = await axios.get(`${API_URL}/inventory`);
+    const response = await axios.get(`${API_URL}/inventory/`);
     //   setInventoriesData(response.data);
     console.log(response.data);
     return response.data;

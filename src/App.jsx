@@ -1,13 +1,13 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import HomePage from "../src/pages/Homepage/Homepage.jsx";
 import Warehouse from "../src/pages/Warehouse/Warehouse.jsx";
-// import Inventory from "../src/pages/Inventory/Inventory.jsx";
-import AddWarehouse from "./pages/AddWarehouse/AddWarehouse.jsx";
-import AddInventory from "./pages/AddInventory/AddInventory.jsx";
+import AddWarehouse from "../src/pages/AddWarehouse/AddWarehouse.jsx";
+import Inventory2 from "./pages/Inventory/Inventory.jsx";
+import AddInventory from "../src/pages/AddInventory/AddInventory.jsx";
 import InventoryItem from "../src/pages/InventoryItem/InventoryItem.jsx";
 import NotFoundPage from "../src/pages/NotFoundPage/NotFoundPage.jsx";
 import "./App.scss";
-import EditWarehouse from "./pages/EditWarehouse/EditWarehouse.jsx";
+import EditWarehouse from "../src/pages/EditWarehouse/EditWarehouse.jsx";
 
 function App() {
   return (
@@ -15,7 +15,7 @@ function App() {
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/warehouse/:warehouseId" element={<Warehouse />} />
-        {/* <Route path="/inventory" element={<Inventory />} /> */}
+        <Route path="/inventory" element={<Inventory2 />} />
         <Route path="/inventory/:inventoryId" element={<InventoryItem />} />
         <Route path="/add-warehouse" element={<AddWarehouse />} />
         <Route path="/edit-warehouse/:warehouseId" element={<EditWarehouse />} />
