@@ -85,7 +85,9 @@ function List({
               <h3 className="list__title">{title5}</h3>
               <h3 className="list__detail">{val5}</h3>
             </div>}
-            <img className="list__img list__img--right" src={editImg} alt="edit button"></img>
+            <Link to={`./${relativePath}`}>  
+              <img className="list__img list__img--right" src={editImg} alt="edit button"></img>
+            </Link>
           </article>
         </article>
         <Modal isOpen={isOpen} onRequestClose={closeModal} contentLabel="Delete a warehouse" className="modal">
