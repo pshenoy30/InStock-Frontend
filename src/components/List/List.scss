@@ -127,76 +127,15 @@
     padding-right: 2rem;
   }
 
-  &__link {
-    text-decoration: none;
-    &--edit {
-      display: flex;
-      align-items: flex-end;
-      justify-content: flex-end;
+  &__button{
+    background: none;
+    border: none;
+    outline: none;
+    box-shadow: none;
+
+    &--left{
+      text-align:left;
     }
   }
 
-  &__modal {
-    height: 41.6875rem;
-    padding: 3.75rem 1rem 1.5rem 1rem;
-    position: relative;
-    background-color: $primary-white;
-    
-
-    @include tablet {
-      margin-left: 3rem;
-      margin-top: 11.5625rem;
-      width: 35.5rem;
-      height: 11rem;
-      padding: 4rem;
-    }
-
-    &__close {
-      position: absolute;
-      top: 1rem;
-      right: 1rem;
-      border: none;
-    }
-
-    &__title {
-      font-weight: 400;
-      background-color: $primary-white;
-    }
-    &__text {
-      width: 100%;
-      background-color: $primary-white;
-      @include tablet {
-        width: 90%;
-      }
-    }
-
-    &__container {
-      display: flex;
-      flex-direction: column;
-      gap: 29rem;
-      background-color: $primary-white;
-
-      @include tablet {
-        gap: 2.5rem;
-      }
-    }
-
-    &__text-container {
-      background-color: $primary-white;
-      display: flex;
-      flex-direction: column;
-      gap: 0.5rem;
-    }
-
-    &__button-container {
-      background-color: $primary-white;
-      display: flex;
-      justify-content: space-between;
-
-      @include tablet {
-        justify-content: end;
-        gap: 1rem;
-      }
-    }
-  }
 }

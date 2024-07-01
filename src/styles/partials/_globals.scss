@@ -148,7 +148,7 @@ p2 {
 
 .box {
   background-color: $primary-white;
-  width: 21.4375rem;
+  width:97.5%;
   height: max-content;
   border-radius: 0.1875rem;
   box-shadow: 0 4px 4px rgba(0, 0, 0, 0.20);
@@ -158,15 +158,76 @@ p2 {
   margin-left: 0;
 
   @include tablet {
-    width: 44rem;
     margin-top: -5.85rem;
     margin-left: 0;
   }
 
   @include desktop {
-    width: 63.75rem;
     margin-top: -5.85rem;
     margin-left: 6.25rem;
+  }
+}
+
+.modal-container{
+  width: 10rem;
+  height: 10rem;
+}
+.modal{
+  height: 41.6875rem;
+  padding: 3.75rem 1rem 1.5rem 1rem;
+  position: relative;
+  background-color: $primary-white;
+  
+  @include tablet{
+    height: 13%;
+    top: 10%;
+    padding: 1rem;
+    margin: 0 2rem;
+  }
+
+  &__close{
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    border: none;
+    background-color: $primary-white;
+  }
+  
+  &__title{
+    font-weight: 400;
+  }
+  &__text{
+    width: 100%;
+    @include tablet{
+      width: 90%;
+    }
+  }
+
+  &__container{
+    display: flex;
+    flex-direction: column;
+    gap: 29rem;
+
+    @include tablet{
+      gap: 2.5rem;
+    }
+  }
+
+  &__text-container{
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    background-color: $primary-white;
+  }
+
+  &__button-container{
+    display: flex;
+    justify-content: space-between;
+
+    @include tablet{
+      justify-content: end;
+      gap: 1rem;
+    }
   }
 }
 
