@@ -1,0 +1,110 @@
+@use "../../styles/partials/globals" as *;
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/typography" as *;
+
+.form {
+  width: 100%;
+  box-sizing: border-box;
+  background-color: $primary-white;
+  display: flex;
+  flex-direction: column;
+
+  &__card {
+   display: flex;
+
+   @include tablet {
+    border-top: 1px solid $secondary-cloud;
+    padding: 1.5rem 2.5rem;
+    display: flex;
+  }
+
+    @include desktop {
+      border-top: 1px solid $secondary-cloud;
+      padding: 1.5rem;
+      display: flex;
+    }
+  }
+
+  &__section {
+    box-sizing: border-box;
+    width: 100%;
+    padding: 0 1.5rem 0.5rem 1.5rem;
+    border-top: 1px solid $secondary-cloud;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+
+    &:nth-child(1){
+      border-top: none;
+    }
+
+    @include tablet{
+      border-top: none;
+      border-left: 1px solid $secondary-cloud;
+
+      &:nth-child(1){
+        border-top: none;
+        border-left: none;
+      }
+    }
+
+    @include desktop {
+      border-top: none;
+      border-left: 1px solid $secondary-cloud;
+
+      &:nth-child(1){
+        border-top: none;
+        border-left: none;
+      }
+    }
+  }
+
+  &__group {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__label {
+    @include input-font;
+    font-weight: 600;
+  }
+
+  &__radio {
+    font-family: "Titillium Web";
+    display: flex;
+    gap: 0.5rem;
+  }
+
+  &__radioBox {
+    display: flex;
+  }
+
+  &__input {
+    @include input-style;
+    @include input-font;
+    font-family: "Titillium Web";
+    height: 2.25rem;
+    background-color: $primary-white;
+    margin-bottom: 1rem 0;
+
+    @mixin tablet {
+      height: 2.375rem;
+    }
+  }
+
+  &__textarea {
+    @include input-style;
+    @include input-font;
+    width: 100%;
+    min-height: 100px;
+    font-family: "Titillium Web";
+    padding-top: 0.5rem;
+  }
+
+  &__error {
+    @include error-style;
+    @include input-font;
+    background-color: $primary-white;
+  }
+}

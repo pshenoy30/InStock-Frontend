@@ -1,5 +1,7 @@
 // SectionHeader.scss
 @use "../../styles/partials/globals" as *;
+// SectionHeader.scss
+@use "../../styles/partials/globals" as *;
 @use "../../styles/partials/mixins" as *;
 @use "../../styles/partials/variables" as *;
 @use "../../styles/partials/typography" as *;
@@ -13,11 +15,12 @@
     align-items: center;
     background-color: $primary-white;
 
-    .form-container__icon-link {
+    .form-container__icon-link-link {
       width: 24px;
       height: 24px;
       margin-right: 1rem;
       background-color: $primary-white;
+      cursor: pointer;
       cursor: pointer;
     }
   }
@@ -29,6 +32,11 @@
     margin-left: -2rem;
     margin-right: -2rem;
   }
+}
+
+.form-container__icon {
+  background-color: $primary-white;
+  cursor: pointer;
 }
 
 .form-container__icon {

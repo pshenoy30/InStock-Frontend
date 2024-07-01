@@ -3,7 +3,6 @@
 @use "../../styles/partials/variables" as *;
 @use "../../styles/partials/typography" as *;
 
-
 .list {
   padding-top: 1rem;
   padding: 1.5rem;
@@ -17,6 +16,7 @@
     flex: 1;
     gap: 1rem;
     background-color: $primary-white;
+    justify-content: space-between;
   }
 
   &__card {
@@ -30,6 +30,9 @@
     font-weight: 400;
     text-transform: uppercase;
     background-color: $primary-white;
+    @include tablet{
+      all: revert;
+    }
   }
 
   &__subcard {
@@ -59,17 +62,27 @@
   &__detail {
     color: $primary-inStockBlack;
     font-weight: 400;
-    width: 70%;
+    width: 80%;
     background-color: $primary-white;
 
     @include tablet {
-      width: 9rem;
+      text-align: center;
     }
 
     &--left {
       color: $primary-inStockIndigo;
       padding-left: 2rem;
       display: flex;
+    }
+
+    &--no-link{
+      height: 1.5rem;
+    }
+
+    &--address{
+      @include tablet{
+        width: 83%;
+      }
     }
   }
 
@@ -86,6 +99,9 @@
     flex-direction: column;
     flex: 1;
     gap: 1rem;
+    @include tablet{
+      all: revert;
+    }
   }
 
   &__table {
@@ -116,6 +132,7 @@
     padding: 3.75rem 1rem 1.5rem 1rem;
     position: relative;
     background-color: $primary-white;
+    
 
     @include tablet{
       margin-left: 3rem;
@@ -166,6 +183,7 @@
       background-color: $primary-white;
       display: flex;
       justify-content: space-between;
+
       @include tablet{
         justify-content: end;
         gap: 1rem;

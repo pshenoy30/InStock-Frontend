@@ -5,6 +5,7 @@
 body {
   font-family: "Titillium Web";
   color: $primary-inStockBlack;
+  color: $primary-inStockBlack;
 }
 
 :root {
@@ -19,6 +20,7 @@ body {
 //page header
 h1 {
   font-size: 1.75rem;
+  font-weight: 600;
   font-weight: 600;
   line-height: 2.25rem;
   background-color: $primary-white;
@@ -41,6 +43,8 @@ h2 {
   line-height: 1.75rem;
   background-color: $primary-white;
 
+  background-color: $primary-white;
+
   @include tablet {
     font-size: 1.5rem;
     line-height: 2rem;
@@ -54,6 +58,7 @@ h2 {
 
 //labels, links & buttons
 h3,
+.button,
 .button {
   font-size: 0.8125rem;
   font-weight: 600;
@@ -73,6 +78,7 @@ h3,
 //table header
 h4 {
   font-size: 0.6875rem;
+  font-weight: 600;
   font-weight: 600;
   line-height: 1rem;
 
@@ -138,6 +144,7 @@ p2 {
   width: 21.4375rem;
   height: max-content;
   border-radius: 0.1875rem;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.2);
   box-shadow: 0 4px 4px rgba(0, 0, 0, 0.2);
   display: flex;
   flex-direction: column;

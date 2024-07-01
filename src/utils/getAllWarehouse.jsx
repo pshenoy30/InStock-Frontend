@@ -12,3 +12,6 @@ async function getAllWarehouseDetails () {
 }
 
 export default getAllWarehouseDetails;
+
+
+
