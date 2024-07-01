@@ -9,10 +9,20 @@ function Header() {
         <img className="header__img" src={InStockLogo} alt="InStock Logo"></img>
       </section>
       <nav className="header__nav">
-        <NavLink to="/" className="header__link">
+      <NavLink
+          to="/"
+          className={({ isActive }) =>
+            isActive ? 'header__link header__link--active' : 'header__link'
+          }
+        >
           <h3 className="header__navItem">Warehouses</h3>
         </NavLink>
-        <NavLink to="/inventories" className="header__link">
+        <NavLink
+          to="/inventories"
+          className={({ isActive }) =>
+            isActive ? 'header__link header__link--active' : 'header__link'
+          }
+        >
           <h3 className="header__navItem">Inventory</h3>
         </NavLink>
       </nav>

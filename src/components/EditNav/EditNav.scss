@@ -7,15 +7,14 @@
     background-color: $primary-white;
     padding: 2rem 1.5rem 1.5rem 1.5rem;
     display: flex;
+    justify-content: space-between;
 
     @include tablet {
       padding: 2rem 2rem 1.4375rem 2rem;
-      justify-content: space-between;
     }
 
     @include desktop {
       padding: 1.5rem 2.5rem;
-      justify-content: space-between;
     }
   }
 

@@ -70,7 +70,7 @@ function InventorybyWarehouse() {
       <Header />
       <main className="wrapper">
         <section className="box">
-          <EditNav title="Inventory" buttonText="Edit" showButton={true} />
+          <EditNav title={warehouseData.warehouse_name} buttonText="Edit" showButton={true} />
           <WarehouseDetailsSection warehouseData={warehouseData} />
           <MediaQuery maxWidth={767}>
             {inventoryItem.map((inventory) => {
@@ -79,7 +79,7 @@ function InventorybyWarehouse() {
                 <>
                   <List
                     id={id}
-                    relativePath={id}
+                    relativePath={"../../edit-inventory/" + id}
                     title1="Inventory Item"
                     val1={item_name}
                     title2="Category"
