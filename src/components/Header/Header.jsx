@@ -1,5 +1,6 @@
 import "./Header.scss";
 import InStockLogo from "../../assets/logo/InStock-Logo_1x.png";
+import CustomNavLink from "../CustomNavLink/CustomNavLink";
 import { NavLink } from "react-router-dom";
 
 function Header() {
@@ -17,14 +18,9 @@ function Header() {
         >
           <h3 className="header__navItem">Warehouses</h3>
         </NavLink>
-        <NavLink
-          to="/inventories"
-          className={({ isActive }) =>
-            isActive ? 'header__link header__link--active' : 'header__link'
-          }
-        >
+        <CustomNavLink to1="/inventories" to2="/edit-inventory*">
           <h3 className="header__navItem">Inventory</h3>
-        </NavLink>
+        </CustomNavLink>
       </nav>
     </header>
   );
