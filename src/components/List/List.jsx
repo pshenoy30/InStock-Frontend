@@ -8,6 +8,7 @@ import Modal from 'react-modal';
 import deleteWarehouseDetails from '../../utils/deleteWarehouse';
 import deleteInventoryDetails from '../../utils/deleteInventoryItem';
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import "./List.scss";
 
 function List({
@@ -24,6 +25,12 @@ function List({
   title5,
   val5,
 }) {
+
+  const navigate = useNavigate();
+  const handleEditClick = () => {
+    navigate(`/edit-inventory/${id}`);
+  };
+
   const [isOpen, setIsOpen] = useState(false);
 
   function openModal(){
@@ -85,9 +92,9 @@ function List({
               <h3 className="list__title">{title5}</h3>
               <h3 className="list__detail">{val5}</h3>
             </div>}
-            <Link to={`./${relativePath}`}>  
+            <button type="button" className="list__button list__button--right" onClick={handleEditClick}>
               <img className="list__img list__img--right" src={editImg} alt="edit button"></img>
-            </Link>
+            </button>
           </article>
         </article>
         <Modal isOpen={isOpen} onRequestClose={closeModal} contentLabel="Delete a warehouse" className="modal">
