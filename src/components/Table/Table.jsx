@@ -6,7 +6,7 @@ import sortImg from "../../assets/icons/sort-24px.svg";
 import closeImg from '../../assets/icons/close-24px.svg'
 import deleteWarehouseDetails from '../../utils/deleteWarehouse';
 import deleteInventoryDetails from '../../utils/deleteInventoryItem';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import Modal from 'react-modal';
 import Buttons from '../Buttons/Buttons';
 import "./Table.scss";
@@ -59,13 +59,13 @@ function Table({ listData, listType, listheader }) {
     setIsModalOpen(false);
   }
 
-  function deleteModal(event) {
-    event.preventDefault;
+  function deleteModal() {
     if(listType === "warehouse"){
       deleteWarehouseDetails(modalData.id);
       setIsModalOpen(false);
     }
-    else if (listType === "inventories"){
+    else if (listType === "inventory" || listType === "inventoryWarehouseId"){
+      console.log(modalData.id);
       deleteInventoryDetails(modalData.id);
       setIsModalOpen(false);
     }
