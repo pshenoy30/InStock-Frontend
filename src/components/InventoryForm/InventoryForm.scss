@@ -123,9 +123,9 @@
       .form__input--category,
       .form__input--warehouse_id {
         padding-left: 0.8rem !important;
-        appearance: none;
-        -webkit-appearance: none;
         -moz-appearance: none;
+        -webkit-appearance: none;
+        appearance: none;
         @extend p2;
         color: $secondary-slate;
       }
