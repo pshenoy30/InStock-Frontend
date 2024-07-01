@@ -6,10 +6,14 @@ import List from "../../components/List/List";
 import StockTag from "../../components/StockTag/StockTag";
 import Table from "../../components/Table/Table";
 import getInventoriesData from "../../utils/getInventoriesData";
+import { useState, useEffect } from "react";
 import "./Inventory.scss";
 
-const inventoryDetails = await getInventoriesData();
 function Inventory() {
+  const [inventoryDetails, setInventoryDetails] = useState(null);
+  const [loadingInventoryDetails, setLoadingInventoryDetails] = useState(true);
+  const [error, setError] = useState(false);
+
   const tableHeader = [
     { id: 0, header: "Inventory Item" },
     { id: 1, header: "Category" },
@@ -18,6 +22,30 @@ function Inventory() {
     { id: 4, header: "Warehouse" },
     { id: 5, header: "Actions" },
   ];
+
+  useEffect(() => {
+    async function getInventoryData(){
+      try {
+        setInventoryDetails(await getInventoriesData());
+        setLoadingInventoryDetails(false);
+      } catch (error) {
+        console.log("Couldn't fetch data", error);
+        setError(true)
+      }
+    }
+    getInventoryData();
+  });
+
+  if (loadingInventoryDetails) {
+    return <p> Loading inventory data... </p>;
+  }
+
+  if (error) {
+    return <p> Something went wrong. Please try refreshing the page</p>;
+  }
+    
+  if(!loadingInventoryDetails){
+
   return (
     <>
       <Header />
@@ -67,6 +95,7 @@ function Inventory() {
       <Footer />
     </>
   );
+}
 }
 
 export default Inventory;
