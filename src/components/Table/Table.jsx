@@ -186,7 +186,7 @@ function Table({ listData, listType, listheader }) {
         <tbody className="table-element__body">
           {tableInfo.map((data) => (
             <tr className="table-element__records">
-              <Link to={`./inventories/${data.id}`} className="table-element__link">
+              <Link to={`./${data.id}`} className="table-element__link">
                 <td className="table-element__detail table-element__detail--left">
                   {data.itemName}
                   <img
@@ -256,7 +256,7 @@ function Table({ listData, listType, listheader }) {
         <tbody className="table-element__body">
           {tableInfo.map((data) => (
             <tr className="table-element__records">
-              <Link to={`./inventories/${data.id}`} className="table-element__link">
+              <Link to={`./${data.id}`} className="table-element__link">
                 <td className="table-element__detail table-element__detail--left">
                   {data.itemName}
                   <img
