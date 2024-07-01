@@ -65,12 +65,12 @@
 
         @include tablet {
             max-width: 11.5625rem;
-            background-position: 7.5rem center;
+            background-position: 9.25rem center;
         }
 
         @include desktop {
             max-width: 17.125rem;
-            background-position: 14.5rem center;
+            background-position: 14.75rem center;
         }
     }
 }
