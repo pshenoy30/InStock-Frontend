@@ -109,6 +109,11 @@ function EditInventory() {
       options: ["In Stock", "Out of Stock"],
     },
     {
+      name: "quantity",
+      label: "Quantity",
+      type: "text",
+    },
+    {
       name: "warehouseName",
       label: "Warehouse",
       type: "drop-down",

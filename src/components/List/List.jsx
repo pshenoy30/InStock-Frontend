@@ -1,20 +1,18 @@
-import MediaQuery from "react-responsive";
-import { Link } from "react-router-dom";
-import deleteImg from "../../assets/icons/delete_outline-24px.svg";
-import editImg from "../../assets/icons/edit-24px.svg";
-import arrowImg from "../../assets/icons/chevron_right-24px.svg";
-import closeImg from "../../assets/icons/close-24px.svg";
-import Buttons from "../Buttons/Buttons";
-import Modal from "react-modal";
-import deleteWarehouseDetails from "../../utils/deleteWarehouse";
-import deleteInventoryDetails from "../../utils/deleteInventoryItem";
-import { useState } from "react";
+import { Link } from 'react-router-dom';
+import deleteImg from '../../assets/icons/delete_outline-24px.svg';
+import editImg from '../../assets/icons/edit-24px.svg';
+import arrowImg from '../../assets/icons/chevron_right-24px.svg';
+import closeImg from '../../assets/icons/close-24px.svg'
+import Buttons from '../Buttons/Buttons';
+import Modal from 'react-modal';
+import deleteWarehouseDetails from '../../utils/deleteWarehouse';
+import deleteInventoryDetails from '../../utils/deleteInventoryItem';
+import { useState } from 'react';
 import "./List.scss";
 
 function List({
   id,
   relativePath,
-  listType,
   title1,
   val1,
   title2,
@@ -28,7 +26,7 @@ function List({
 }) {
   const [isOpen, setIsOpen] = useState(false);
 
-  function openModal() {
+  function openModal(){
     setIsOpen(true);
   }
 
@@ -38,15 +36,17 @@ function List({
 
   function deleteModal(event) {
     event.preventDefault;
-    if (listType === "warehouse") {
+    if(listType === "warehouse"){
       console.log("delete");
       deleteWarehouseDetails(id);
       setIsOpen(false);
-    } else if (listType === "inventories") {
+    }
+    else if (listType === "inventories"){
       console.log("delete");
       deleteInventoryDetails(id);
       setIsOpen(false);
     }
+    
   }
 
   return (
@@ -81,19 +81,11 @@ function List({
               <h3 className="list__title">{title4}</h3>
               <h3 className="list__detail">{val4}</h3>
             </div>
-            {title5 && val5 && (
-              <div className="list__card">
-                <h3 className="list__title">{title5}</h3>
-                <h3 className="list__detail">{val5}</h3>
-              </div>
-            )}
-            <Link to={`./${relativePath}`} className="list__link--edit">
-              <img
-                className="list__img list__img--right"
-                src={editImg}
-                alt="edit button"
-              ></img>
-            </Link>
+            {title5 && val5 && <div className="list__card">
+              <h3 className="list__title">{title5}</h3>
+              <h3 className="list__detail">{val5}</h3>
+            </div>}
+            <img className="list__img list__img--right" src={editImg} alt="edit button"></img>
           </article>
         </article>
         <Modal isOpen={isOpen} onRequestClose={closeModal} contentLabel="Delete a warehouse" className="modal">
