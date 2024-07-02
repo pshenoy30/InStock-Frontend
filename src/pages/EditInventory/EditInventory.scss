@@ -1,0 +1,128 @@
+@use "../../styles/partials/globals" as *;
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/typography" as *;
+
+.form {
+  width: 100%;
+  box-sizing: border-box;
+  background-color: $primary-white;
+  display: flex;
+  flex-direction: column;
+
+  &__card {
+    border-top: 1px solid $secondary-cloud;
+    display: flex;
+    flex-direction: column;
+
+    @include tablet {
+      padding: 1.5rem 2.5rem;
+      flex-direction: row;
+    }
+
+    @include desktop {
+      padding: 1.5rem;
+      flex-direction: row;
+    }
+  }
+
+  &__section {
+    box-sizing: border-box;
+    width: 100%;
+    padding: 1rem 1.5rem 1.5rem 1.5rem;
+    border-top: 1px solid $secondary-cloud;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+
+    &:nth-child(1) {
+      border-top: none;
+    }
+
+    @include tablet {
+      border-top: none;
+      border-left: 1px solid $secondary-cloud;
+
+
+      &:nth-child(1) {
+        padding: 0 2rem 0.5rem 0;
+        border-left: none;
+      }
+
+      &:nth-child(2) {
+        padding: 0 0 0.5rem 2rem;
+      }
+    }
+
+    @include desktop {
+      padding: 1.5rem 2.5rem 2rem 2.5rem;
+      border-left: 1px solid $secondary-cloud;
+
+      &:nth-child(1) {
+        padding: 0 2.5rem 0.5rem 1rem;
+        border-left: none;
+      }
+
+      &:nth-child(2) {
+        padding: 0 1rem 0.5rem 2.5rem;
+      }
+    }
+  }
+
+  &__group {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__label {
+    @include input-font;
+    font-weight: 600;
+  }
+
+  &__radio {
+    font-family: "Titillium Web";
+    display: flex;
+  
+    &-item {
+      display: flex;
+      gap: 0.5rem;
+    }
+  }
+
+  &__radio-container {
+    display: flex;
+    gap: 5.5625rem;
+  }
+
+  &__input {
+    @include input-style;
+    @include input-font;
+    font-family: "Titillium Web";
+    height: 2.25rem;
+    background-color: $primary-white;
+    margin-bottom: 1rem 0;
+
+    @mixin tablet {
+      height: 2.375rem;
+    }
+  }
+
+  &__textarea {
+    @include input-style;
+    @include input-font;
+    width: 100%;
+    min-height: 100px;
+    font-family: "Titillium Web";
+    padding-top: 0.5rem;
+  }
+
+  &__error {
+    @include error-style;
+    @include input-font;
+    background-color: $primary-white;
+  }
+}
+
+.form__radio-item.not-selected {
+  color: $secondary-slate;
+}

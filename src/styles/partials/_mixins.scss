@@ -1,0 +1,95 @@
+@use "../partials/variables" as *;
+
+@mixin font-family {
+  font-family: "Titillium Web", sans-serif;
+}
+
+@mixin placeholder($color) {
+  &::placeholder {
+    color: $secondary-slate;
+  }
+}
+
+@mixin mobile {
+  @media (max-width: $mobile-max-width) {
+    @content;
+  }
+}
+@mixin tablet {
+  @media (min-width: $tablet-min-width) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media (min-width: $desktop-min-width) {
+    @content;
+  }
+}
+
+@mixin selected-state {
+  width: 10.3125rem;
+  max-width: 10.3125rem;
+  color: $primary-white;
+  padding: 0.5rem 0;
+  background-color: $primary-inStockBlack;
+  border: 1px solid $primary-inStockBlack;
+  border-radius: 20px;
+}
+
+@mixin hover-state {
+  color: $primary-white;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+@mixin flex-center($gap: 1rem) {
+  display: flex;
+  justify-content: center;
+  gap: $gap;
+}
+
+@mixin input-font {
+  color: $primary-inStockBlack;
+  font-family: "Titillium Web";
+  font-size: 0.8125rem;
+  font-weight: 400;
+  line-height: 1.25rem;
+
+  @include tablet {
+    font-size: 0.875rem;
+    line-height: 1.375rem;
+  }
+
+  @include desktop {
+    font-size: 0.875rem;
+    line-height: 1.375rem;
+  }
+}
+
+@mixin input-style {
+  width: 100%;
+  padding: 0rem 1rem 0rem 1rem;
+  border: 1px solid $secondary-cloud;
+  border-radius: 1.25rem;
+  font-size: 1rem;
+  box-sizing: border-box;
+}
+
+@mixin error-style {
+  color: $supporting-red;
+}
+
+@mixin button-style($bg-color, $hover-color) {
+  background-color: $bg-color;
+  color: #fff;
+  border: none;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  border-radius: 1.25rem;
+  cursor: pointer;
+
+  &:hover {
+    background-color: $hover-color;
+  }
+}
