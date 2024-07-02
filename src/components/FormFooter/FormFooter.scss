@@ -1,8 +1,9 @@
-// FormFooter.scss
+// components/FormFooter/FormFooter.scss
 @use "../../styles/partials/globals" as *;
 @use "../../styles/partials/mixins" as *;
 @use "../../styles/partials/variables" as *;
 @use "../../styles/partials/typography" as *;
+@use "../../styles/partials/layout" as *;
 
 @mixin flex-end($gap: 1rem) {
   display: flex;
@@ -10,7 +11,7 @@
   gap: $gap;
 }
 
-.form-footer {
+.form__footer {
   display: flex;
   justify-content: space-between;
   padding: 1rem;
@@ -21,22 +22,5 @@
   box-sizing: border-box;
   margin: 0 -2rem -4.5rem;
   bottom: 0;
-
-  @include mobile {
-    flex-direction: row;
-    justify-content: space-between;
-
-    button {
-      flex: 1;
-
-      &:first-child {
-        margin-left: 0;
-      }
-
-      &:last-child {
-        margin-right: 0;
-      }
-    }
-  }
 }
 

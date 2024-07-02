@@ -6,7 +6,7 @@ import AddWarehouse from "../src/pages/AddWarehouse/AddWarehouse.jsx";
 import InventoryItem from "../src/pages/InventoryItem/InventoryItem.jsx";
 import InventoryByWarehouse from "./pages/InventoryByWarehouse/InventoryByWarehouse.jsx";
 import NotFoundPage from "../src/pages/NotFoundPage/NotFoundPage.jsx";
-import AddInventory from "../src/pages/AddInventory/AddInventory.jsx";
+// import AddInventory from "../src/pages/AddInventory/AddInventory.jsx";
 import "./App.scss";
 import EditWarehouse from "../src/pages/EditWarehouse/EditWarehouse.jsx";
 import EditInventory from "../src/pages/EditInventory/EditInventory.jsx";
@@ -18,12 +18,9 @@ function App() {
         <Route path="/inventories" element={<Inventory />} />
         <Route path="/inventories/:inventoryId" element={<InventoryItem />} />
         <Route path="/warehouse/:warehouseId" element={<InventoryByWarehouse />} />
-        <Route path="/warehouse/:warehouseId" element={<InventoryByWarehouse />} />
         <Route path="/edit-inventory/:inventoryId" element={<EditInventory />} /> 
         <Route path="/add-warehouse" element={<AddWarehouse />} />
         <Route path="/edit-warehouse/:warehouseId" element={<EditWarehouse />} />
-        <Route path="/add-inventory" element={<AddInventory />} />
-
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </BrowserRouter>
