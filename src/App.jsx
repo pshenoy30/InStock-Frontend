@@ -4,7 +4,7 @@ import HomePage from "../src/pages/Homepage/Homepage.jsx";
 import Inventory from "./pages/Inventory/Inventory.jsx";
 import AddWarehouse from "../src/pages/AddWarehouse/AddWarehouse.jsx";
 import InventoryItem from "../src/pages/InventoryItem/InventoryItem.jsx";
-import InventoryByWarehouse from "./pages/InventoryByWarehouse/InventoryByWarehouse.jsx";
+import InventoryByWarehouse from "../src/pages/InventoryByWarehouse/InventoryByWarehouse.jsx";
 import NotFoundPage from "../src/pages/NotFoundPage/NotFoundPage.jsx";
 import AddInventory from "../src/pages/AddInventory/AddInventory.jsx";
 
