@@ -1,14 +1,15 @@
 // AddWarehouse.jsx
 import React, { useState } from "react";
 import axios from "axios";
-import "./AddWarehouse.scss";
 import FormInputs from "../../components/FormInputs/FormInputs";
-import { defaultFormData } from "../../components/formUtils";
+import { defaultFormData } from "../../utils/formUtils";
 import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
 import SectionHeader from "../../components/SectionHeader/SectionHeader";
 import FormFooter from "../../components/FormFooter/FormFooter";
 import { BASE_URL_API } from "../../utils/editwarehouseApi";
+import { parsePhoneNumberFromString } from "libphonenumber-js";
+import "../../components/FormInputs/FormInputs.scss";
 
 const validateEmail = (email) => {
   const re = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
@@ -16,8 +17,15 @@ const validateEmail = (email) => {
 };
 
 const validatePhoneNumber = (phoneNumber) => {
-  const re = /^\+?[1-9]\d{1,14}$/;
-  return re.test(String(phoneNumber));
+  const phoneNumberParsed = parsePhoneNumberFromString(phoneNumber, "US");
+  return phoneNumberParsed ? phoneNumberParsed.isValid() : false;
+};
+
+const formatPhoneNumber = (phoneNumber) => {
+  const phoneNumberParsed = parsePhoneNumberFromString(phoneNumber, "US");
+  return phoneNumberParsed
+    ? phoneNumberParsed.formatInternational()
+    : phoneNumber;
 };
 
 const validateFormData = (data) => {
@@ -66,18 +74,21 @@ const AddWarehouse = () => {
           country: formData.country,
           contact_name: formData.contactName,
           contact_position: formData.contactPosition,
-          contact_phone: formData.contactPhone,
+          contact_phone: formatPhoneNumber(formData.contactPhone),
           contact_email: formData.contactEmail,
         };
 
         await axios.post(`${BASE_URL_API}/warehouse`, updatedFormData);
 
         handleReset();
+        return true; 
       } catch (error) {
         console.error("Error submitting form:", error);
+        return false; 
       }
     } else {
       setFormErrors(errors);
+      return false; 
     }
   };
 
@@ -146,23 +157,30 @@ const AddWarehouse = () => {
       <main className="wrapper">
         <section className="mainBox">
           <div className="form-container">
-            <SectionHeader title="Add New Warehouse" />
+            <SectionHeader title="Add New Warehouse" backLink="/" />
             <form className="form" onSubmit={handleSubmit}>
-              <FormInputs
-                sectionTitle="Warehouse Details"
-                fields={warehouseFields}
-                formData={formData}
-                formErrors={formErrors}
-                handleChange={handleChange}
+              <div className="form__sections">
+                <FormInputs
+                  sectionTitle="Warehouse Details"
+                  fields={warehouseFields}
+                  formData={formData}
+                  formErrors={formErrors}
+                  handleChange={handleChange}
+                />
+                <div className="form__divider"></div>
+                <FormInputs
+                  sectionTitle="Contact Details"
+                  fields={contactFields}
+                  formData={formData}
+                  formErrors={formErrors}
+                  handleChange={handleChange}
+                />
+              </div>
+              <FormFooter
+                onReset={handleReset}
+                onSubmit={handleSubmit}
+                isAddWarehouseMode
               />
-              <FormInputs
-                sectionTitle="Contact Details"
-                fields={contactFields}
-                formData={formData}
-                formErrors={formErrors}
-                handleChange={handleChange}
-              />
-              <FormFooter onReset={handleReset} onSubmit={handleSubmit} />
             </form>
           </div>
         </section>

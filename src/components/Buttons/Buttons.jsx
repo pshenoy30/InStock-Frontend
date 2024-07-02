@@ -6,7 +6,10 @@ function Buttons({ buttonName, type = "submit", clickHandler }) {
     switch (buttonName) {
       case "+ Add New Warehouse":
       case "+ Add New Item":
-        return "button__primary";
+      return "button__primary" 
+      case "+ Add Item":
+        return "button__primary button__primary--item";
+        
       case "Cancel":
         return "button__secondary";
       case "Delete":
@@ -15,6 +18,7 @@ function Buttons({ buttonName, type = "submit", clickHandler }) {
         return "button__edit";
       case "Save":
         return "button__save";
+        
       default:
         return "";
     }
