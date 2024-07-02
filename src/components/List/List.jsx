@@ -96,7 +96,7 @@ function List({
             </Link>
           </article>
         </article>
-        <Modal isOpen={isOpen} onRequestClose={closeModal} contentLabel="Delete a warehouse" className="modal">
+        {listType === "warehouse" && <Modal isOpen={isOpen} onRequestClose={closeModal} contentLabel="Delete a warehouse" ariaHideApp={false} className="modal">
           <>
             <button className='modal__close' onClick={closeModal}>
               <img className="list__img" src={closeImg} alt="edit button"></img>
@@ -112,7 +112,24 @@ function List({
               </article>
             </section>
           </>
-        </Modal>
+        </Modal>}
+        {listType !== "warehouse" && <Modal isOpen={isOpen} onRequestClose={closeModal} contentLabel="Delete a warehouse" ariaHideApp={false} className="modal">
+          <>
+            <button className='modal__close' onClick={closeModal}>
+              <img className="list__img" src={closeImg} alt="edit button"></img>
+            </button>
+            <section className='modal__container'>
+              <article className='modal__text-container'>
+                <h1 className='modal__title'>Delete {val1} inventory item?</h1>
+                <p className='modal__text'>Please confirm that you'd like to delete the {val1} from the inventory list. You wont be able to undo this action</p>
+              </article>
+              <article className='modal__button-container'>
+                <Buttons buttonName="Cancel" clickHandler={closeModal} />
+                <Buttons buttonName="Delete" clickHandler={deleteModal} />
+              </article>
+            </section>
+          </>
+        </Modal>}
     </>
   );
 }

@@ -81,6 +81,7 @@ function InventorybyWarehouse() {
                     <List
                       id={id}
                       relativePath={"../../edit-inventory/" + id}
+                      listType="inventories"
                       title1="Inventory Item"
                       val1={item_name}
                       title2="Category"
