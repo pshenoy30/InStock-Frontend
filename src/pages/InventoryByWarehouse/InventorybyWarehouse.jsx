@@ -80,7 +80,7 @@ function InventorybyWarehouse() {
                   <>
                     <List
                       id={id}
-                      relativePath={"../../edit-inventory/" + id}
+                      relativePath={"../../inventories/" + id}
                       listType="inventories"
                       title1="Inventory Item"
                       val1={item_name}

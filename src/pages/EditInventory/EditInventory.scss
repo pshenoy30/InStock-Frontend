@@ -82,11 +82,16 @@
   &__radio {
     font-family: "Titillium Web";
     display: flex;
-    gap: 0.5rem;
+  
+    &-item {
+      display: flex;
+      gap: 0.5rem;
+    }
   }
 
-  &__radioBox {
+  &__radio-container {
     display: flex;
+    gap: 5.5625rem;
   }
 
   &__input {
@@ -116,4 +121,8 @@
     @include input-font;
     background-color: $primary-white;
   }
+}
+
+.form__radio-item.not-selected {
+  color: $secondary-slate;
 }

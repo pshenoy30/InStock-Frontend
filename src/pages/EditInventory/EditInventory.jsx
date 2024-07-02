@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import EditInventoryForm from "../../components/EditInventoryForm/EditInventoryForm";
 import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
@@ -13,7 +13,9 @@ function EditInventory() {
   const [formData, setFormData] = useState({});
   const [formErrors, setFormErrors] = useState({});
   const [isLoading, setIsLoading] = useState(true);
+  const [redirect, setRedirect] = useState(false);
   const { inventoryId: id } = useParams();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchInventoryData = async () => {
@@ -109,6 +111,11 @@ function EditInventory() {
       options: ["In Stock", "Out of Stock"],
     },
     {
+      name: "quantity",
+      label: "Quantity",
+      type: "text",
+    },
+    {
       name: "warehouseName",
       label: "Warehouse",
       type: "drop-down",
@@ -170,6 +177,7 @@ function EditInventory() {
         const API_URL = import.meta.env.VITE_BACKEND_URL;
         const updateUrl = `${API_URL}/inventory/${id}`;
         await axios.put(updateUrl, updatedFormData);
+        handleReset();
       } catch (error) {
         console.error("Error updating inventory:", error);
       }
@@ -187,9 +195,17 @@ function EditInventory() {
       warehouse: "",
     });
     setFormErrors({});
+
+    setRedirect(true);
+   
   };
 
   if (isLoading) return <p>Loading...</p>;
+
+  if (redirect) {
+    console.log("redirecting")
+    navigate("/inventories");
+  }
   return (
     <>
       <Header />
@@ -218,7 +234,9 @@ function EditInventory() {
             <EditInventoryFooter
               inventoryId={id}
               onReset={handleReset}
-              onSubmit={handleSubmit}
+              onSubmit={() => {
+                handleSubmit();
+              }}
               isEditMode
             />
           </form>

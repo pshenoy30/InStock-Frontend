@@ -34,8 +34,9 @@ const EditInventoryForm = ({
                 ))}
               </select>
             ) : type === "radio" ? (
-              options.map((option, index) => (
-                <div key={index} className="form__radio">
+              <div className="form__radio-container">
+              {options.map((option, index) => (
+                <div key={index} className={`form__radio-item ${formData[name] !== option ? "not-selected" : ""}`}>
                   <input
                     type="radio"
                     name={name}
@@ -44,8 +45,9 @@ const EditInventoryForm = ({
                     onChange={handleChange}
                   />
                   {option}
-                </div>
-              ))
+                  </div>
+              ))}
+              </div>
             ) : type === "textarea" ? (
               <textarea
                 className="form__textarea"
