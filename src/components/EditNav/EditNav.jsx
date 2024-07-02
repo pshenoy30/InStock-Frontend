@@ -24,7 +24,7 @@ const EditNav = ({ inventoryId, title, buttonText, showButton }) => {
         <h1 className="editNav__title">{title}</h1>
       </div>
       {showButton ? (
-        <Link to={`../edit-inventory/${inventoryId}`}>
+        <Link to={`../edit-warehouse/${inventoryId}`}>
           <Buttons buttonName={buttonText} className="editNav__btn"/>
         </Link>
       ) : (
