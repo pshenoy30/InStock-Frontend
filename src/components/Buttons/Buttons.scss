@@ -34,6 +34,7 @@
   }
 
   &__save { 
+    width: auto;
     color: $primary-white;
     background-color: $primary-inStockIndigo;
     border: 1px solid $primary-inStockIndigo;
@@ -67,6 +68,7 @@
   }
 
   &__secondary {
+    width: auto;
     color: $secondary-slate;
     background-color: $primary-white;
     border: 1px solid $secondary-cloud;

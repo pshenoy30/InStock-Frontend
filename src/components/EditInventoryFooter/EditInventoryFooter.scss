@@ -10,6 +10,14 @@
     display: flex;
     gap: 1rem;
     padding: 1rem 2rem;
-    justify-content: flex-end;
+    justify-content: space-evenly;
+
+    @include tablet{
+        justify-content: flex-end;
+    }
+
+    @include desktop{
+        justify-content: flex-end;
+    }
 }
   

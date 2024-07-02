@@ -196,9 +196,8 @@ function EditInventory() {
     });
     setFormErrors({});
 
-    setTimeout(() => {
-      setRedirect(true);
-    }, 1000);
+    setRedirect(true);
+   
   };
 
   if (isLoading) return <p>Loading...</p>;

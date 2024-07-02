@@ -43,11 +43,17 @@
     width: 100%;
     display: flex;
     flex-direction: row;
-    gap: 1rem;
     align-items: center;
+    justify-content: space-evenly;
 
-    @include tablet{
-        gap: 1.5rem;
+    @include tablet {
+      gap: 1.5rem;
+      justify-content: flex-end;
+    }
+
+    @include desktop {
+      gap: 1.5rem;
+      justify-content: flex-end;
     }
   }
 
@@ -80,7 +86,7 @@
     justify-content: center;
 
     &:hover {
-        @include hover-state;
+      @include hover-state;
     }
   }
 }

@@ -1,15 +1,25 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import icon from "../../assets/icons/arrow_back-24px.svg";
 import Buttons from "../Buttons/Buttons";
 import "./EditNav.scss";
 
 const EditNav = ({ inventoryId, title, buttonText, showButton }) => {
   const navigate = useNavigate();
+  const location = useLocation();
 
   const handleBackClick = () => {
+      const dispatch = useDispatch();
+      const navigate = useNavigate();
+      const previousRoute = useSelector((state) => state.navigation.previousRoute);
+     
+      const handleBackClick = () => {
+        if (previousRoute) {
+          navigate(previousRoute);
+        } else {
     navigate("/inventories");
+    }
   };
 
   return (

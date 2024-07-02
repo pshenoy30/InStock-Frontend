@@ -10,12 +10,13 @@
   display: flex;
 
   @include tablet {
-    width: 44rem;
+    width: 100%;
     padding: 1.5rem 2rem 2rem 2rem;
   }
 
   @include desktop {
-    width: 63.75rem;
+    // width: 63.75rem;
+    width: 100%;
     padding: 1.5rem 2.5rem 2.25rem 2.5rem;
     display: block;
   }
