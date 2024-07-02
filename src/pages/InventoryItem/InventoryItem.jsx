@@ -5,7 +5,7 @@ import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
 import EditNav from "../../components/EditNav/EditNav";
 import StockTag from "../../components/StockTag/StockTag";
-import getInventoryItem from "../../utils/getInventoryItem"
+import getInventoryItem from "../../utils/getInventoryItem";
 
 function InventoryItem() {
   const [isLoading, setIsLoading] = useState(true);
@@ -14,18 +14,18 @@ function InventoryItem() {
   const { inventoryId } = useParams();
 
   useEffect(() => {
-
     async function getInventoryData(id) {
       try {
-        setInventoriesItemData(await getInventoryItem(id));
+        const data = await getInventoryItem(id);
+        setInventoriesItemData(data);
         setIsLoading(false);
       } catch (error) {
-        console.log("Error fetching data", error)
+        setError(true);
       }
     }
 
     getInventoryData(inventoryId);
-  },[]);
+  }, [inventoryId]);
 
   if (isLoading) {
     return <p> Loading inventory data... </p>;
@@ -45,44 +45,44 @@ function InventoryItem() {
     warehouse_name
   } = inventoriesItemData;
 
-  if(!isLoading){
+  if (!isLoading) {
     return (
       <div>
         <Header />
         <main className="wrapper">
-        <section className="box">
-          <EditNav inventoryId={id} title={item_name} buttonText="Edit" showButton={true}/>
-          <section className="inventoryItem">
-            <article className="inventoryItem__container">
-              <article className="inventoryItem__card">
-                <div className="inventoryItem__subcontainer">
-                  <h3 className="inventoryItem__title">ITEM DESCRIPTION:</h3>
-                  <h3 className="inventoryItem__detail">{description}</h3>
-                </div>
-                <div className="inventoryItem__subcontainer">
-                  <h3 className="inventoryItem__title">CATEGORY:</h3>
-                  <h3 className="inventoryItem__detail">{category}</h3>
-                </div>
-              </article>
-              <article className="inventoryItem__card inventoryItem__card--divider">
-                <article className="inventoryItem__subcard">
+          <section className="box">
+            <EditNav id={id} title={item_name} buttonText="Edit" showButton={true} isWarehouse={false} />
+            <section className="inventoryItem">
+              <article className="inventoryItem__container">
+                <article className="inventoryItem__card">
                   <div className="inventoryItem__subcontainer">
-                    <h3 className="inventoryItem__title">STATUS:</h3>
-                    <h3 className="inventoryItem__detail">{<StockTag stockStatus={status} />}</h3>
+                    <h3 className="inventoryItem__title">ITEM DESCRIPTION:</h3>
+                    <h3 className="inventoryItem__detail">{description}</h3>
                   </div>
                   <div className="inventoryItem__subcontainer">
-                    <h3 className="inventoryItem__title">QUANTITY:</h3>
-                    <h3 className="inventoryItem__detail">{quantity}</h3>
+                    <h3 className="inventoryItem__title">CATEGORY:</h3>
+                    <h3 className="inventoryItem__detail">{category}</h3>
                   </div>
                 </article>
-                <div className="inventoryItem__subcontainer">
-                  <h3 className="inventoryItem__title">WAREHOUSE:</h3>
-                  <h3 className="inventoryItem__detail">{warehouse_name}</h3>
-                </div>
+                <article className="inventoryItem__card inventoryItem__card--divider">
+                  <article className="inventoryItem__subcard">
+                    <div className="inventoryItem__subcontainer">
+                      <h3 className="inventoryItem__title">STATUS:</h3>
+                      <h3 className="inventoryItem__detail"><StockTag stockStatus={status} /></h3>
+                    </div>
+                    <div className="inventoryItem__subcontainer">
+                      <h3 className="inventoryItem__title">QUANTITY:</h3>
+                      <h3 className="inventoryItem__detail">{quantity}</h3>
+                    </div>
+                  </article>
+                  <div className="inventoryItem__subcontainer">
+                    <h3 className="inventoryItem__title">WAREHOUSE:</h3>
+                    <h3 className="inventoryItem__detail">{warehouse_name}</h3>
+                  </div>
+                </article>
               </article>
-            </article>
+            </section>
           </section>
-        </section>
         </main>
         <Footer />
       </div>

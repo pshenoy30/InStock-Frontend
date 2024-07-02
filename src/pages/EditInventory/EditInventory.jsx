@@ -123,7 +123,6 @@ function EditInventory() {
     },
   ];
 
-  //validation checks
   const validateFormData = (data) => {
     const errors = {};
     if (!data.itemName) errors.itemName = "Item Name is required";
@@ -197,13 +196,11 @@ function EditInventory() {
     setFormErrors({});
 
     setRedirect(true);
-   
   };
 
   if (isLoading) return <p>Loading...</p>;
 
   if (redirect) {
-    console.log("redirecting")
     navigate("/inventories");
   }
   return (
@@ -212,7 +209,7 @@ function EditInventory() {
       <main className="wrapper">
         <section className="box">
           <form className="form" onSubmit={handleSubmit}>
-            <EditNav title="Edit Inventory Item" showButton={false} />
+            <EditNav id={id} title="Edit Inventory Item" showButton={false} />
             <div className="form__card">
               <EditInventoryForm
                 className="form__subcard-left"

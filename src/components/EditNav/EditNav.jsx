@@ -4,7 +4,7 @@ import icon from "../../assets/icons/arrow_back-24px.svg";
 import Buttons from "../Buttons/Buttons";
 import "./EditNav.scss";
 
-const EditNav = ({ inventoryId, title, buttonText, showButton }) => {
+const EditNav = ({ id, title, buttonText, showButton, isWarehouse }) => {
   const navigate = useNavigate();
 
   const handleBackClick = () => {
@@ -23,7 +23,7 @@ const EditNav = ({ inventoryId, title, buttonText, showButton }) => {
         <h1 className="editNav__title">{title}</h1>
       </div>
       {showButton ? (
-        <Link to={`/edit-warehouse/${inventoryId}`}>
+        <Link to={isWarehouse ? `/edit-warehouse/${id}` : `/edit-inventory/${id}`}>
           <Buttons buttonName={buttonText} className="editNav__btn"/>
         </Link>
       ) : (
