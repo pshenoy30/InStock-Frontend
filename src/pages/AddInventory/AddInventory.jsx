@@ -7,6 +7,7 @@ import Footer from "../../components/Footer/Footer";
 import SectionHeader from "../../components/SectionHeader/SectionHeader";
 import FormFooter from "../../components/FormFooter/FormFooter";
 import { BASE_URL_API } from "../../utils/editwarehouseApi";
+import { useNavigate, useParams } from "react-router-dom";
 
 const defaultFormData = {
   item_name: "",
@@ -23,24 +24,27 @@ const AddInventory = () => {
   const [categories, setCategories] = useState([]);
   const [warehouses, setWarehouses] = useState([]);
   const [isUpdating, setIsUpdating] = useState(false);
+  const navigate = useNavigate();
+  const { inventoryId } = useParams();
 
   useEffect(() => {
     const fetchCategoriesAndWarehouses = async () => {
       try {
         const [categoriesResponse, warehousesResponse] = await Promise.all([
-          axios.get(`${BASE_URL_API}/inventory/categories`),
+          axios.get(`${BASE_URL_API}/inventory/categories/unique`),
           axios.get(`${BASE_URL_API}/warehouse/names`),
         ]);
-
+  
         setCategories(categoriesResponse.data);
         setWarehouses(warehousesResponse.data);
       } catch (error) {
         console.error("Error fetching data:", error);
       }
     };
-
+  
     fetchCategoriesAndWarehouses();
   }, []);
+  
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -85,6 +89,7 @@ const AddInventory = () => {
       try {
         await axios.post(`${BASE_URL_API}/inventory`, submissionData);
         handleReset();
+        navigate(`/inventories/`);
       } catch (error) {
         console.error("Error submitting form:", error);
       }
@@ -97,6 +102,7 @@ const AddInventory = () => {
     setFormData(defaultFormData);
     setFormErrors({});
     setIsUpdating(false);
+    navigate(`/inventories/`);
   };
 
   const validateFormData = (data) => {
@@ -175,7 +181,7 @@ const AddInventory = () => {
           <div className="form-container">
             <SectionHeader
               title="Add New Inventory Item"
-              backLink="/inventories/:inventoryId"
+              backLink={`/inventories/`}
             />
             <form className="form" onSubmit={handleSubmit}>
               <div className="form__sections">
@@ -204,7 +210,10 @@ const AddInventory = () => {
               <FormFooter
                 onReset={handleReset}
                 onSubmit={handleSubmit}
+                isEditMode={false}
                 isAddWarehouseMode={false}
+                cancelPath={`/inventories/`}
+                submitPath={`/inventories/`}
               />
             </form>
           </div>

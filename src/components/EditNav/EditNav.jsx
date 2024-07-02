@@ -1,6 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
-import { useNavigate, useLocation, useParams } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import icon from "../../assets/icons/arrow_back-24px.svg";
 import Buttons from "../Buttons/Buttons";
 import "./EditNav.scss";
@@ -24,7 +23,7 @@ const EditNav = ({ inventoryId, title, buttonText, showButton }) => {
         <h1 className="editNav__title">{title}</h1>
       </div>
       {showButton ? (
-        <Link to={`../edit-warehouse/${inventoryId}`}>
+        <Link to={`/edit-warehouse/${inventoryId}`}>
           <Buttons buttonName={buttonText} className="editNav__btn"/>
         </Link>
       ) : (

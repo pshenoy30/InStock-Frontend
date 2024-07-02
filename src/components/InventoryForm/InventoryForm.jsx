@@ -10,12 +10,13 @@ const InventoryForm = ({
   formData,
   formErrors,
   handleChange,
+  classNames = {},
 }) => {
   return (
-    <div className="form__section">
+    <div className="form__section-part">
       <h2 className="form__heading">{sectionTitle}</h2>
       {fields.map((field) => (
-        <div key={field.name} className="form__group">
+        <div key={field.name} className={`form__group ${classNames[field.name] || ''}`}>
           <label htmlFor={field.name} className="form__label">
             {field.label}
           </label>
@@ -27,7 +28,7 @@ const InventoryForm = ({
                 value={formData[field.name]}
                 onChange={handleChange}
                 className={`form__input form__input--${field.name} ${
-                  formErrors[field.name] && "is-invalid"
+                  formErrors[field.name] ? "is-invalid" : ""
                 }`}
               >
                 <option value="">{field.placeholder}</option>
@@ -47,7 +48,7 @@ const InventoryForm = ({
               onChange={handleChange}
               placeholder={field.placeholder}
               className={`form__textarea form__textarea--${field.name} ${
-                formErrors[field.name] && "is-invalid"
+                formErrors[field.name] ? "is-invalid" : ""
               }`}
             />
           ) : field.type === "radio" ? (
@@ -69,7 +70,7 @@ const InventoryForm = ({
                     checked={formData[field.name] === option.value}
                     onChange={handleChange}
                     className={`form__radio ${
-                      formErrors[field.name] && "is-invalid"
+                      formErrors[field.name] ? "is-invalid" : ""
                     }`}
                   />
                   {option.label}
@@ -85,8 +86,8 @@ const InventoryForm = ({
               onChange={handleChange}
               placeholder={field.placeholder}
               className={`form__input form__input--${field.name} ${
-                formErrors[field.name] && "is-invalid"
-              }`}
+                formErrors[field.name] ? "is-invalid" : ""
+              } ${classNames[field.name] || ''}`}
             />
           )}
           {formErrors[field.name] && (
@@ -133,6 +134,7 @@ InventoryForm.propTypes = {
   formData: PropTypes.object.isRequired,
   formErrors: PropTypes.object.isRequired,
   handleChange: PropTypes.func.isRequired,
+  classNames: PropTypes.object,
 };
 
 export default InventoryForm;

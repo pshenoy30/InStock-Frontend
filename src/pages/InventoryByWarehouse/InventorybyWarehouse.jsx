@@ -1,5 +1,4 @@
-import React from "react";
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import MediaQuery from "react-responsive";
 import EditNav from "../../components/EditNav/EditNav";
@@ -37,24 +36,24 @@ function InventorybyWarehouse() {
         setInventoryItems(await getInventoryBasedOnWarehouseById(id));
         setLoadingInventory(false);
       } catch (error) {
-        console.log("Error fetching data", error)
+        console.log("Error fetching data", error);
       }
     }
 
     getWarehouseData(warehouseId);
     getInventoryData(warehouseId);
-  });
+  }, [warehouseId]);
 
   if (loadingWarehouse) {
-    return <p> Loading warehouse data... </p>;
+    return <p>Loading warehouse data...</p>;
   }
 
   if (loadingInventory) {
-    return <p> Loading inventory data... </p>;
+    return <p>Loading inventory data...</p>;
   }
 
   if (error) {
-    return <p> Something went wrong. Please try refreshing the page</p>;
+    return <p>Something went wrong. Please try refreshing the page.</p>;
   }
 
   const tableHeader = [
@@ -65,33 +64,37 @@ function InventorybyWarehouse() {
     { id: 4, header: "Actions" },
   ];
 
-  if(!loadingWarehouse && !loadingInventory){
+  if (!loadingWarehouse && !loadingInventory) {
     return (
       <>
         <Header />
         <main className="wrapper">
           <section className="box">
-            <EditNav title={warehouseData.warehouse_name} buttonText="Edit" showButton={true} />
+            <EditNav
+              inventoryId={warehouseId}
+              title={warehouseData.warehouse_name}
+              buttonText="Edit"
+              showButton={true}
+            />
             <WarehouseDetailsSection warehouseData={warehouseData} />
             <MediaQuery maxWidth={767}>
               {inventoryItem.map((inventory) => {
                 const { id, item_name, category, status, quantity } = inventory;
                 return (
-                  <>
-                    <List
-                      id={id}
-                      relativePath={"../../inventories/" + id}
-                      listType="inventories"
-                      title1="Inventory Item"
-                      val1={item_name}
-                      title2="Category"
-                      val2={category}
-                      title3="Status"
-                      val3={<StockTag stockStatus={status} />}
-                      title4="Qty"
-                      val4={quantity}
-                    />
-                  </>
+                  <List
+                    key={id}
+                    id={id}
+                    relativePath={"../../inventories/" + id}
+                    listType="inventories"
+                    title1="Inventory Item"
+                    val1={item_name}
+                    title2="Category"
+                    val2={category}
+                    title3="Status"
+                    val3={<StockTag stockStatus={status} />}
+                    title4="Qty"
+                    val4={quantity}
+                  />
                 );
               })}
             </MediaQuery>
@@ -108,6 +111,8 @@ function InventorybyWarehouse() {
       </>
     );
   }
+
+  return null;
 }
 
 export default InventorybyWarehouse;

@@ -1,5 +1,15 @@
 @use "../partials/variables" as *;
 
+@mixin font-family {
+  font-family: "Titillium Web", sans-serif;
+}
+
+@mixin placeholder($color) {
+  &::placeholder {
+    color: $secondary-slate;
+  }
+}
+
 @mixin mobile {
   @media (max-width: $mobile-max-width) {
     @content;
