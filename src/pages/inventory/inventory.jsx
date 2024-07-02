@@ -67,6 +67,7 @@ function Inventory() {
                   <List
                     id={id}
                     relativePath={id}
+                    listType="inventories"
                     title1="Inventory Item"
                     val1={item_name}
                     title2="Category"
