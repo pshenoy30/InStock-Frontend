@@ -7,7 +7,7 @@ async function getInventoriesItemData (inventoryId) {
         const response = await axios.get(`${API_URL}/inventory/${inventoryId}`);
         return response.data;
     } catch (err) {
-        console.log("Couldn't fetch the data", err);
+        console.log("Couldn't fetch the data", error);
     }
 }
 
