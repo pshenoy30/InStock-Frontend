@@ -1,33 +1,35 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import HomePage from "../src/pages/Homepage/Homepage.jsx";
-// import Warehouse from "../src/pages/Warehouse/Warehouse.jsx";
-import Inventory from "./pages/Inventory/Inventory.jsx";
-import AddWarehouse from "../src/pages/AddWarehouse/AddWarehouse.jsx";
-import InventoryItem from "../src/pages/InventoryItem/InventoryItem.jsx";
-import InventoryByWarehouse from "./pages/InventoryByWarehouse/InventoryByWarehouse.jsx";
-import NotFoundPage from "../src/pages/NotFoundPage/NotFoundPage.jsx";
-import AddInventory from "../src/pages/AddInventory/AddInventory.jsx";
+import { useState } from 'react'
+import reactLogo from './assets/react.svg'
+import viteLogo from '/vite.svg'
+import './App.css'
 
-import "./App.scss";
-import EditWarehouse from "../src/pages/EditWarehouse/EditWarehouse.jsx";
-import EditInventory from "../src/pages/EditInventory/EditInventory.jsx";
 function App() {
-  return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/inventories" element={<Inventory />} />
-        <Route path="/inventories/:inventoryId" element={<InventoryItem />} />
-        <Route path="/warehouse/:warehouseId" element={<InventoryByWarehouse />} />
-        <Route path="/edit-inventory/:inventoryId" element={<EditInventory />} /> 
-        <Route path="/add-warehouse" element={<AddWarehouse />} />
-        <Route path="/edit-warehouse/:warehouseId" element={<EditWarehouse />} />
-        <Route path="/add-inventory" element={<AddInventory />} />
+  const [count, setCount] = useState(0)
 
-        <Route path="*" element={<NotFoundPage />} />
-      </Routes>
-    </BrowserRouter>
-  );
+  return (
+    <>
+      <div>
+        <a href="https://vitejs.dev" target="_blank">
+          <img src={viteLogo} className="logo" alt="Vite logo" />
+        </a>
+        <a href="https://react.dev" target="_blank">
+          <img src={reactLogo} className="logo react" alt="React logo" />
+        </a>
+      </div>
+      <h1>Vite + React</h1>
+      <div className="card">
+        <button onClick={() => setCount((count) => count + 1)}>
+          count is {count}
+        </button>
+        <p>
+          Edit <code>src/App.jsx</code> and save to test HMR
+        </p>
+      </div>
+      <p className="read-the-docs">
+        Click on the Vite and React logos to learn more
+      </p>
+    </>
+  )
 }
 
-export default App;
+export default App
