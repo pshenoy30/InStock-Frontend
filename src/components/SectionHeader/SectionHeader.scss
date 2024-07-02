@@ -1,3 +1,7 @@
+// SectionHeader.scss
+@use "../../styles/partials/globals" as *;
+// SectionHeader.scss
+@use "../../styles/partials/globals" as *;
 @use "../../styles/partials/mixins" as *;
 @use "../../styles/partials/variables" as *;
 @use "../../styles/partials/typography" as *;
@@ -8,15 +12,17 @@
 
   .form-container__icon-title {
     display: flex;
-    align-items: center;
+    align-items: flex-end;
     background-color: $primary-white;
+    gap: 1rem;
 
-    .form-container__icon {
+    .form-container__icon-link-link {
       width: 24px;
       height: 24px;
       margin-right: 1rem;
       background-color: $primary-white;
-      cursor: pointer; 
+      cursor: pointer;
+      cursor: pointer;
     }
   }
 
@@ -29,3 +35,12 @@
   }
 }
 
+.form-container__icon {
+  background-color: $primary-white;
+  cursor: pointer;
+}
+
+.form-container__icon {
+  background-color: $primary-white;
+  cursor: pointer;
+}

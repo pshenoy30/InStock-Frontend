@@ -13,7 +13,7 @@ import getWarehouseById from "../../utils/editwarehouseApi";
 import getInventoryBasedOnWarehouseById from "../../utils/getInventoryItemsBasedOnWarehouseId";
 import "./InventoryByWarehouse.scss";
 
-function InventorybyWarehouse() {
+function InventoryByWarehouse() {
   const [warehouseData, setWarehouseData] = useState(null);
   const [inventoryItem, setInventoryItems] = useState(null);
   const [loadingWarehouse, setLoadingWarehouse] = useState(true);
@@ -110,4 +110,4 @@ function InventorybyWarehouse() {
   }
 }
 
-export default InventorybyWarehouse;
+export default InventoryByWarehouse;

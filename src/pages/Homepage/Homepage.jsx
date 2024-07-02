@@ -7,6 +7,7 @@ import getAllWarehouseDetails from "../../utils/getAllWarehouse.jsx";
 import Table from "../../components/Table/Table.jsx";
 import { useState, useEffect } from "react";
 import "./Homepage.scss";
+import { useNavigate } from "react-router-dom";
 
 export default function Homepage() {
   const [warehouseDetails, setWarehouseDetails] = useState(null);
@@ -21,14 +22,20 @@ export default function Homepage() {
     { id: 4, header: "Actions" },
   ];
 
+  const navigate = useNavigate();
+
+  function AddNewWarehouse() {
+    navigate("/add-warehouse")
+  };
+
   useEffect(() => {
-    async function getWarehouseData(){
+    async function getWarehouseData() {
       try {
         setWarehouseDetails(await getAllWarehouseDetails());
         setLoadingWarehouseDetails(false);
       } catch (error) {
         console.log("Couldn't fetch data", error);
-        setError(true)
+        setError(true);
       }
     }
     getWarehouseData();
@@ -41,14 +48,18 @@ export default function Homepage() {
   if (error) {
     return <p> Something went wrong. Please try refreshing the page</p>;
   }
-    
-  if(!loadingWarehouseDetails){
+
+  if (!loadingWarehouseDetails) {
     return (
       <>
         <Header />
         <main className="wrapper">
           <section className="box">
-            <SearchNav title="Warehouse" buttonText="+ Add New Warehouse" />
+            <SearchNav
+              title="Warehouse"
+              buttonText="+ Add New Warehouse"
+              clickFunction={AddNewWarehouse}
+            />
             <MediaQuery maxWidth={767}>
               {warehouseDetails.map((warehouse) => {
                 const {

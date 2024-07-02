@@ -1,7 +1,7 @@
 import Buttons from "../Buttons/Buttons";
 import "./SearchNav.scss";
 
-function SearchNav({ title, buttonText }) {
+function SearchNav({ title, buttonText, clickFunction }) {
   return (
     <>
       <section className="searchNav">
@@ -13,7 +13,7 @@ function SearchNav({ title, buttonText }) {
             className="searchNav__search"
             placeholder="Search"
           />
-          <Buttons buttonName={buttonText}/>
+          <Buttons buttonName={buttonText} clickHandler={clickFunction}/>
         </div>
       </section>
     </>

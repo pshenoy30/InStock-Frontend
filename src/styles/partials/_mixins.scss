@@ -1,5 +1,15 @@
 @use "../partials/variables" as *;
 
+@mixin font-family {
+  font-family: "Titillium Web", sans-serif;
+}
+
+@mixin placeholder($color) {
+  &::placeholder {
+    color: $secondary-slate;
+  }
+}
+
 @mixin mobile {
   @media (max-width: $mobile-max-width) {
     @content;
@@ -62,7 +72,7 @@
   padding: 0rem 1rem 0rem 1rem;
   border: 1px solid $secondary-cloud;
   border-radius: 1.25rem;
-  font-size: 1rem;
+  @extend p2;
   box-sizing: border-box;
 }
 
@@ -72,7 +82,7 @@
 
 @mixin button-style($bg-color, $hover-color) {
   background-color: $bg-color;
-  color: #fff;
+  color: $primary-white;
   border: none;
   padding: 0.5rem 1rem;
   font-size: 1rem;
