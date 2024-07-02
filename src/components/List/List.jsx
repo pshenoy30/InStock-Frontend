@@ -29,7 +29,8 @@ function List({
 
   const navigate = useNavigate();
   const handleEditClick = () => {
-    navigate(`/edit-inventory/${id}`);
+    const editPath = listType === "warehouse" ? `/edit-warehouse/${id}` : `/edit-inventory/${id}`;
+    navigate(editPath);
   };
 
   const [isOpen, setIsOpen] = useState(false);
@@ -43,7 +44,7 @@ function List({
   }
 
   function deleteModal(event) {
-    event.preventDefault;
+    event.preventDefault();
     if(listType === "warehouse"){
       console.log("delete");
       deleteWarehouseDetails(id);
@@ -54,7 +55,6 @@ function List({
       deleteInventoryDetails(id);
       setIsOpen(false);
     }
-    
   }
 
   return (

@@ -136,8 +136,10 @@ function Table({ listData, listType, listheader }) {
                   setModalData(data);
                   setIsModalOpen(true);}}>                   
                   <img src={deleteImg} alt="delete button"></img>
-                </button>
+                </button> 
+                <Link to={`../edit-warehouse/${data.id}`}>
                   <img src={editImg} alt="edit button"></img>
+                  </Link>
                 </td>
               </tr>
             </>
@@ -242,15 +244,13 @@ function Table({ listData, listType, listheader }) {
         <thead className="table-element__header">
           <tr className="table-element__row">
             {listheader.map((headerTitle) => (
-              <th className="table-element__columnheader table-element__columnheader--inventory" key={headerTitle.id}>
-              <div className="table-element__columnheader--flex">
+              <th className="table-element__columnheader" key={headerTitle.id}>
                 {headerTitle.header}
                 <img
                   className="table-element__sort"
                   src={sortImg}
                   alt="sort button"
                 ></img>
-                </div>
               </th>
             ))}
           </tr>

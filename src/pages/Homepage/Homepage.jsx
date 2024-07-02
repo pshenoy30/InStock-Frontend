@@ -22,33 +22,33 @@ export default function Homepage() {
   ];
 
   useEffect(() => {
-    async function getWarehouseData(){
+    async function getWarehouseData() {
       try {
         setWarehouseDetails(await getAllWarehouseDetails());
         setLoadingWarehouseDetails(false);
       } catch (error) {
         console.log("Couldn't fetch data", error);
-        setError(true)
+        setError(true);
       }
     }
     getWarehouseData();
-  });
+  }, []);
 
   if (loadingWarehouseDetails) {
-    return <p> Loading warehouse data... </p>;
+    return <p>Loading warehouse data...</p>;
   }
 
   if (error) {
-    return <p> Something went wrong. Please try refreshing the page</p>;
+    return <p>Something went wrong. Please try refreshing the page</p>;
   }
-    
-  if(!loadingWarehouseDetails){
+
+  if (!loadingWarehouseDetails) {
     return (
       <>
         <Header />
         <main className="wrapper">
           <section className="box">
-            <SearchNav title="Warehouse" buttonText="+ Add New Warehouse" />
+            <SearchNav title="Warehouse" buttonText="+ Add New Warehouse" linkTo="/add-warehouse" />
             <MediaQuery maxWidth={767}>
               {warehouseDetails.map((warehouse) => {
                 const {
@@ -62,21 +62,20 @@ export default function Homepage() {
                   contact_email,
                 } = warehouse;
                 return (
-                  <>
-                    <List
-                      id={id}
-                      relativePath={"warehouse/" + id}
-                      listType="warehouse"
-                      title1="Warehouse"
-                      val1={warehouse_name}
-                      title2="Address"
-                      val2={address + ", " + city + ", " + country}
-                      title3="Contact Name"
-                      val3={contact_name}
-                      title4="Contact information"
-                      val4={contact_phone + " " + contact_email}
-                    />
-                  </>
+                  <List
+                    key={id}
+                    id={id}
+                    relativePath={"warehouse/" + id}
+                    listType="warehouse"
+                    title1="Warehouse"
+                    val1={warehouse_name}
+                    title2="Address"
+                    val2={address + ", " + city + ", " + country}
+                    title3="Contact Name"
+                    val3={contact_name}
+                    title4="Contact information"
+                    val4={contact_phone + " " + contact_email}
+                  />
                 );
               })}
             </MediaQuery>

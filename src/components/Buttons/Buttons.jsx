@@ -5,8 +5,10 @@ function Buttons({ buttonName, type = "submit", clickHandler }) {
   const getClassToBeAssigned = (buttonName) => {
     switch (buttonName) {
       case "+ Add New Warehouse":
-      case "+ Add New Item":
-        return "button__primary";
+        case "+ Add New Item":
+          return "button__primary";
+        case "+ Add Item":
+          return "button__primary button__primary--item";
       case "Cancel":
         return "button__secondary";
       case "Delete":

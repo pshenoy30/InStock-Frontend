@@ -51,7 +51,7 @@ function Inventory() {
       <Header />
       <main className="wrapper">
         <section className="box">
-          <SearchNav title="Inventory" buttonText="+ Add New Item" />
+          <SearchNav title="Inventory" buttonText="+ Add New Item" linkTo="/add-inventory" />
           <MediaQuery maxWidth={767}>
             {inventoryDetails.map((inventory) => {
               const {
