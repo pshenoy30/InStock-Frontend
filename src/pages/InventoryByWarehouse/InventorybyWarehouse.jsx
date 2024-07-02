@@ -12,7 +12,7 @@ import getWarehouseById from "../../utils/editwarehouseApi";
 import getInventoryBasedOnWarehouseById from "../../utils/getInventoryItemsBasedOnWarehouseId";
 import "./InventoryByWarehouse.scss";
 
-function InventorybyWarehouse() {
+function InventoryByWarehouse() {
   const [warehouseData, setWarehouseData] = useState(null);
   const [inventoryItem, setInventoryItems] = useState(null);
   const [loadingWarehouse, setLoadingWarehouse] = useState(true);
@@ -23,20 +23,21 @@ function InventorybyWarehouse() {
   useEffect(() => {
     async function getWarehouseData(id) {
       try {
-        setWarehouseData(await getWarehouseById(id));
+        const data = await getWarehouseById(id);
+        setWarehouseData(data);
         setLoadingWarehouse(false);
       } catch (error) {
-        console.log("Error fetching data", error);
         setError(true);
       }
     }
 
     async function getInventoryData(id) {
       try {
-        setInventoryItems(await getInventoryBasedOnWarehouseById(id));
+        const data = await getInventoryBasedOnWarehouseById(id);
+        setInventoryItems(data);
         setLoadingInventory(false);
       } catch (error) {
-        console.log("Error fetching data", error);
+        setError(true);
       }
     }
 
@@ -44,12 +45,8 @@ function InventorybyWarehouse() {
     getInventoryData(warehouseId);
   }, [warehouseId]);
 
-  if (loadingWarehouse) {
-    return <p>Loading warehouse data...</p>;
-  }
-
-  if (loadingInventory) {
-    return <p>Loading inventory data...</p>;
+  if (loadingWarehouse || loadingInventory) {
+    return <p>Loading data...</p>;
   }
 
   if (error) {
@@ -64,55 +61,52 @@ function InventorybyWarehouse() {
     { id: 4, header: "Actions" },
   ];
 
-  if (!loadingWarehouse && !loadingInventory) {
-    return (
-      <>
-        <Header />
-        <main className="wrapper">
-          <section className="box">
-            <EditNav
-              inventoryId={warehouseId}
-              title={warehouseData.warehouse_name}
-              buttonText="Edit"
-              showButton={true}
+  return (
+    <>
+      <Header />
+      <main className="wrapper">
+        <section className="box">
+          <EditNav
+            id={warehouseId}
+            title={warehouseData.warehouse_name}
+            buttonText="Edit"
+            showButton={true}
+            isWarehouse={true}
+          />
+          <WarehouseDetailsSection warehouseData={warehouseData} />
+          <MediaQuery maxWidth={767}>
+            {inventoryItem.map((inventory) => {
+              const { id, item_name, category, status, quantity } = inventory;
+              return (
+                <List
+                  key={id}
+                  id={id}
+                  relativePath={`../../inventories/${id}`}
+                  listType="inventories"
+                  title1="Inventory Item"
+                  val1={item_name}
+                  title2="Category"
+                  val2={category}
+                  title3="Status"
+                  val3={<StockTag stockStatus={status} />}
+                  title4="Qty"
+                  val4={quantity}
+                />
+              );
+            })}
+          </MediaQuery>
+          <MediaQuery minWidth={768}>
+            <Table
+              listheader={tableHeader}
+              listData={inventoryItem}
+              listType="inventoryWarehouseId"
             />
-            <WarehouseDetailsSection warehouseData={warehouseData} />
-            <MediaQuery maxWidth={767}>
-              {inventoryItem.map((inventory) => {
-                const { id, item_name, category, status, quantity } = inventory;
-                return (
-                  <List
-                    key={id}
-                    id={id}
-                    relativePath={"../../inventories/" + id}
-                    listType="inventories"
-                    title1="Inventory Item"
-                    val1={item_name}
-                    title2="Category"
-                    val2={category}
-                    title3="Status"
-                    val3={<StockTag stockStatus={status} />}
-                    title4="Qty"
-                    val4={quantity}
-                  />
-                );
-              })}
-            </MediaQuery>
-            <MediaQuery minWidth={768}>
-              <Table
-                listheader={tableHeader}
-                listData={inventoryItem}
-                listType="inventoryWarehouseId"
-              />
-            </MediaQuery>
-          </section>
-        </main>
-        <Footer />
-      </>
-    );
-  }
-
-  return null;
+          </MediaQuery>
+        </section>
+      </main>
+      <Footer />
+    </>
+  );
 }
 
-export default InventorybyWarehouse;
+export default InventoryByWarehouse;
