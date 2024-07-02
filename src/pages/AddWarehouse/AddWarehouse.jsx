@@ -81,11 +81,14 @@ const AddWarehouse = () => {
         await axios.post(`${BASE_URL_API}/warehouse`, updatedFormData);
 
         handleReset();
+        return true; 
       } catch (error) {
         console.error("Error submitting form:", error);
+        return false; 
       }
     } else {
       setFormErrors(errors);
+      return false; 
     }
   };
 

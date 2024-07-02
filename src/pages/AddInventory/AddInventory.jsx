@@ -7,6 +7,7 @@ import Footer from "../../components/Footer/Footer";
 import SectionHeader from "../../components/SectionHeader/SectionHeader";
 import FormFooter from "../../components/FormFooter/FormFooter";
 import { BASE_URL_API } from "../../utils/editwarehouseApi";
+import { useNavigate, useParams } from "react-router-dom";
 
 const defaultFormData = {
   item_name: "",
@@ -23,6 +24,8 @@ const AddInventory = () => {
   const [categories, setCategories] = useState([]);
   const [warehouses, setWarehouses] = useState([]);
   const [isUpdating, setIsUpdating] = useState(false);
+  const navigate = useNavigate();
+  const { inventoryId } = useParams();
 
   useEffect(() => {
     const fetchCategoriesAndWarehouses = async () => {
@@ -85,11 +88,14 @@ const AddInventory = () => {
       try {
         await axios.post(`${BASE_URL_API}/inventory`, submissionData);
         handleReset();
+        return true;
       } catch (error) {
         console.error("Error submitting form:", error);
+        return false; 
       }
     } else {
       setFormErrors(errors);
+      return false; 
     }
   };
 
@@ -175,7 +181,7 @@ const AddInventory = () => {
           <div className="form-container">
             <SectionHeader
               title="Add New Inventory Item"
-              backLink="/inventories/:inventoryId"
+              backLink={`/inventories/`}
             />
             <form className="form" onSubmit={handleSubmit}>
               <div className="form__sections">
@@ -205,6 +211,8 @@ const AddInventory = () => {
                 onReset={handleReset}
                 onSubmit={handleSubmit}
                 isAddWarehouseMode={false}
+                cancelPath={`/inventories/`}
+                submitPath={`/inventories/`}
               />
             </form>
           </div>

@@ -19,8 +19,8 @@ function InventoryItem() {
       try {
         setInventoriesItemData(await getInventoryItem(id));
         setIsLoading(false);
-      } catch (error) {
-        console.log("Error fetching data", error)
+      } catch (err) {
+        console.log("Error fetching data", err)
       }
     }
 

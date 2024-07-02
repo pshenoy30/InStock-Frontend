@@ -109,7 +109,7 @@ const EditWarehouse = () => {
     e.preventDefault();
     if (!id) {
       console.error("No warehouse ID provided for update");
-      return;
+      return false;
     }
 
     const errors = validateFormData(formData);
@@ -128,11 +128,14 @@ const EditWarehouse = () => {
 
         const updateUrl = `${BASE_URL_API}/warehouse/${id}`;
         await axios.put(updateUrl, updatedFormData);
+        return true; 
       } catch (error) {
         console.error("Error updating warehouse:", error);
+        return false; 
       }
     } else {
       setFormErrors(errors);
+      return false; 
     }
   };
 
@@ -227,8 +230,7 @@ const EditWarehouse = () => {
                 onReset={handleReset}
                 onSubmit={handleSubmit}
                 isEditMode={true}
-                onAddItem={() => {}}
-                isAddWarehouseMode={true}
+                isAddWarehouseMode={false}
               />
             </form>
           </div>
