@@ -1,0 +1,28 @@
+.form-inputs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+.form-inputs .form-section {
+  flex: 1 1 50%;
+  padding: 20px;
+  background-color: #f0f0f0;
+}
+.form-inputs .form-section .section-title {
+  margin-top: 0;
+}
+.form-inputs .form-section .form-row {
+  display: flex;
+  gap: 10px;
+}
+.form-inputs .form-section .divider {
+  width: 100%;
+  margin: 20px 0;
+  border: none;
+  border-top: 1px solid #ccc;
+}
+@media (max-width: 1279px) {
+  .form-inputs .form-section {
+    flex: 1 1 100%;
+  }
+}
